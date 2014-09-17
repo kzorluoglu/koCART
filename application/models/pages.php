@@ -1,0 +1,20 @@
+<?php
+class Pages extends CI_Model {
+ 
+    function __construct()
+		{
+        // Call the Model constructor
+        parent::__construct();
+    }
+    
+ 
+     function pages_detail($id)
+		{
+        $query = $this->db->query('SELECT page.*, page_description.* 
+		FROM page INNER JOIN page_description 
+		ON page.id=page_description.page_id 
+		WHERE page_description.language_id = '.$this->session->userdata('lang').' AND page.id = '.$id.'');
+        return $query->result();
+ 
+    }
+}
