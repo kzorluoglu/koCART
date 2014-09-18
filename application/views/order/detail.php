@@ -63,12 +63,56 @@
 </table>
  <?php if($this->cart->total_items() > 0){ ?>
 <p><?php echo form_submit('', 'Update your Cart'); ?></p>
-<?php } ?>
 
- 
+<?php } ?>
+<?php echo form_close(); ?>
+   <?php echo form_open('order/payment'); ?>
+   <hr>
+   
+   <div class="col-xs-6">
+   <h4>Order Detail Form </h4>
+   <div class="form-group">
+                        <input type="text" name="first_name" id="first_name" class="form-control input-md" placeholder="First Name" tabindex="1">
+	</div>
+	   <div class="form-group">
+                        <input type="text" name="email" id="email" class="form-control input-md" placeholder="E-mail" tabindex="1">
+					</div>
+	   <div class="form-group">
+                        <input type="text" name="telephone" id="telephone" class="form-control input-md" placeholder="Telephone" tabindex="1">
+					</div>
+	   <div class="form-group">
+                        <input type="text" name="address1" id="address1" class="form-control input-md" placeholder="Address 1" tabindex="1">
+					</div>
+	   <div class="form-group">
+                        <input type="text" name="address2" id="address2" class="form-control input-md" placeholder="Address 2" tabindex="1">
+					</div>
+	   <div class="form-group">
+                        <input type="text" name="city" id="city" class="form-control input-md" placeholder="City" tabindex="1">
+					</div>
+	   <div class="form-group">
+                        <input type="text" name="postcode" id="postcode" class="form-control input-md" placeholder="Post Code" tabindex="1">
+					</div>
+	   <div class="form-group">
+                        <input type="text" name="country" id="country" class="form-control input-md" placeholder="Country" tabindex="1">
+					</div>	
+	   <div class="form-group">
+                        <input type="text" name="region" id="region" class="form-control input-md" placeholder="Region / State" tabindex="1">
+					</div>	
+					</div>
+					
+					 <div class="col-xs-6">
+					<h4>Company Detail</h4>
+	   <div class="form-group">
+                        <input type="text" name="company" id="company" class="form-control input-md" placeholder="Company" tabindex="1">
+					</div>
+	   <div class="form-group">
+                        <input type="text" name="companyid" id="companyid" class="form-control input-md" placeholder="Company ID" tabindex="1">
+					</div>
+
+					</div>
 
             </div>
-
+<p><?php echo form_submit('', 'Continue'); ?></p>
         </div>
 
     </div>

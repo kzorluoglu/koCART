@@ -130,7 +130,7 @@
  <?php if($this->cart->total_items() > 0){ ?>
 <p><?php echo form_submit('', 'Update your Cart'); ?></p>
 <?php } ?>
-<?php echo anchor('order/submit','Order'); ?> 
+<?php echo anchor('order/detail','Order'); ?> 
                 </div>
 
             </div>

@@ -19,7 +19,7 @@ class Order extends CI_Controller {
 	 */
 
 	
-	public function submit()
+	public function payment()
 	{
 	
  		if($this->session->userdata('lang') == ""){
