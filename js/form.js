@@ -40,4 +40,29 @@ $(document).ready(function () {
     });
 
     $('div.setup-panel div a.btn-primary').trigger('click');
+	
+ 
+	
+	$('#billinganddelivery2').click(function() {
+   $( "#cargo_first_name" ).val($( "#billing_first_name" ).val()); 
+   $( "#cargo_email" ).val($( "#billing_email" ).val()); 
+   $( "#cargo_telephone" ).val($( "#billing_telephone" ).val()); 
+   $( "#cargo_address1" ).val($( "#billing_address1" ).val()); 
+   $( "#cargo_address2" ).val($( "#billing_address2" ).val()); 
+   $( "#cargo_city" ).val($( "#billing_city" ).val()); 
+   $( "#cargo_postcode" ).val($( "#billing_postcode" ).val()); 
+   $( "#cargo_country" ).val($( "#billing_country" ).val()); 
+   $( "#cargo_region" ).val($( "#billing_region" ).val()); 
+   
+});	
+
+					$('#payment').click(function() {
+					  if ($(this).is(':checked')) {
+						$("#payment_details").load('../payment/'+$(this).val());
+					 
+					  }
+					});
+
+
+
 });

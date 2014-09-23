@@ -18,7 +18,13 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="http://localhost/kocart/js/bootstrap.min.js"></script>
- 
+	<script src="http://localhost/kocart/js/form.js"></script>
+	
+ <script src="http://localhost/kocart/js/sisyphus.js"></script>
+
+<script>
+$( "#orderform" ).sisyphus(); 
+</script>
 
 </body>
 

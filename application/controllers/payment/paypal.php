@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Order extends CI_Controller {
+class Paypal extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -17,39 +17,24 @@ class Order extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-
-	
- 
-		public function detail()
-	{
-	
- 		if($this->session->userdata('lang') == ""){
+	 	function __construct()
+    {
+        // Call the Model constructor
+        parent::__construct();
+		// If the session language null value 
+		if($this->session->userdata('lang') == ""){
 			$this->session->set_userdata('lang', '1');
 			$this->session->set_userdata('lang_file', 'turkish');
 
 		}
- 
-		$this->load->model('menu');
-		$this->load->model('products');
-		$this->load->model('categorys');
-		$this->load->model('payment');
-
-		$this->load->library('cart');
-		//Products...
- 
- 		$data['payments'] = $this->payment->payments();
-
 		
-		//Category...
-		$data['all_categorys'] = $this->categorys->all_categorys();
-		$data['cart_total'] = $this->cart->total();
- 
-		//Menu...
-        $data['menu'] = $this->menu->menu();
-		$this->load->view('order/detail', $data);
- 
+    }
+	public function index()
+	{
 
-
+		$this->lang->load('cart', $this->session->userdata('lang_file'));
+		$this->load->library('cart');
+		$this->load->view('payment/paypal');
 	}
 }
 
