@@ -43,12 +43,12 @@ class Products extends CI_Model {
     }
 	     function product($id)
     {
-        $query = $this->db->query('SELECT product.*, product_description.* 
+        $query = $this->db->query('SELECT product.*, product_description.*
 		FROM product
 		INNER JOIN product_description ON product.id=product_description.product_id 
-		WHERE product_description.language_id = '.$this->session->userdata('lang').' AND product.id = '.$id.'
-		ORDER BY product.id');
+		WHERE product_description.language_id = '.$this->session->userdata('lang').' AND product.id = '.$id.'');
         return $query->result();
  
     }
+	
 }

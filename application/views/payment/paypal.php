@@ -1,52 +1,30 @@
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="upload" value="1">
+<input type="hidden" name="business" value="youremail@mail.com">
+<input type="hidden" name="currency_code" value="US">
 
-<table cellpadding="6" cellspacing="1" style="width:100%" border="0">
 
-<tr>
-  <th>QTY</th>
-  <th>Item Description</th>
-  <th style="text-align:right">Item Price</th>
-  <th style="text-align:right">Sub-Total</th>
-  <th style="text-align:right">Action</th>
-</tr>
+
+ 
 
 <?php $i = 1; ?>
 
 <?php foreach ($this->cart->contents() as $items): ?>
 
-	<?php echo form_hidden('rowid[]', $items['rowid']); ?>
-
-	<tr>
-	  <td> 
-	  <?php echo form_input(array('name' => 'qty[]', 'value' => $items['qty'], 'maxlength' => '3', 'size' => '5')); ?></td>
-	  <td>
-		<?php echo $items['name']; ?>
-
-			<?php if ($this->cart->has_options($items['rowid']) == TRUE): ?>
-
-				<p>
-					<?php foreach ($this->cart->product_options($items['rowid']) as $option_name => $option_value): ?>
-
-						<strong><?php echo $option_name; ?>:</strong> <?php echo $option_value; ?><br />
-
-					<?php endforeach; ?>
-				</p>
-
-			<?php endif; ?>
-
-	  </td>
-	  <td style="text-align:right"><?php echo $this->cart->format_number($items['price']); ?></td>
-	  <td style="text-align:right">$<?php echo $this->cart->format_number($items['subtotal']); ?></td>
-	  <td style="text-align:right"><?php echo anchor('cart/remove/'.$items['rowid'],'Delete'); ?>   </td>
-	</tr>
+ <input type="hidden" name="item_name_<? echo $i; ?>" value="<?php echo $items['name']; ?>">
+<input type="hidden" name="amount_<? echo $i; ?>" value=" <?php echo $this->cart->format_number($items['subtotal']); ?> ">
+ 
+ 
+	 
+ <?php // echo $this->cart->format_number($items['price']); ?> 
+ 
 
 <?php $i++; ?>
 
 <?php endforeach; ?>
 
-<tr>
-  <td colspan="2"></td>
-  <td class="right"><strong>Total</strong></td>
-  <td class="right">$<?php echo $this->cart->format_number($this->cart->total()); ?></td>
-</tr>
-
-</table>
+ <?php // echo $this->cart->format_number($this->cart->total()); ?> 
+ 
+<input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
