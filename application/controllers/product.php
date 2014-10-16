@@ -21,11 +21,7 @@ class Product extends CI_Controller {
  
 	public function seolink()
 	{
- 		if($this->session->userdata('lang') == ""){
-			$this->session->set_userdata('lang', '1');
-			$this->session->set_userdata('lang_file', 'turkish');
-
-		}
+ 
  		
 		$this->load->model('menu');
 		$this->load->model('products');

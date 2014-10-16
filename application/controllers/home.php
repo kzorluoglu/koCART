@@ -22,11 +22,7 @@ class Home extends CI_Controller {
         // Call the Model constructor
         parent::__construct();
 		// If the session language null value 
-		if($this->session->userdata('lang') == ""){
-			$this->session->set_userdata('lang', '1');
-			$this->session->set_userdata('lang_file', 'turkish');
 
-		}
 		
     }
 	public function index()
