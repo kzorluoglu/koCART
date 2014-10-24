@@ -24,4 +24,31 @@ class Order_model extends CI_Model {
         return false;
    }
  
+ 
+	     function product($id)
+    {
+        $query = $this->db->query('SELECT product.*, product_description.*
+		FROM product
+		INNER JOIN product_description ON product.id=product_description.product_id 
+		WHERE product_description.language_id = '.$this->session->userdata('lang').' AND product.id = '.$id.'');
+        return $query->result();
+ 
+    }
+	public function detail($id){
+			$this->db->where('order_id', $id);
+	        $query = $this->db->get("order");
+			return $query->result();
+
+	
+	}
+ 	public function products($id){
+			$this->db->where('order_id', $id);
+			$this->db->where('product_description.language_id', $this->session->userdata('lang'));
+			$this->db->join('product_description', 'product_description.product_id = order_detail.product_id');
+			$this->db->join('product', 'product.id = order_detail.product_id');
+	        $query = $this->db->get("order_detail");
+			return $query->result();
+
+	
+	}
 }

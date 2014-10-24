@@ -2,7 +2,9 @@
 <div id="page-wrapper">
 
             <div class="container-fluid">
-
+                        <h1 class="page-header">
+                            Dashboard <small>Orders List</small>
+                        </h1>
 <table class="table table-bordered">
       <thead>
         <tr>
@@ -19,7 +21,7 @@ foreach($results as $result) { ?>
 		           <td><?php echo $result->order_id; ?></td>
 				   <td><?php echo $result->customer_id; ?></td>
 				   <td><?php echo $result->total; ?></td>
-				   <td><a href="<?php echo base_url(); ?>admin/order/detail/<?php echo $result->order_id; ?>">Show & Edit</a></td>
+				   <td><a href="<?php echo base_url(); ?>admin/order/detail/<?php echo $result->order_id; ?>"><span class="glyphicon glyphicon-pencil"></span></a> <span class="glyphicon glyphicon-remove"></span></td>
 		 </tr>
 <?php } ?>
 

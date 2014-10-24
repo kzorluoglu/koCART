@@ -192,7 +192,7 @@
                                                 <td><?php echo $order->order_id; ?></td>
                                                 <td><?php echo $order->date; ?></td>
                                                 <td><?php echo $order->customer_id; ?></td>
-                                                <td>$<?php echo $order->total; ?></td>
+                                                <td> <?php echo $order->total; ?></td>
                                             </tr>
  <? } ?>
                                         </tbody>

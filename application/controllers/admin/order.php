@@ -37,7 +37,7 @@ class Order extends CI_Controller {
 		$config = array();
         $config["base_url"] = base_url() . "admin/order/lists";
         $config["total_rows"] = $this->order_model->order_count();
-        $config["per_page"] = 1;
+        $config["per_page"] = 10;
         $config["uri_segment"] = 4;
  
         $this->pagination->initialize($config);
@@ -48,6 +48,24 @@ class Order extends CI_Controller {
 
 		$this->load->view('admin/order', $data);
    }
+   
+   
+   public function detail(){
+   		$this->load->model('admin/order_model');
+ 
+ 
+ 
+ 		$data["order"] = $this->order_model->detail($this->uri->segment(4));
+ 
+		$data["products"] = $this->order_model->products($this->uri->segment(4));
+		
+   		$this->load->view('admin/order/detail', $data);
+
+   }
+   
+   
+   
+   
 }
 
 /* End of file welcome.php */

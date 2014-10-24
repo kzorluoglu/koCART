@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Ko-CART Admin</title>
+    <title>KoCART Admin</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url(); ?>admin/dashboard">Ko-CART Admin</a>
+                <a class="navbar-brand" href="<?php echo base_url(); ?>admin/dashboard">KoCART Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -143,21 +143,14 @@
                     <li class="active">
                         <a href="<?php echo base_url(); ?>admin/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Blank</a>
+ 
+                     <li>
+                        <a href="<?php echo base_url(); ?>admin/categorys/lists"><i class="fa fa-fw fa-list-ol"></i>Categorys</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>admin/order/lists"><i class="fa fa-fw fa-table"></i> Orders</a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Blank</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-desktop"></i> Blank</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-wrench"></i> Blank</a>
-                    </li>
+ 
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Blank Dropdown<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
@@ -169,9 +162,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-file"></i> Blank</a>
-                    </li>
+ 
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
