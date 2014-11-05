@@ -145,7 +145,7 @@
                     </li>
  
                      <li>
-                        <a href="<?php echo base_url(); ?>admin/categorys/lists"><i class="fa fa-fw fa-list-ol"></i>Categorys</a>
+                        <a href="<?php echo base_url(); ?>admin/category/lists"><i class="fa fa-fw fa-list-ol"></i>Categorys</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>admin/order/lists"><i class="fa fa-fw fa-table"></i> Orders</a>
