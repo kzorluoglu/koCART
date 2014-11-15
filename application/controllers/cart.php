@@ -21,7 +21,10 @@ class Cart extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->model('menu');
+ 		//Menu and Categorys ...
+		$this->load->model('categories_model');
+		$this->load->model('menu_model');
+		
 		$this->load->model('products');
 		$this->load->model('categorys');
 		$this->lang->load('cart', $this->session->userdata('lang_file'));
@@ -35,7 +38,8 @@ class Cart extends CI_Controller {
 		$data['all_categorys'] = $this->categorys->all_categorys();
 		
 		//Menu...
-        $data['menu'] = $this->menu->menu();
+		 $data['categories'] = $this->categories_model->get_cats();
+		 $data['menu'] = $this->menu_model->get_menus();
 
 
  

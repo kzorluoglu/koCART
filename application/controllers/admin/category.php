@@ -44,7 +44,7 @@ class Category extends CI_Controller {
  
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $data["links"] = $this->pagination->create_links();
-		$data["categories"] = $this->category_model->get_menu();
+		$data["categories"] = $this->category_model->get_menu($config["per_page"], $page);
  
  
 		$this->load->view('admin/category/list', $data);
@@ -52,19 +52,64 @@ class Category extends CI_Controller {
    
  
    public function detail(){
-   		$this->load->model('admin/order_model');
+   	$this->load->model('admin/category_model');
+ 	$this->load->model('admin/language_model');
+	
+ 	$data["languages"] = $this->language_model->languages();
+ 	$category_infos = $this->category_model->category($this->uri->segment(4));
  
- 
- 
- 		$data["order"] = $this->order_model->detail($this->uri->segment(4));
- 
-		$data["products"] = $this->order_model->products($this->uri->segment(4));
-		
-   		$this->load->view('admin/category/list', $data);
+	foreach($category_infos as $category_info){
+			$data["id"] = $category_info->id;
+			$data["parent_id"] = $category_info->parent_id;
+			$data["link"] = $category_info->link;
+			$data["rank"] = $category_info->rank;
+			$data["category_description"] = $this->category_model->category_description($category_info->id);
+}
+ 			$data["categories"] = $this->category_model->get_menu(0, 0);
+
+   		$this->load->view('admin/category/detail', $data);
 
    }
+   public function Add(){
+	$this->load->model('admin/category_model');
+	$this->load->model('admin/language_model');
+
+	
+	if($_POST){
+	$this->category_model->add($_POST);
+	}
+	
+	
+	$data["languages"] = $this->language_model->languages();
+	$data["categories"] = $this->category_model->get_menu(0, 0);
+			
+	$this->load->view('admin/category/add', $data);
+		 
+   }
    
+   public function update(){
+   	$this->load->model('admin/category_model');
+
    
+   	if($_POST){
+		$this->category_model->update($this->uri->segment(4), $_POST);
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+	else{
+	redirect($_SERVER['HTTP_REFERER']);
+	}
+   
+   }
+   
+   public function delete(){
+	$this->load->model('admin/category_model');
+ 
+			$this->category_model->delete($this->uri->segment(4));
+			redirect($_SERVER['HTTP_REFERER']);
+			
+			
+	 
+   }
    
    
 }

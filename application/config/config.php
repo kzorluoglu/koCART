@@ -14,8 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/kocart/';
-
+$config['base_url']	= 'http://jolyjokerz.com/';
+$config['admin_url']	= 'http://jolyjokerz.com/admin/';
 /*
 |--------------------------------------------------------------------------
 | Index File

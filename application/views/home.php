@@ -4,26 +4,11 @@
     <div class="container">
 
         <div class="row">
-
+ 
             <div class="col-md-3">
                 <p class="lead">Shop Name</p>
-                <div class="list-group">
-				
-				
-				
-											<?php 
- 
-							foreach ($all_categorys AS $all_category){ ?>
-								 <a href="<?php echo base_url(); ?><?php echo $all_category->link; ?> " class="list-group-item"><?php echo $all_category->category_name; ?> </a>
-                                    
-
-	
-						<?php
- 
-						} ?>
-                   
- 
-                </div>
+    
+ <?php echo $categories?>
  
 
 
@@ -150,7 +135,40 @@
  
 
                 </div>
+                <div class="row">
+				<h4>The Most Popular Products</h4>
+                    	<?php foreach ($most_popular_products AS $most_popular_product){ ?>
+ 
+ 
+ 
 
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="<?php echo $most_popular_product->image; ?>" alt="">
+                            <div class="caption">
+                     
+                                <h4><a href="<?php echo base_url(); ?><?php echo $most_popular_product->url; ?>"><?php echo $most_popular_product->name; ?></a> 
+                                </h4>
+								           <h4 class="pull-right"><?php echo $most_popular_product->price; ?> $</h4>
+                                <p><?php echo $most_popular_product->details; ?></p>
+								<p><a href="<?php echo base_url(); ?>basket/add/<?php echo $most_popular_product->id; ?>">Add Basket</a>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+	<?php } ?>
+ 
+
+                </div>
             </div>
 
         </div>

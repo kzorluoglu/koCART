@@ -12,7 +12,7 @@
     <title>Shop Homepage - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>css/shop-homepage.css" rel="stylesheet">
@@ -41,18 +41,7 @@
                 </button>
                 <a class="navbar-brand" href="<?php echo base_url(); ?>">KoCART</a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    	<?php foreach ($menu AS $menuler){ ?>
-	<li> 
-	<a href="<?php echo base_url(); ?><?php echo $menuler->link; ?>"><?php echo $menuler->menu_name; ?></a>
-	</li>
-	<?php } ?>
-					
- <li><a href="account/login">Login</a></li>
-
-                </ul>
+<?php echo $menu; ?>
 				                 <a   href="<?php echo base_url(); ?>language/set/tr">tr</a>  |  <a href="<?php echo base_url(); ?>language/set/en">en</a>
 
             </div>
@@ -60,3 +49,4 @@
         </div>
         <!-- /.container -->
     </nav>
+	

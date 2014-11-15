@@ -24,7 +24,9 @@ class Order extends CI_Controller {
 	{
  
  
-		$this->load->model('menu');
+		$this->load->model('categories_model');
+		$this->load->model('menu_model');
+		
 		$this->load->model('products');
 		$this->load->model('categorys');
 		$this->load->model('payment');
@@ -40,7 +42,9 @@ class Order extends CI_Controller {
 		$data['cart_total'] = $this->cart->total();
  
 		//Menu...
-        $data['menu'] = $this->menu->menu();
+		 $data['categories'] = $this->categories_model->get_cats();
+		 $data['menu'] = $this->menu_model->get_menus();
+		 
 		$this->load->view('order/detail', $data);
  
 

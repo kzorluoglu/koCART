@@ -25,7 +25,7 @@ foreach($order as $order_detail) { ?>
 <table class="table table-striped">
          <tr>
 		           <td>Order ID#</td>
-				   <td><?php echo $order_detail->customer_id; ?></td>
+				   <td><?php echo $order_detail->order_id; ?></td>
  
 		 </tr>
          <tr>
@@ -35,11 +35,6 @@ foreach($order as $order_detail) { ?>
          <tr>
 		           <td>Total</td>
 				<td><?php echo $order_detail->total; ?></td>
-		 </tr>
-		 
-         <tr>
-		           <td>Comment</td>
-				   <td><?php echo $order_detail->comment; ?></td>
 		 </tr>
 			<tr>
 		           <td>Date</td>
@@ -59,15 +54,28 @@ foreach($order as $order_detail) { ?>
  
 				   </td>
 		 </tr>
+		          <tr>
+		           <td>Comment</td>
+				   <td><?php echo $order_detail->comment; ?></td>
+		 </tr>
 		 </table>
 		 <hr>
 		 <h4>Order Operations</h4>
 
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" action="<?php echo $this->config->item('admin_url'); ?>order/detail" method="post" accept-charset="utf-8"  role="form"  >
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Status</label>
     <div class="col-sm-10">
-<select class="form-control">
+	      <input name="order_id" type="hidden" value="<?php echo $order_detail->order_id; ?>">
+<select name="status" class="form-control">
+   <option value="<?php echo $order_detail->status; ?>"> 
+   				    <?php if($order_detail->status == "1"){ ?> Waiting <?} ?>
+				    <?php if($order_detail->status == "2"){ ?> Shipping <?} ?>
+					<?php if($order_detail->status == "3"){ ?> Completed <?} ?>
+					<?php if($order_detail->status == "4"){ ?> Arrived <?} ?>
+   
+   </option>
+   <option value=""></option>
   <option value="1">Waiting</option>
   <option value="2">Shipping</option>
   <option value="3">Completed</option>
@@ -78,7 +86,7 @@ foreach($order as $order_detail) { ?>
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label">Comment</label>
     <div class="col-sm-10">
-<textarea class="form-control" rows="3"></textarea>    </div>
+<textarea class="form-control" name="comment" rows="3"></textarea>    </div>
   </div>
  
   <div class="form-group">

@@ -38,7 +38,18 @@ class Order_model extends CI_Model {
 			$this->db->where('order_id', $id);
 	        $query = $this->db->get("order");
 			return $query->result();
+	
+	}
+	public function update_comment($data){
+	$update = array(
+               'comment' => $data['comment'],
+               'status' => $data['status']
+            );
 
+$this->db->where('order_id', $data['order_id']);
+ 
+ return $this->db->update('order', $update); 
+ 
 	
 	}
  	public function products($id){

@@ -12,24 +12,33 @@
     <title>KoCART Admin</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url(); ?>/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="<?php echo base_url(); ?>/css/sb-admin.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="<?php echo base_url(); ?>/css/plugins/morris.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+     <!-- jQuery Version 1.11.0 -->
+    <script src="<?php echo base_url(); ?>js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="<?php echo base_url(); ?>js/plugins/morris/raphael.min.js"></script>
+ 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+ 
 </head>
 
 <body>

@@ -28,22 +28,28 @@ class Home extends CI_Controller {
 	public function index()
 	{
  
- 		
-		$this->load->model('menu');
+ 		//Menu and Categorys ...
+		$this->load->model('categories_model');
+		$this->load->model('menu_model');
+				
+      
+		 
 		$this->load->model('products');
 		$this->load->model('categorys');
 		
 		$this->load->library('cart');
 		//Products...
 		$data['most_sell_products'] = $this->products->most_sell_products();
+		$data['most_popular_products'] = $this->products->most_popular_products();
 		$data['slider_products'] = $this->products->slider_products();
 		
 		//Category...
 		$data['all_categorys'] = $this->categorys->all_categorys();
 		$data['cart_total'] = $this->cart->total();
 
-		//Menu...
-        $data['menu'] = $this->menu->menu();
+		 $data['categories'] = $this->categories_model->get_cats();
+		 $data['menu'] = $this->menu_model->get_menus();
+		
 		$this->load->view('home', $data);
 	}
 }

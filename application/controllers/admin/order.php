@@ -46,7 +46,7 @@ class Order extends CI_Controller {
         $data["results"] = $this->order_model->get_orders($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
 
-		$this->load->view('admin/order', $data);
+		$this->load->view('admin/order/list', $data);
    }
    
    
@@ -54,7 +54,13 @@ class Order extends CI_Controller {
    		$this->load->model('admin/order_model');
  
  
- 
+			 if($_POST){
+				$update = $this->order_model->update_comment($_POST);
+				if($update){
+						redirect($_SERVER['HTTP_REFERER']);
+				}
+			 }
+			 
  		$data["order"] = $this->order_model->detail($this->uri->segment(4));
  
 		$data["products"] = $this->order_model->products($this->uri->segment(4));

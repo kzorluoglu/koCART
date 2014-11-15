@@ -23,7 +23,8 @@
  <script src="http://localhost/kocart/js/sisyphus.js"></script>
 
 <script>
-$( "#orderform" ).sisyphus(); 
+$( "#orderform" ).sisyphus();
+ 
 </script>
 
 </body>

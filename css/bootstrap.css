@@ -931,13 +931,21 @@ img {
 }
 .img-responsive,
 .thumbnail > img,
-.thumbnail a > img,
+.thumbnail a > img{
+  display: block;
+  width: 100% \9;
+  max-width: 100%;
+  height: auto;
+}
+
+
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
   width: 100% \9;
   max-width: 100%;
-  height: auto;
+ 
+  max-height:400px;
 }
 .img-rounded {
   border-radius: 6px;
@@ -6201,3 +6209,5 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+ 

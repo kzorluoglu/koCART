@@ -18,6 +18,20 @@ class Products extends CI_Model {
         return $query->result();
  
     }
+	    function most_popular_products()
+    {
+        $query = $this->db->query('SELECT modules.*, product.*, product_description.* 
+		FROM modules
+		INNER JOIN product ON modules.product_id=product.id 
+		INNER JOIN product_description ON product.id=product_description.product_id 
+		WHERE product_description.language_id = '.$this->session->userdata('lang').' AND modules.type = "popular"
+		ORDER BY product.id');
+        return $query->result();
+ 
+    }
+	
+	
+	
 
      function slider_products()
     {
@@ -36,7 +50,7 @@ class Products extends CI_Model {
 		FROM modules
 		INNER JOIN product ON modules.product_id=product.id 
 		INNER JOIN product_description ON product.id=product_description.product_id 
-		WHERE product_description.language_id = '.$this->session->userdata('lang').' AND modules.type = "slide" AND product.category_id = '.$id.'
+		WHERE product_description.language_id = '.$this->session->userdata('lang').' AND product.category_id = '.$id.'
 		ORDER BY product.id');
         return $query->result();
  
