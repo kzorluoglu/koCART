@@ -21,26 +21,23 @@ class Cart extends CI_Controller {
 	
 	public function index()
 	{
+  		$this->lang->load('home', $this->session->userdata('lang_file'));
+
  		//Menu and Categorys ...
 		$this->load->model('categories_model');
-		$this->load->model('menu_model');
-		
-		$this->load->model('products');
-		$this->load->model('categorys');
-		$this->lang->load('cart', $this->session->userdata('lang_file'));
+ 		
+		$this->load->model('products_model');
+ 		$this->lang->load('cart', $this->session->userdata('lang_file'));
 
 		$this->load->library('cart');
+		$data['cart_total'] = $this->cart->total();
 		//Products...
-		$data['most_sell_products'] = $this->products->most_sell_products();
-		$data['slider_products'] = $this->products->slider_products();
-		
-		//Category...
-		$data['all_categorys'] = $this->categorys->all_categorys();
-		
+		$data['most_sell_products'] = $this->products_model->most_sell_products();
+		$data['slider_products'] = $this->products_model->slider_products();
+ 
 		//Menu...
 		 $data['categories'] = $this->categories_model->get_cats();
-		 $data['menu'] = $this->menu_model->get_menus();
-
+ 
 
  
 		$this->load->view('cart', $data);

@@ -22,26 +22,25 @@ class Basket extends CI_Controller {
 	public function add()
 	{
 			$this->load->library('cart');
-			$this->load->model('products');
+			$this->load->model('products_model');
 			
-			$product = $this->products->product($this->uri->segment(3));
+			$product = $this->products_model->product($this->uri->segment(3));
  
- 
+  
+
+
 			$data = array(
                'id'      => $product['0']->id,
                'qty'     => 1,
                'price'   => $product['0']->price,
                'name'    => $product['0']->name,
-               'options' => array('Size' => 'L', 'Color' => 'Red')
-            );
 
-  
- 
-			
+            );
+ /*                'options' => array('Size' => 'L', 'Color' => 'Red') */
 			$this->cart->insert($data);
 		    redirect($_SERVER['HTTP_REFERER']);
 	}
 }
 
-/* End of file welcome.php */
+/* End of file welcome.php  */
 /* Location: ./application/controllers/welcome.php */

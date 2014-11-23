@@ -1,4 +1,4 @@
-<div class="collapse navbar-collapse navbar-ex1-collapse">
+ 
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');  
   
 class Categories_model extends CI_Model {
@@ -8,6 +8,7 @@ class Categories_model extends CI_Model {
  function get_cats(){  
    $this->db->join('category_description','category_description.category_id = category.id');
    $this->db->where('category_description.language_id', $this->session->userdata('lang'));
+   $this->db->order_by("category.rank", "asc"); 
   $query = $this->db->get('category'); 
     
   if($query->num_rows() > 0){  
@@ -17,37 +18,38 @@ class Categories_model extends CI_Model {
     $items[$row['parent_id']][] = $row;  
    endforeach;  
      
-   $this->_menu_listele($items);  
+   $this->categories_list($items);  
   
    return $this->result;  
   }  
    
  }  
    
- function _menu_listele($items, $parent = null) {  
-  
+ function categories_list($items, $parent = null) {  
+ 
+
   $index = $parent == null ? '0' : $parent;  
-  
   if (isset($items[$index])) {  
   
-   $this->result .= '<ul  class="list-group"';  
+   $this->result .= '<ul';  
      
-   $this->result .= $parent == null ? ' class="nav navbar-nav"' : '';  
+   $this->result .= $parent == null ? ' id="main-menu" class="sm sm-vertical sm-blue sm-blue-vertical"' : '';  
   
    $this->result .= '>';  
   
    foreach ($items[$index] as $child) {  
   
-    $this->result .= '<li rel="'.$child['id'].'"><a href="'.base_url().''.$child['link'].'">'.$child['category_name'].'</a>';  
+    $this->result .= '<li><a href="'.base_url().''.$child['link'].'">'.$child['category_name'].'</a>';  
       
-    $this->_menu_listele($items, $child['id']);  
+    $this->categories_list($items, $child['id']);  
       
     $this->result .= '</li>';  
      
    }  
   
    $this->result .= '</ul>';  
-  }  
+  }
+ 
  }  
-   
+ 
 }  

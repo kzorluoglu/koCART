@@ -28,7 +28,7 @@ class CI_Cart {
 
 	// These are the regular expression rules that we use to validate the product ID and product name
 	var $product_id_rules	= '\.a-z0-9_-'; // alpha-numeric, dashes, underscores, or periods
-	var $product_name_rules	= '\.\:\-_ a-z0-9'; // alpha-numeric, dashes, underscores, colons or periods
+	var $product_name_rules	= '\d\D'; // alpha-numeric, dashes, underscores, colons or periods
 
 	// Private variables.  Do not change!
 	var $CI;

@@ -123,7 +123,13 @@
       <label for="inputEmail3" class="col-sm-2 control-label">Parent Category</label>
     <div class="col-sm-offset-2 col-sm-10">
 		<select name="parent_id" class="form-control">
-		<option value="<?php echo $parent_id; ?>"><?php echo $parent_id; ?> </option>
+		<?php if($parent_id == 0){ ?>
+						<option value="0">Main Category</option>
+
+		<? }else{ ?>
+		<option value="<?php echo $parent_id; ?>"><?php echo $parent_name; ?> </option>
+				<? } ?>
+				<option value=""></option>
 				<option value="0">Main Category</option>
 			<?php foreach($categories as $category){ ?>
 				<option value="<?php echo $category->category_id; ?>"><?php echo $category->category_name; ?> </option>
@@ -133,7 +139,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Add New</button>
+      <button type="submit" class="btn btn-default">Update</button>
     </div>
   </div>
 </form>

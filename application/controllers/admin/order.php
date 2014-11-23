@@ -62,14 +62,38 @@ class Order extends CI_Controller {
 			 }
 			 
  		$data["order"] = $this->order_model->detail($this->uri->segment(4));
- 
 		$data["products"] = $this->order_model->products($this->uri->segment(4));
+		// Add Product Tab $order_id
+		$data["order_id"] = $this->uri->segment(4);
 		
    		$this->load->view('admin/order/detail', $data);
 
    }
    
+      function get_product_name(){
+   	$this->load->model('admin/module_model');	
+    if(isset($_GET['term'])){
+		$q = strtolower($_GET['term']);
+		$this->module_model->get_products($q);
+    }
+  }
    
+   public function product_add(){
+      		$this->load->model('admin/order_model');
+
+   			 if($_POST){
+				$update = $this->order_model->productadd($_POST);
+				redirect($_SERVER['HTTP_REFERER']);
+			  }
+   }
+   
+   public function product_delete(){
+      		$this->load->model('admin/order_model');
+ 
+			$update = $this->order_model->productdelete($this->uri->segment(4));
+			redirect($_SERVER['HTTP_REFERER']);
+ 
+   }
    
    
 }

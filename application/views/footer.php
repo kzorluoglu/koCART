@@ -14,16 +14,26 @@
     <!-- /.container -->
 
     <!-- jQuery Version 1.11.0 -->
-    <script src="http://localhost/kocart/js/jquery-1.11.0.js"></script>
+    <script src="<?php echo base_url(); ?>js/jquery-1.11.0.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="http://localhost/kocart/js/bootstrap.min.js"></script>
-	<script src="http://localhost/kocart/js/form.js"></script>
+    <script src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
+	<script src="<?php echo base_url(); ?>js/form.js"></script>
 	
- <script src="http://localhost/kocart/js/sisyphus.js"></script>
-
+ <script src="<?php echo base_url(); ?>js/sisyphus.js"></script>
+ 
+<!-- SmartMenus jQuery plugin -->
+<script src="<?php echo base_url(); ?>js/jquery.smartmenus.js"></script>
+<script src="<?php echo base_url(); ?>js/jquery.smartmenus.bootstrap.js"></script>
+ 
 <script>
 $( "#orderform" ).sisyphus();
+		$('#main-menu').smartmenus({
+			mainMenuSubOffsetX: 1,
+			mainMenuSubOffsetY: -8,
+			subMenusSubOffsetX: 1,
+			subMenusSubOffsetY: -8
+		});
  
 </script>
 

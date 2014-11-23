@@ -5,51 +5,9 @@
         <div class="row">
 
             <div class="col-md-3">
-                <p class="lead">Shop Name</p>
- <p><?php echo $categories?></p>
-				<p class="lead">Basket</p>
- <?php if($this->cart->total_items() > 0){ ?>
-				<?php echo form_open('cart/update'); ?>
-<table class="table small">
-				<?php $i = 1; ?>
-				<?php foreach ($this->cart->contents() as $items): ?>
-	<?php echo form_hidden('rowid[]', $items['rowid']); ?>
-	<tr>
- 
-
-	  <td>
-		 <?php echo $items['name']; ?>
-					<?php if ($this->cart->has_options($items['rowid']) == TRUE): ?>
 					<br>
-				
-					<?php foreach ($this->cart->product_options($items['rowid']) as $option_name => $option_value): ?>
-
-						<strong><?php echo $option_name; ?>:</strong> <?php echo $option_value; ?><br />
-
-					<?php endforeach; ?>
-				
-
-			<?php endif; ?>
-		</td>
-
-
-	  <td style="text-align:right"><?php echo $items['qty']; ?> x <?php echo $this->cart->format_number($items['price']); ?></td>
- 
-	  <td style="text-align:right"><?php echo anchor('cart/remove/'.$items['rowid'],'Delete'); ?>   </td>
-	</tr>
- 
-
- 
-<?php $i++; ?>
-
-<?php endforeach; ?>
-
-<?php } ?>
-</table><br>
-		<small><p><?php echo form_submit('', 'Update your Cart'); ?></p>		Total : <?php echo $this->cart->total_items(); ?> Product<br>
-				<?php echo $cart_total; ?> $
-				<br><a href="<?php echo base_url(); ?>cart">View Basket</a></small>
-
+ 				 <?php echo $categories?> 
+					<br> 
             </div>
 
             <div class="col-md-9">

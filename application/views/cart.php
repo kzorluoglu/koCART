@@ -7,8 +7,9 @@
         <div class="row">
 
             <div class="col-md-3">
-                <p class="lead">Shop Name</p>
- <p><?php echo $categories?></p>
+					<br>
+ 				 <?php echo $categories?> 
+					<br> 
             </div>
 
             <div class="col-md-9">

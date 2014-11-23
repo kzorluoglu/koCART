@@ -44,7 +44,7 @@ class Category extends CI_Controller {
  
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $data["links"] = $this->pagination->create_links();
-		$data["categories"] = $this->category_model->get_menu($config["per_page"], $page);
+		$data["categories"] = $this->category_model->get_categories($page, $config["per_page"]);
  
  
 		$this->load->view('admin/category/list', $data);
@@ -61,11 +61,14 @@ class Category extends CI_Controller {
 	foreach($category_infos as $category_info){
 			$data["id"] = $category_info->id;
 			$data["parent_id"] = $category_info->parent_id;
+			$data["parent_name"] = $this->category_model->get_category($category_info->id);
 			$data["link"] = $category_info->link;
 			$data["rank"] = $category_info->rank;
 			$data["category_description"] = $this->category_model->category_description($category_info->id);
 }
- 			$data["categories"] = $this->category_model->get_menu(0, 0);
+			$start = 0;
+			$limit = 100000000;
+ 			$data["categories"] = $this->category_model->get_categories($start, $limit);
 
    		$this->load->view('admin/category/detail', $data);
 
@@ -81,7 +84,9 @@ class Category extends CI_Controller {
 	
 	
 	$data["languages"] = $this->language_model->languages();
-	$data["categories"] = $this->category_model->get_menu(0, 0);
+			$start = 0;
+			$limit = 100000000;
+ 			$data["categories"] = $this->category_model->get_categories($start, $limit);
 			
 	$this->load->view('admin/category/add', $data);
 		 

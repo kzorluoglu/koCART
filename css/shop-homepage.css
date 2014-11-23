@@ -8,6 +8,15 @@ body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
+#main-menu {
+	position:relative;
+	width:100%;
+}
+
+#main-menu ul {
+	width:100%;  
+}
+ 
 .slide-image {
     width: 100%;
 }

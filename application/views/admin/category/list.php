@@ -5,7 +5,7 @@
                         <h1 class="page-header">
                             Dashboard <small>// Category List</small>
                         </h1>
-						<a href="<?php echo base_url(); ?>admin/category/add" class="btn btn-primary btn-lg active" role="button">Add New</a>
+						<a href="<?php echo $this->config->item('admin_url'); ?>category/add" class="btn btn-primary btn-lg active" role="button">Add New</a>
 
   <table id="data-list" class="table table-bordered">
       <thead>
@@ -21,8 +21,8 @@
  <tr>
  <td><?php echo $category->category_name; ?></td>
  <td><?php echo $category->rank; ?></td>
- <td><a href="<?php echo base_url(); ?>admin/category/detail/<?php echo $category->category_id; ?>"><span class="glyphicon glyphicon-pencil"></span></a>
- <a href="<?php echo base_url(); ?>admin/category/delete/<?php echo $category->category_id; ?>"><span class="glyphicon glyphicon-remove"></span></a>
+ <td><a href="<?php echo $this->config->item('admin_url'); ?>category/detail/<?php echo $category->category_id; ?>"><span class="glyphicon glyphicon-pencil"></span></a>
+ <a href="<?php echo $this->config->item('admin_url'); ?>category/delete/<?php echo $category->category_id; ?>"><span class="glyphicon glyphicon-remove"></span></a>
  </td>
 
  </tr>

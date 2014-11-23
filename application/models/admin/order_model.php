@@ -41,25 +41,28 @@ class Order_model extends CI_Model {
 	
 	}
 	public function update_comment($data){
-	$update = array(
+			$update = array(
                'comment' => $data['comment'],
                'status' => $data['status']
             );
-
-$this->db->where('order_id', $data['order_id']);
- 
- return $this->db->update('order', $update); 
- 
-	
+			$this->db->where('order_id', $data['order_id']);
+			return $this->db->update('order', $update); 
 	}
+	
  	public function products($id){
-			$this->db->where('order_id', $id);
+ 			$this->db->where('order_id', $id);
 			$this->db->where('product_description.language_id', $this->session->userdata('lang'));
 			$this->db->join('product_description', 'product_description.product_id = order_detail.product_id');
 			$this->db->join('product', 'product.id = order_detail.product_id');
 	        $query = $this->db->get("order_detail");
 			return $query->result();
-
-	
 	}
+	public function productadd($data){
+			$this->db->query("INSERT INTO order_detail SET order_id = '" . $data['order_id'] . "', product_id = '" . $data['product_id'] . "', count = '" . $data['count'] . "'");
+
+	}
+	public function productdelete($data){
+ 		$this->db->query("DELETE FROM order_detail WHERE oid = '" . (int)$data . "'");
+	}
+	
 }

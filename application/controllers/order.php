@@ -23,28 +23,27 @@ class Order extends CI_Controller {
 		public function detail()
 	{
  
- 
-		$this->load->model('categories_model');
-		$this->load->model('menu_model');
-		
-		$this->load->model('products');
-		$this->load->model('categorys');
-		$this->load->model('payment');
+  		$this->lang->load('home', $this->session->userdata('lang_file'));
 
+		$this->load->model('categories_model');
+ 		
+		$this->load->model('products_model');
+ 		$this->load->model('payment_model');
+ 
 		$this->load->library('cart');
 		//Products...
  
- 		$data['payments'] = $this->payment->payments();
+ 
+ 
+ 		$data['payments'] = $this->payment_model->payments();
 
 		
 		//Category...
-		$data['all_categorys'] = $this->categorys->all_categorys();
-		$data['cart_total'] = $this->cart->total();
- 
+ 		$data['cart_total'] = $this->cart->total();
+		
 		//Menu...
 		 $data['categories'] = $this->categories_model->get_cats();
-		 $data['menu'] = $this->menu_model->get_menus();
-		 
+ 		 
 		$this->load->view('order/detail', $data);
  
 

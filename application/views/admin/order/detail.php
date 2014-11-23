@@ -232,17 +232,44 @@ foreach($order as $order_detail) { ?>
   <?php foreach($products as $product){ ?>
 
          <tr>
-		           <td><?php echo $product->name; ?></td>
-				   <td><?php echo $product->count; ?></td>
-				   <td><?php echo $product->price; ?></td>
-					<td><?php echo $product->count * $product->price; ?></td>
-					<td><span class="glyphicon glyphicon-remove"></span></td>
+		        <td><?php echo $product->name; ?></td>
+				<td><?php echo $product->count; ?></td>
+				<td><?php echo $product->price; ?></td>
+				<td><?php echo $product->count * $product->price; ?></td>
+				<td>
+				<a href="<?php echo $this->config->item('admin_url'); ?>order/product_delete/<?php echo $product->oid; ?>"><span class="glyphicon glyphicon-remove"></span></a></td>
+ 
 		 </tr>
 
   <? } ?>
         </tbody>
   </table>
+    		<form action="<?php echo $this->config->item('admin_url'); ?>order/product_add" method="post" accept-charset="utf-8" class="form-horizontal" role="form">				
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Product Name</label>
+    <div class="col-sm-10">
+       <input name="product_id" id="tags"> <small><i>* Autocomplete</i></small>
+	   <input name="order_id" type="hidden" value="<?php echo $order_id; ?>">
+    </div>
   </div>
+   <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">QTY</label>
+    <div class="col-sm-10">
+       <input name="count">
+    </div>
+  </div>
+    <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Add New</button>
+    </div>
+  </div>
+  </form>
+  
+  </div>
+  
+
+  
+  
 </div>
 
 
@@ -254,7 +281,18 @@ foreach($order as $order_detail) { ?>
 
         </div>
         <!-- /#page-wrapper -->
+  <!-- AUTOCOMPLETE von jQuery UI -->
+ <link href="<?php echo base_url();?>jquery-ui-1.11.2.custom/jquery-ui.css" rel="stylesheet" type="text/css" />
+ <script type="text/javascript" src="<?php echo base_url();?>jquery-ui-1.11.2.custom/jquery-ui.js"></script>
+		  <script type="text/javascript">
+				  $(function(){
+					  $("#tags").autocomplete({
+						source: "<?php echo $this->config->item('admin_url'); ?>order/get_product_name"  
+					  });	
+					});
+		</script>
 
+<!-- AUTOCOMPLETE von jQuery UI --> 
  
 
   <? $this->load->view('admin/footer'); ?>

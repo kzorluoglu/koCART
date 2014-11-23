@@ -55,7 +55,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url(); ?>admin/dashboard">KoCART Admin</a>
+                <a class="navbar-brand" href="<?php echo $this->config->item('admin_url'); ?>dashboard">KoCART Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -100,33 +100,7 @@
                     </ul>
                 </li>
 				
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
+ 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('name'); ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -141,40 +115,41 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="<?php echo base_url(); ?>admin/account/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="<?php echo $this->config->item('admin_url'); ?>account/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
+               <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="<?php echo base_url(); ?>admin/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="<?php echo $this->config->item('admin_url'); ?>dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
- 
-                     <li>
-                        <a href="<?php echo base_url(); ?>admin/category/lists"><i class="fa fa-fw fa-list-ol"></i>Categorys</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>admin/order/lists"><i class="fa fa-fw fa-table"></i> Orders</a>
-                    </li>
+
  
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Blank Dropdown<i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-cube"></i> Catalog<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Blank Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Blank Item</a>
-                            </li>
-                        </ul>
+                     <li>
+                        <a href="<?php echo $this->config->item('admin_url'); ?>category/lists"><i class="fa fa-fw fa-angle-double-right"></i>Categorys</a>
                     </li>
- 
-                </ul>
+                     <li>
+                        <a href="<?php echo $this->config->item('admin_url'); ?>product/lists"><i class="fa fa-fw fa-angle-double-right"></i>Products</a>
+                    </li>
+                        </ul>
+                    </li> 
+  
+
+                    <li>
+                        <a href="<?php echo $this->config->item('admin_url'); ?>order/lists"><i class="fa fa-fw fa-shopping-cart"></i> Orders</a>
+                    </li>
+					<li>
+                        <a href="<?php echo $this->config->item('admin_url'); ?>module/lists"><i class="fa fa-fw fa-cogs"></i> Modules</a>
+                    </li>
+                </ul>   
             </div>
-            <!-- /.navbar-collapse -->
+          
         </nav>
 
         

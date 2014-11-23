@@ -22,27 +22,24 @@ class Category extends CI_Controller {
 	public function seolink()
 	{
  
- 		
+  		$this->lang->load('home', $this->session->userdata('lang_file'));
+
 		$this->load->model('categories_model');
-		$this->load->model('menu_model');
+ 		
 		
-		
-		$this->load->model('products');
-		$this->load->model('categorys');
-		
+		$this->load->model('products_model');
+ 		
 		$this->load->library('cart');
 		//Products...
-		$data['category_products'] = $this->products->category_products($this->uri->segment(2));
-		$data['slider_products'] = $this->products->slider_products();
+		$data['category_products'] = $this->products_model->category_products($this->uri->segment(2));
+		$data['slider_products'] = $this->products_model->slider_products();
 		
 		//Category...
-		$data['all_categorys'] = $this->categorys->all_categorys();
-		$data['cart_total'] = $this->cart->total();
+ 		$data['cart_total'] = $this->cart->total();
  
 		//Menu...
 		 $data['categories'] = $this->categories_model->get_cats();
-		 $data['menu'] = $this->menu_model->get_menus();
-		$this->load->view('category', $data);
+ 		$this->load->view('category', $data);
 	}
 }
 

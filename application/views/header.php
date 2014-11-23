@@ -9,14 +9,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>koCART - Open Source E-Commerce </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>css/shop-homepage.css" rel="stylesheet">
-
+	<link href="<?php echo base_url(); ?>css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+<link href='<?php echo base_url(); ?>css/sm-core-css.css' rel='stylesheet' type='text/css' />
+<link href='<?php echo base_url(); ?>css/sm-blue/sm-blue.css' rel='stylesheet' type='text/css' />
+ 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -27,8 +30,7 @@
 </head>
 
 <body>
-
-    <!-- Navigation -->
+ <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,14 +41,34 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url(); ?>">KoCART</a>
+                <a class="navbar-brand" href="<?php echo base_url(); ?>">koCART</a>
             </div>
-<?php echo $menu; ?>
-				                 <a   href="<?php echo base_url(); ?>language/set/tr">tr</a>  |  <a href="<?php echo base_url(); ?>language/set/en">en</a>
-
+            
+            <div class="">
+				 <? $this->load->view('basket'); ?>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+ 
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('language'); ?> </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a   href="<?php echo base_url(); ?>language/set/tr">Türkce</a> 
+                            </li>
+                            <li>
+                                <a href="<?php echo base_url(); ?>language/set/en">English</a>
+                            </li>
+ 
+                        </ul>
+                    </li>
+ </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+ 
+ 
 	

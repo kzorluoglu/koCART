@@ -22,28 +22,25 @@ class Page extends CI_Controller {
 	public function seolink()
 	{
  
- 		
+  		$this->lang->load('home', $this->session->userdata('lang_file'));
+
 		//Menu and Categorys ...
 		$this->load->model('categories_model');
-		$this->load->model('menu_model');
-
-		$this->load->model('products');
-		$this->load->model('categorys');
-		$this->load->model('pages');
+ 
+		$this->load->model('products_model');
+ 		$this->load->model('pages_model');
 		
 		$this->load->library('cart');
 		//Products...
-		$data['page_details'] = $this->pages->pages_detail($this->uri->segment(2));
-		$data['slider_products'] = $this->products->slider_products();
+		$data['page_details'] = $this->pages_model->pages_detail($this->uri->segment(2));
+		$data['slider_products'] = $this->products_model->slider_products();
 		
 		//Category...
-		$data['all_categorys'] = $this->categorys->all_categorys();
-		$data['cart_total'] = $this->cart->total();
+ 		$data['cart_total'] = $this->cart->total();
  
 		//Menu...
 		 $data['categories'] = $this->categories_model->get_cats();
-		 $data['menu'] = $this->menu_model->get_menus();
-		 
+ 		 
 		$this->load->view('page', $data);
 	}
 }

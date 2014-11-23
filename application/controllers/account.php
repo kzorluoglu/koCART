@@ -22,28 +22,23 @@ class Account extends CI_Controller {
 	public function login()
 	{
  
- 		
+  		$this->lang->load('home', $this->session->userdata('lang_file'));
+
  		//Menu and Categorys ...
 		$this->load->model('categories_model');
-		$this->load->model('menu_model');
-		
-		
-		$this->load->model('products');
-		$this->load->model('categorys');
-		
+  
+ 		
 		$this->load->library('cart');
 		//Products...
  
  
 		
 		//Category...
-		$data['all_categorys'] = $this->categorys->all_categorys();
-		$data['cart_total'] = $this->cart->total();
+ 		$data['cart_total'] = $this->cart->total();
  
 		//Menu...
 		 $data['categories'] = $this->categories_model->get_cats();
-		 $data['menu'] = $this->menu_model->get_menus();
-		$this->load->view('login', $data);
+ 		$this->load->view('login', $data);
  
 
 

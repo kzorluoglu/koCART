@@ -4,20 +4,29 @@ class Category_model extends CI_Model {
 
   
  
-function get_menu($limit, $start){
-									// of Opencart
+function get_categories($start, $limit){
+			// of Opencart
   $query = $this->db->query("SELECT cp.category_id AS category_id, GROUP_CONCAT(cd1.category_name ORDER BY cp.level SEPARATOR ' &gt; ') AS category_name, c.parent_id, c.rank
 		FROM category_path cp
 		LEFT JOIN category c ON (cp.path_id = c.id)
 		LEFT JOIN category_description cd1 ON (c.id = cd1.category_id)
 		LEFT JOIN category_description cd2 ON (cp.category_id = cd2.category_id)
-		WHERE cd1.language_id = '" . $this->session->userdata('lang'). "' AND cd2.language_id = '" . $this->session->userdata('lang') . "' GROUP BY cp.category_id ORDER BY category_name");
+		WHERE cd1.language_id = '" . $this->session->userdata('lang'). "' AND cd2.language_id = '" . $this->session->userdata('lang') . "' GROUP BY cp.category_id ORDER BY category_name
+		LIMIT ".$start.", ".$limit."");
  return $query->result();
- 
- 
 }
    
- 
+function get_category($category_id){
+		// of Opencart
+  $query = $this->db->query("SELECT cp.category_id AS category_id, GROUP_CONCAT(cd1.category_name ORDER BY cp.level SEPARATOR ' &gt; ') AS category_name, c.parent_id, c.rank
+		FROM category_path cp
+		LEFT JOIN category c ON (cp.path_id = c.id)
+		LEFT JOIN category_description cd1 ON (c.id = cd1.category_id)
+		LEFT JOIN category_description cd2 ON (cp.category_id = cd2.category_id)
+		WHERE cp.category_id = '".$category_id."' AND cd1.language_id = '" . $this->session->userdata('lang'). "' AND cd2.language_id = '" . $this->session->userdata('lang') . "' GROUP BY cp.category_id ORDER BY category_name");
+ return  $query->row('category_name');
+}
+
  public function Add($data){
  		$this->db->query("INSERT INTO category SET parent_id = '" . (int)$data['parent_id'] . "', rank = '" . $data['rank'] . "', link = '" . $data['link'] . "'");
 
