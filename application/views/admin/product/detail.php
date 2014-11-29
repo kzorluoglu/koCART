@@ -37,7 +37,7 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Product Name</label>
     <div class="col-sm-10">
-      <input name="product_description[<?php echo $language->id; ?>][name]" value="<?php echo $product_description[$language->id]['name']; ?>" type="text" class="form-control" id="inputEmail3" >
+      <input name="product_description[<?php echo $language->id; ?>][name]" value="<?php echo $product_description[$language->id]['name']; ?>" type="text" class="form-control" id="inputNameStandart" >
     </div>
   </div>
  
@@ -117,10 +117,19 @@
 		</select>
     </div>
   </div>	
+    <!-- Seo URL Load  js/freindurl.js -->
+  		  <script type="text/javascript">
+				  $(function(){
+ 
+							$('#inputNameStandart').friendurl({id : 'inputSEO', divider: '_', transliterate: true});
+
+					});
+		</script>			 
+  
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">SEO Link</label>
     <div class="col-sm-10">
-      <input name="url" type="text" value="<?php echo $url; ?>" class="form-control" id="inputEmail3" >
+      <input name="url" type="text" value="<?php echo $url; ?>" class="form-control" id="inputSEO" >
     </div>
   </div>
   <div class="form-group">

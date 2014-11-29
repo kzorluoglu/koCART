@@ -31,6 +31,13 @@
 
     <!-- Morris Charts JavaScript -->
     <script src="<?php echo base_url(); ?>js/plugins/morris/raphael.min.js"></script>
+	
+	<!-- Freind URL Plug-in-->
+ <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.friendurl.js"></script>
+ 
+ <!-- Jquery UI FULL-->
+  <link href="<?php echo base_url();?>jquery-ui-1.11.2.custom/jquery-ui.css" rel="stylesheet" type="text/css" />
+ <script type="text/javascript" src="<?php echo base_url();?>jquery-ui-1.11.2.custom/jquery-ui.js"></script>
  
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,36 +62,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo $this->config->item('admin_url'); ?>dashboard">KoCART Admin</a>
+                <a class="navbar-brand" href="<?php echo $this->config->item('admin_url'); ?>dashboard">KoCART Admin</a> 
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>Admin</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Admin panel & Order list added..</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
- 
- 
-                        <li class="message-footer">
-                            <a href="#">New Messages of Ko-CART</a>
-                        </li>
-                    </ul>
-                </li>
-				
+			<li>
+			<a target="_blank" href="<?php echo base_url(); ?>">Website</a>
+			</li>
  
 
 				                <li class="dropdown">

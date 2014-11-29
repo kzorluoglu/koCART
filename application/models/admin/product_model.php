@@ -15,8 +15,14 @@ function get_products(){
 }
 
  public function Add($data){
- 		$this->db->query("INSERT INTO product SET category_id = '" . (int)$data['category_id'] . "',  image = '" . $data['image'] . "', stock = '" . $data['stock'] . "', price = '" . $data['price'] . "', rank = '" . $data['rank'] . "', url = '" . $data['url'] . "'");
+ 		$this->db->query("INSERT INTO product SET category_id = '" . (int)$data['category_id'] . "',  image = '" . $data['image'] . "', stock = '" . $data['stock'] . "', price = '" . $data['price'] . "', rank = '" . $data['rank'] . "'");
+		
 		$product_id = $this->db->insert_id();
+		
+		$seourl = "product/".$product_id."/".$data['url'].".html";
+		
+		$this->db->query("UPDATE product SET url = '".$seourl."' WHERE id = '" . (int)$product_id . "'");
+		
 		foreach ($data['product_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $value['name'] . "', meta_tags = '" . $value['meta_tags'] . "', meta_keys = '" . $value['meta_keys'] . "', details = '" . $value['details'] . "'");
 		}
@@ -55,7 +61,12 @@ function get_products(){
 	
  public function update($product_id, $data){ // of Opencart
 		
-		$this->db->query("UPDATE product SET category_id = '" . (int)$data['category_id'] . "', image = '" . $data['image'] . "', stock = '" . $data['stock'] . "', price = '" . $data['price'] . "', url = '" . $data['url'] . "', rank = '" . (int)$data['rank'] . "' WHERE id = '" . (int)$product_id . "'");
+		$this->db->query("UPDATE product SET category_id = '" . (int)$data['category_id'] . "', image = '" . $data['image'] . "', stock = '" . $data['stock'] . "', price = '" . $data['price'] . "', rank = '" . (int)$data['rank'] . "' WHERE id = '" . (int)$product_id . "'");
+		
+		$seourl = "product/".$product_id."/".$data['url'].".html";
+		
+		$this->db->query("UPDATE product SET url = '".$seourl."' WHERE id = '" . (int)$product_id . "'");
+		
 		$this->db->query("DELETE FROM product_description WHERE product_id = '" . (int)$product_id . "'");
 			foreach ($data['product_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO `product_description` SET `product_id` = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', `name` = '" . $value['name'] . "', meta_tags = '" . $value['meta_tags'] . "', meta_keys = '" . $value['meta_keys'] . "', details = '" . $value['details'] . "'");

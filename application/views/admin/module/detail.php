@@ -52,8 +52,7 @@
   </form>
   
   <!-- AUTOCOMPLETE von jQuery UI -->
- <link href="<?php echo base_url();?>jquery-ui-1.11.2.custom/jquery-ui.css" rel="stylesheet" type="text/css" />
- <script type="text/javascript" src="<?php echo base_url();?>jquery-ui-1.11.2.custom/jquery-ui.js"></script>
+
 		  <script type="text/javascript">
 				  $(function(){
 					  $("#tags").autocomplete({
@@ -63,6 +62,10 @@
 		</script>
 
 <!-- AUTOCOMPLETE von jQuery UI --> 
+
+
+
+
 </head>
 <body>
 

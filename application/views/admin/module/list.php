@@ -8,9 +8,9 @@
 <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Order ID</th>
+          <th>Module ID</th>
           <th>Name</th>
-          <th>Total</th>
+          <th>Details</th>
           <th>Action</th>
         </tr>
       </thead>

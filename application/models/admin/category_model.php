@@ -28,10 +28,14 @@ function get_category($category_id){
 }
 
  public function Add($data){
- 		$this->db->query("INSERT INTO category SET parent_id = '" . (int)$data['parent_id'] . "', rank = '" . $data['rank'] . "', link = '" . $data['link'] . "'");
+ 		$this->db->query("INSERT INTO category SET parent_id = '" . (int)$data['parent_id'] . "', rank = '" . (int)$data['rank'] . "'");
 
 		$category_id = $this->db->insert_id();
-
+		
+		$seourl = "category/".$category_id."/".$data['link'].".html";
+		
+		$this->db->query("UPDATE category SET link = '".$seourl."' WHERE id = '" . (int)$category_id . "'");
+		
 		foreach ($data['category_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO category_description SET category_id = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', category_name = '" . $value['category_name'] . "', meta_keyword = '" . $value['meta_keyword'] . "', meta_description = '" . $value['meta_description'] . "', description = '" . $value['description'] . "'");
 		}
@@ -95,12 +99,16 @@ function get_category($category_id){
 	
 	
  public function update($category_id, $data){ // of Opencart
-		$this->db->query("UPDATE category SET parent_id = '" . (int)$data['parent_id'] . "', link = '" . $data['link'] . "', rank = '" . (int)$data['rank'] . "' WHERE id = '" . (int)$category_id . "'");
+		$this->db->query("UPDATE category SET parent_id = '" . (int)$data['parent_id'] . "', rank = '" . (int)$data['rank'] . "' WHERE id = '" . (int)$category_id . "'");
+		
+		$seourl = "category/".$category_id."/".$data['link'].".html";
+		
+		$this->db->query("UPDATE category SET link = '".$seourl."' WHERE id = '" . (int)$category_id . "'");
 
 		$this->db->query("DELETE FROM category_description WHERE category_id = '" . (int)$category_id . "'");
 
 			foreach ($data['category_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO `category_description` SET `category_id` = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', `category_name` = '" . $value['category_name'] . "', meta_keyword = '" . $value['meta_keyword'] . "', meta_description = '" . $value['meta_description'] . "', description = '" . $value['description'] . "'");
+			$this->db->query("INSERT INTO `category_description` SET `category_id` = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', `category_name` = '" . $value['category_name'] . "', meta_keyword = '" .$value['meta_keyword'] . "', meta_description = '" . $value['meta_description'] . "', description = '" . $value['description'] . "'");
 		}
 
 		// MySQL Hierarchical Data Closure Table Pattern

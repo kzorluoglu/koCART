@@ -6,10 +6,17 @@
         <div class="row">
  
             <div class="col-md-3">
-					<br>
- 				 <?php echo $categories?> 
-            </div>
-
+					<div class="row">
+							   <div class="col-sm-12">
+						   <?php echo $categories?> 
+								</div>
+					 </div>
+					 					<div class="row">
+							   <div class="col-sm-12">
+Banner
+								</div>
+					 </div>
+			</div>
             <div class="col-md-9">
 			
 			
