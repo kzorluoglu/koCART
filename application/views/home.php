@@ -13,7 +13,7 @@
 					 </div>
 					 					<div class="row">
 							   <div class="col-sm-12">
-Banner
+											Banner
 								</div>
 					 </div>
 			</div>

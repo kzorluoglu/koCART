@@ -5,7 +5,7 @@
                         <h1 class="page-header">
                             Dashboard <small>// Category List</small>
                         </h1>
-						<a href="<?php echo $this->config->item('admin_url'); ?>category/add" class="btn btn-primary btn-lg active" role="button">Add New</a>
+						 <p class="text-right"><a href="<?php echo $this->config->item('admin_url'); ?>category/add" class="btn btn-primary btn-lg active" role="button">Add New</a></p>
 
   <table id="data-list" class="table table-bordered">
       <thead>

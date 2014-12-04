@@ -30,6 +30,8 @@ class Login extends CI_Model{
                     'validated' => true
                     );
             $this->session->set_userdata($data);
+			$_SESSION['validated']= true;
+
             return true;
         }
         // If the previous process did not validate

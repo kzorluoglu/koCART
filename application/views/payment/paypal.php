@@ -1,9 +1,13 @@
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<form action="http://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_cart">
 <input type="hidden" name="upload" value="1">
 <input type="hidden" name="business" value="youremail@mail.com">
 <input type="hidden" name="currency_code" value="US">
-
+<input type="hidden" name="return" value="https://www.jolyjokerz.com/checkout_complete.php">
+<input type="hidden" name="rm" value="2">
+<input type="hidden" name="cbt" value="Return to The Store">
+<input type="hidden" name="cancel_return" value="https://www.jolyjokerz.com/paypal_cancel.php">
+   
 
 
  

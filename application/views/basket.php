@@ -1,6 +1,4 @@
-
-<!-- Collect the nav links, forms, and other content for toggling -->
-<ul class="nav navbar-nav navbar-right">
+ 
     <li class="dropdown">
         <a href="#"  data-toggle="dropdown">
 			<small> <?php echo $this->lang->line('total'); ?> : <?php echo $this->cart->total_items(); ?> | (<?php echo $this->cart->format_number($cart_total); ?>$)</small>
@@ -58,4 +56,4 @@
 </div>
         </ul>
     </li>
-</ul>
+ 

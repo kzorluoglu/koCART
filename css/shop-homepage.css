@@ -39,23 +39,11 @@ body {
     white-space: nowrap;
 }
 
-.thumbnail img {
-    width: 100%;
-}
-
+ 
 .ratings {
     padding-right: 10px;
     padding-left: 10px;
     color: #d17581;
-}
-
-.thumbnail {
-    padding: 0;
-}
-
-.thumbnail .caption-full {
-    padding: 9px;
-    color: #333;
 }
 
 .stepwizard-step p {

@@ -3,14 +3,15 @@
 
             <div class="container-fluid">
                         <h1 class="page-header">
-                            Dashboard <small>// Product List</small>
-                        </h1>
-						<a href="<?php echo base_url(); ?>admin/product/add" class="btn btn-primary btn-lg active" role="button">Add New</a>
+                            Dashboard <small>// Product List</small>					
 
+                        </h1>
+ <p class="text-right"><a href="<?php echo base_url(); ?>admin/product/add" class="btn btn-primary btn-lg active" role="button">Add New</a></p>
   <table id="data-list" class="table table-bordered">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Image</th>
+		  <th>Name</th>
           <th>Rank</th>
           <th>Action</th>
         </tr>
@@ -19,6 +20,7 @@
  <?php foreach($products as $product){ ?>
  
  <tr>
+ <td><img src="<?php echo $product->image; ?>" width="75" height="75"></td>
  <td><?php echo $product->name; ?></td>
  <td><?php echo $product->rank; ?></td>
  <td><a href="<?php echo base_url(); ?>admin/product/detail/<?php echo $product->id; ?>"><span class="glyphicon glyphicon-pencil"></span></a>

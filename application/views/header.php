@@ -44,9 +44,9 @@
                 <a class="navbar-brand" href="<?php echo base_url(); ?>">koCART</a>
             </div>
             
-            <div class="">
-				 <? $this->load->view('basket'); ?>
-            </div>
+ 
+				 
+ 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -63,6 +63,7 @@
  
                         </ul>
                     </li>
+					<? $this->load->view('basket'); ?>
  </ul>
             </div>
             <!-- /.navbar-collapse -->

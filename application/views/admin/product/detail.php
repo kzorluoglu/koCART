@@ -129,7 +129,7 @@
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">SEO Link</label>
     <div class="col-sm-10">
-      <input name="url" type="text" value="<?php echo $url; ?>" class="form-control" id="inputSEO" >
+      <input name="url" type="text" value="<?php echo $url; ?>" readonly="readonly" class="form-control" id="inputSEO" >
     </div>
   </div>
   <div class="form-group">
@@ -147,13 +147,35 @@
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Image</label>
     <div class="col-sm-10">
-      <input name="image" type="text" value="<?php echo $image; ?>" class="form-control" id="inputEmail3" >
-    </div>
+ 
+ 		<img src="<?php echo $image; ?>" width="250">
+
+ <script type="text/javascript">
+function openKCFinder(field) {
+    window.KCFinder = {
+        callBack: function(url) {
+            field.value = url;
+            window.KCFinder = null;
+        }
+    };
+    window.open('/kcfinder/browse.php?type=files&dir=files/public', 'kcfinder_textbox',
+        'status=0, toolbar=0, location=0, menubar=0, directories=0, ' +
+        'resizable=1, scrollbars=0, width=800, height=600'
+    );
+}
+</script>
+ 
+ <input type="text" class="form-control" name="image"  value="<?php echo $image; ?>"  readonly="readonly" onclick="openKCFinder(this)"
+    value="Click here and select a file double clicking on it" style="width:600px;cursor:pointer" />
+  
+
+	</div>
   </div>
+ 
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label">Rank</label>
     <div class="col-sm-10">
-      <input type="text" name="rank" value="<?php echo $rank; ?>"class="form-control" id="inputPassword3">
+      <input type="text" name="rank" value="<?php echo $rank; ?>" class="form-control" id="inputPassword3">
     </div>
   </div>
   
