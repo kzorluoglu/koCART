@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Nov 27, 2014 at 08:20 PM
+-- Generation Time: Dec 10, 2014 at 09:56 AM
 -- Server version: 5.1.73
 -- PHP Version: 5.4.33
 
@@ -40,7 +40,29 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `email`, `password`, `name`, `note`) VALUES
-(1, 'deneme', 'deneme', 'deneme', '');
+(1, 'demo', 'demo', 'demo', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cargo`
+--
+
+CREATE TABLE IF NOT EXISTS `cargo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `price` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `cargo`
+--
+
+INSERT INTO `cargo` (`id`, `name`, `price`, `status`) VALUES
+(1, 'Flat Rate', 5, 1),
+(2, 'Fast Cargo', 10, 1);
 
 -- --------------------------------------------------------
 
@@ -64,7 +86,7 @@ INSERT INTO `category` (`id`, `parent_id`, `rank`, `link`) VALUES
 (1, 1, 1, 'product/1/slider-urun.html'),
 (2, 0, 2, 'category/2/ikincimenu.html'),
 (3, 0, 3, 'category/3/ucuncumenu.html'),
-(15, 0, 1, 'category/1/Birinci.html'),
+(15, 0, 1, 'category/15/birinci_menu.html'),
 (16, 15, 2, '');
 
 -- --------------------------------------------------------
@@ -82,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `category_description` (
   `meta_description` text NOT NULL,
   `meta_keyword` text NOT NULL,
   PRIMARY KEY (`ids`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=79 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=87 ;
 
 --
 -- Dumping data for table `category_description`
@@ -95,8 +117,8 @@ INSERT INTO `category_description` (`ids`, `category_id`, `language_id`, `catego
 (42, 3, 2, 'Third Menu', '', '', ''),
 (75, 16, 1, 'test2', '', '', ''),
 (76, 16, 2, 'test2', '', '', ''),
-(77, 15, 1, 'Birinci2', 'Birinci', 'Birinci', 'Birinci'),
-(78, 15, 2, 'First', 'First', 'First', 'First');
+(85, 15, 1, 'Birinci Menu', 'Birinci', 'Birinci', 'Birinci'),
+(86, 15, 2, 'First', 'First', 'First', 'First');
 
 -- --------------------------------------------------------
 
@@ -135,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `extension` (
   `type` varchar(255) NOT NULL,
   `loadpage` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `extension`
@@ -239,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `order` (
 --
 
 INSERT INTO `order` (`order_id`, `customer_id`, `billing_first_name`, `billing_email`, `billing_telephone`, `billing_address1`, `billing_address2`, `billing_city`, `billing_postcode`, `billing_country`, `billing_region`, `billing_company`, `billing_companyid`, `cargo_first_name`, `cargo_email`, `cargo_telephone`, `cargo_address1`, `cargo_address2`, `cargo_city`, `cargo_postcode`, `cargo_country`, `cargo_region`, `status`, `comment`, `total`, `ip`, `date`) VALUES
-(2, 1, 'a', 'fasf', 'safsa', 'fas', 'safa', 'sfa', 0, 'sfsa', 'fsaf', 'safsaf', 'safsa', 'fas', 'fsaf', 'saf', 'saf', 'asf', 'safa', 11, 'asgasg', 'asgasg', 2, 'test', '2321', '231231', '2014-10-15 00:00:00'),
+(2, 1, 'a', 'fasf', 'safsa', 'fas', 'safa', 'sfa', 0, 'sfsa', 'fsaf', 'safsaf', 'safsa', 'fas', 'fsaf', 'saf', 'saf', 'asf', 'safa', 11, 'asgasg', 'asgasg', 1, 'test3', '2321', '231231', '2014-10-15 00:00:00'),
 (3, 1, '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, '', '', 1, '', '23231', '', '2014-10-16 00:00:00');
 
 -- --------------------------------------------------------
@@ -262,8 +284,7 @@ CREATE TABLE IF NOT EXISTS `order_detail` (
 
 INSERT INTO `order_detail` (`oid`, `order_id`, `product_id`, `count`) VALUES
 (1, 2, 1, 2),
-(2, 2, 3, 2),
-(3, 2, 5, 2);
+(2, 2, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -329,7 +350,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 
 INSERT INTO `product` (`id`, `category_id`, `price`, `stock`, `image`, `url`, `rank`) VALUES
-(1, '2', 1500, 15, 'http://www.sammobile.com/wp-content/uploads/2012/08/Samsung-ATIV-Tab-Product-Image-5.jpg', 'product/1/slider-urun.html', 1),
+(1, '2', 1500, 15, 'http://www.jolyjokerz.com/upload/files/images/Samsung-ATIV-Tab-Product-Image-5.jpg', 'product/1/deneme_slayt_urunu_1.html', 0),
 (2, '2', 1300, 55, 'http://core0.staticworld.net/images/article/2012/12/samsung_galaxy_s_iii_1182355_g5-original-100015856-large.jpeg', 'product/2/slider-urun2.html', 2),
 (3, '3', 111, 1, 'http://venus.vestel.com.tr/images/page07/model01Detail.png', 'product/3/most-sell-product.html', 0),
 (4, '2', 1321, 22, 'http://www.digitalage.com.tr/wp-content/uploads/2014/09/Yerli-tasarım-ve-üretim-eseri-akıllı-cep-telefonu-Venus-Eylül’de-tüketiciyle-buluşuyor.jpg', 'product/4/most-sell-product2.html', 0),
@@ -353,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `product_description` (
   `meta_tags` text NOT NULL,
   `meta_keys` text NOT NULL,
   PRIMARY KEY (`description_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=69 ;
 
 --
 -- Dumping data for table `product_description`
@@ -364,14 +385,14 @@ INSERT INTO `product_description` (`description_id`, `product_id`, `language_id`
 (14, 5, 2, 'Popular Product 1', 'Popular Product 1 details..', '', ''),
 (35, 3, 1, 'Cok Satilan Urun 1', 'Deneme Cok Satilan Urun 1', 'urun, 3,', 'urun, 3,'),
 (36, 3, 2, 'Test Most Sell Product 1', 'Test Most Sell Product 1 details coming soon...', 'product, 3,', 'product, 3'),
-(43, 1, 1, 'Deneme Slayt Urunu 1', 'Deneme Slayt Urunu 1', 'urun, 1,', 'urun, 1,'),
-(44, 1, 2, 'Test Slider Product 1 ', 'Test Slider Product 1 detail ist coming soon..', 'product, 1,', 'product, 1'),
 (45, 2, 1, 'Deneme Slayt Urunu2', 'Deneme Slayt Urunu2', 'urun, 2,', 'urun, 2,'),
 (46, 2, 2, 'Test Slider Product 2', 'Test Slider Product 2 details coming soon...', 'product, 2,', 'product, 2'),
 (47, 4, 1, 'Cok Satan Urun 2', 'Deneme Cok Satilan Urun 2', 'urun, 4,', 'urun, 4,'),
 (48, 4, 2, 'Test Most Sell Product 2', 'Test Most Sell Product 2', 'product, 4', 'product, 4'),
 (49, 6, 1, 'Populer Ürün 2', 'Popüler Ürün 2 detaylar...', 'deneme', ''),
-(50, 6, 2, 'Popular Product 2', 'Popular Product 2 details..', '', '');
+(50, 6, 2, 'Popular Product 2', 'Popular Product 2 details..', '', ''),
+(67, 1, 1, 'Deneme Slayt Urunu 1', 'Deneme Slayt Urunu 1', 'urun, 1,', 'urun, 1,'),
+(68, 1, 2, 'Test Slider Product 1 ', 'Test Slider Product 1 detail ist coming soon..', 'product, 1,', 'product, 1');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
