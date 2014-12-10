@@ -32,6 +32,11 @@ class Paypal extends CI_Controller {
 		$this->load->library('cart');
 		$this->load->view('payment/paypal');
 	}
+	public function complete(){
+		$this->load->model('payment/paypal/paypal_express');
+		$this->paypal_express->run();
+ 
+	}
 }
 
 /* End of file welcome.php */

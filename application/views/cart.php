@@ -113,9 +113,9 @@
 
 </table>
  <?php if($this->cart->total_items() > 0){ ?>
-<p><?php echo form_submit('', 'Update your Cart'); ?></p>
+    <button type="submit" class="btn btn-primary">Update Cart</button>
 <?php } ?>
-<?php echo anchor('order/detail','Order'); ?> 
+<a href="<?php echo base_url(); ?>order/detail" role="button" class="btn btn-success">Checkout</a>
                 </div>
 
             </div>

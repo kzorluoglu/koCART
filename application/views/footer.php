@@ -19,15 +19,13 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>js/form.js"></script>
-	
- <script src="<?php echo base_url(); ?>js/sisyphus.js"></script>
- 
+
 <!-- SmartMenus jQuery plugin -->
 <script src="<?php echo base_url(); ?>js/jquery.smartmenus.js"></script>
 <script src="<?php echo base_url(); ?>js/jquery.smartmenus.bootstrap.js"></script>
- 
+ <!-- SmartMenus jQuery plugin -->
+   
 <script>
-$( "#orderform" ).sisyphus();
 		$('#main-menu').smartmenus({
 			mainMenuSubOffsetX: 1,
 			mainMenuSubOffsetY: -8,
