@@ -64,11 +64,11 @@
 <table cellpadding="6" cellspacing="1" style="width:100%" border="0">
 
 <tr>
-  <th>QTY</th>
-  <th>Item Description</th>
-  <th style="text-align:right">Item Price</th>
-  <th style="text-align:right">Sub-Total</th>
-  <th style="text-align:right">Action</th>
+  <th><?php echo $this->lang->line('qty'); ?></th>
+  <th><?php echo $this->lang->line('item_desc'); ?></th>
+  <th style="text-align:right"><?php echo $this->lang->line('item_price'); ?></th>
+  <th style="text-align:right"><?php echo $this->lang->line('sub_total'); ?></th>
+  <th style="text-align:right"><?php echo $this->lang->line('action'); ?></th>
 </tr>
 
 <?php $i = 1; ?>
@@ -98,7 +98,7 @@
 	  </td>
 	  <td style="text-align:right"><?php echo $this->cart->format_number($items['price']); ?></td>
 	  <td style="text-align:right">$<?php echo $this->cart->format_number($items['subtotal']); ?></td>
-	  <td style="text-align:right"><?php echo anchor('cart/remove/'.$items['rowid'],'Delete'); ?>   </td>
+	  <td style="text-align:right"><?php echo anchor('cart/remove/'.$items['rowid'], $this->lang->line('cart_delete')); ?>   </td>
 	</tr>
 
 <?php $i++; ?>
@@ -107,15 +107,15 @@
 
 <tr>
   <td colspan="2"></td>
-  <td class="right"><strong>Total</strong></td>
+  <td class="right"><strong><?php echo $this->lang->line('total'); ?></strong></td>
   <td class="right">$<?php echo $this->cart->format_number($this->cart->total()); ?></td>
 </tr>
 
 </table>
  <?php if($this->cart->total_items() > 0){ ?>
-    <button type="submit" class="btn btn-primary">Update Cart</button>
+    <button type="submit" class="btn btn-primary"><?php echo $this->lang->line('cart_listupdate'); ?></button>
 <?php } ?>
-<a href="<?php echo base_url(); ?>order/detail" role="button" class="btn btn-success">Checkout</a>
+<a href="<?php echo base_url(); ?>order/detail" role="button" class="btn btn-success"><?php echo $this->lang->line('checkout'); ?></a>
                 </div>
 
             </div>

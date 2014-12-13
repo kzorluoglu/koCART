@@ -1,0 +1,3 @@
+Bank Account Name : BLABLA LTD.<br>
+IBAN : TR88 0006 2001 0970 0006 6664 76<br>
+

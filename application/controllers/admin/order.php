@@ -52,8 +52,6 @@ class Order extends CI_Controller {
    
    public function detail(){
    		$this->load->model('admin/order_model');
- 
- 
 			 if($_POST){
 				$update = $this->order_model->update_comment($_POST);
 				if($update){

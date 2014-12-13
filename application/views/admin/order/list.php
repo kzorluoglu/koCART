@@ -19,7 +19,7 @@
 foreach($results as $result) { ?> 
          <tr>
 		           <td><?php echo $result->order_id; ?></td>
-				   <td><?php echo $result->customer_id; ?></td>
+				   <td><?php if($result->customer_id == 0){ ?> Visitor <? } else { ?> <?php echo $result->customer_id; ?> <?php } ?></td>
 				   <td><?php echo $result->total; ?></td>
 				   <td><a href="<?php echo base_url(); ?>admin/order/detail/<?php echo $result->order_id; ?>"><span class="glyphicon glyphicon-pencil"></span></a> <span class="glyphicon glyphicon-remove"></span></td>
 		 </tr>

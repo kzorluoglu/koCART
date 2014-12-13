@@ -79,7 +79,7 @@ class Category extends CI_Controller {
 
 	
 	if($_POST){
-	$this->category_model->add($_POST);
+	//$this->category_model->add($_POST);
 	}
 	
 	
@@ -97,7 +97,7 @@ class Category extends CI_Controller {
 
    
    	if($_POST){
-		$this->category_model->update($this->uri->segment(4), $_POST);
+		//$this->category_model->update($this->uri->segment(4), $_POST);
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 	else{
@@ -109,7 +109,7 @@ class Category extends CI_Controller {
    public function delete(){
 	$this->load->model('admin/category_model');
  
-			$this->category_model->delete($this->uri->segment(4));
+			//$this->category_model->delete($this->uri->segment(4));
 			redirect($_SERVER['HTTP_REFERER']);
 			
 			

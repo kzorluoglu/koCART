@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Dec 10, 2014 at 09:56 AM
+-- Generation Time: Dec 13, 2014 at 11:20 PM
 -- Server version: 5.1.73
 -- PHP Version: 5.4.33
 
@@ -76,18 +76,16 @@ CREATE TABLE IF NOT EXISTS `category` (
   `rank` int(11) NOT NULL,
   `link` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `parent_id`, `rank`, `link`) VALUES
-(1, 1, 1, 'product/1/slider-urun.html'),
 (2, 0, 2, 'category/2/ikincimenu.html'),
 (3, 0, 3, 'category/3/ucuncumenu.html'),
-(15, 0, 1, 'category/15/birinci_menu.html'),
-(16, 15, 2, '');
+(15, 0, 1, 'category/15/birinci_menu.html');
 
 -- --------------------------------------------------------
 
@@ -104,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `category_description` (
   `meta_description` text NOT NULL,
   `meta_keyword` text NOT NULL,
   PRIMARY KEY (`ids`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=87 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=99 ;
 
 --
 -- Dumping data for table `category_description`
@@ -115,8 +113,6 @@ INSERT INTO `category_description` (`ids`, `category_id`, `language_id`, `catego
 (12, 2, 1, 'Ikincimenu', 'test', 'test', ''),
 (41, 2, 2, 'Second Menu', '', '', ''),
 (42, 3, 2, 'Third Menu', '', '', ''),
-(75, 16, 1, 'test2', '', '', ''),
-(76, 16, 2, 'test2', '', '', ''),
 (85, 15, 1, 'Birinci Menu', 'Birinci', 'Birinci', 'Birinci'),
 (86, 15, 2, 'First', 'First', 'First', 'First');
 
@@ -141,9 +137,7 @@ INSERT INTO `category_path` (`category_id`, `path_id`, `level`) VALUES
 (1, 1, 0),
 (2, 2, 0),
 (3, 3, 0),
-(15, 15, 0),
-(16, 15, 0),
-(16, 16, 1);
+(15, 15, 0);
 
 -- --------------------------------------------------------
 
@@ -164,7 +158,8 @@ CREATE TABLE IF NOT EXISTS `extension` (
 --
 
 INSERT INTO `extension` (`id`, `name`, `type`, `loadpage`) VALUES
-(1, 'Paypal', 'payment', 'paypal');
+(1, 'Paypal', 'payment', 'paypal'),
+(2, 'Bank Transfer / EFT', 'payment', 'banktransfer');
 
 -- --------------------------------------------------------
 
@@ -247,6 +242,8 @@ CREATE TABLE IF NOT EXISTS `order` (
   `cargo_postcode` int(11) NOT NULL,
   `cargo_country` varchar(255) NOT NULL,
   `cargo_region` varchar(255) NOT NULL,
+  `cargo_type` int(11) NOT NULL,
+  `payment_type` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `comment` text NOT NULL,
   `total` varchar(255) NOT NULL,
@@ -254,15 +251,15 @@ CREATE TABLE IF NOT EXISTS `order` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`order_id`),
   UNIQUE KEY `order_id` (`order_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `order`
 --
 
-INSERT INTO `order` (`order_id`, `customer_id`, `billing_first_name`, `billing_email`, `billing_telephone`, `billing_address1`, `billing_address2`, `billing_city`, `billing_postcode`, `billing_country`, `billing_region`, `billing_company`, `billing_companyid`, `cargo_first_name`, `cargo_email`, `cargo_telephone`, `cargo_address1`, `cargo_address2`, `cargo_city`, `cargo_postcode`, `cargo_country`, `cargo_region`, `status`, `comment`, `total`, `ip`, `date`) VALUES
-(2, 1, 'a', 'fasf', 'safsa', 'fas', 'safa', 'sfa', 0, 'sfsa', 'fsaf', 'safsaf', 'safsa', 'fas', 'fsaf', 'saf', 'saf', 'asf', 'safa', 11, 'asgasg', 'asgasg', 1, 'test3', '2321', '231231', '2014-10-15 00:00:00'),
-(3, 1, '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, '', '', 1, '', '23231', '', '2014-10-16 00:00:00');
+INSERT INTO `order` (`order_id`, `customer_id`, `billing_first_name`, `billing_email`, `billing_telephone`, `billing_address1`, `billing_address2`, `billing_city`, `billing_postcode`, `billing_country`, `billing_region`, `billing_company`, `billing_companyid`, `cargo_first_name`, `cargo_email`, `cargo_telephone`, `cargo_address1`, `cargo_address2`, `cargo_city`, `cargo_postcode`, `cargo_country`, `cargo_region`, `cargo_type`, `payment_type`, `status`, `comment`, `total`, `ip`, `date`) VALUES
+(15, 0, 'Koray', 'jolyjokerz@gmail.com', '111111111111', '1111111111111111111111', '', '111111111111111', 2147483647, '1111111111111111111', '111111', '111111111111111', '111111111111111', 'Koray', 'jolyjokerz@gmail.com', '111111111111', '1111111111111111111111', '', '111111111111111', 2147483647, '1111111111111111111', '111111', 1, 2, 1, '', '111', '78.43.43.76', '2014-12-10 19:16:32'),
+(16, 0, 'Koray', 'jolyjokerz@gmail.com', '111111111111', '1111111111111111111111', '', '111111111111111', 2147483647, '1111111111111111111', '111111', '111111111111111', '111111111111111', 'Koray', 'jolyjokerz@gmail.com', '111111111111', '1111111111111111111111', '', '111111111111111', 2147483647, '1111111111111111111', '111111', 1, 2, 1, '', '1964', '78.43.43.76', '2014-12-10 19:17:04');
 
 -- --------------------------------------------------------
 
@@ -276,15 +273,17 @@ CREATE TABLE IF NOT EXISTS `order_detail` (
   `product_id` int(11) NOT NULL,
   `count` int(11) NOT NULL,
   PRIMARY KEY (`oid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `order_detail`
 --
 
 INSERT INTO `order_detail` (`oid`, `order_id`, `product_id`, `count`) VALUES
-(1, 2, 1, 2),
-(2, 2, 3, 2);
+(5, 15, 3, 1),
+(6, 16, 4, 1),
+(7, 16, 3, 1),
+(8, 16, 6, 1);
 
 -- --------------------------------------------------------
 

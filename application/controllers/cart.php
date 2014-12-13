@@ -21,15 +21,14 @@ class Cart extends CI_Controller {
 	
 	public function index()
 	{
+ 		 if($this->cart->total_items() == 0){
+			redirect('home');
+		 }
+		
   		$this->lang->load('home', $this->session->userdata('lang_file'));
-
- 		//Menu and Categorys ...
-		$this->load->model('categories_model');
- 		
-		$this->load->model('products_model');
  		$this->lang->load('cart', $this->session->userdata('lang_file'));
 
-		$this->load->library('cart');
+ 
 		$data['cart_total'] = $this->cart->total();
 		//Products...
 		$data['most_sell_products'] = $this->products_model->most_sell_products();
@@ -44,7 +43,7 @@ class Cart extends CI_Controller {
 	}
 	public function update(){
 	
-			$this->load->library('cart');
+ 
  			
 			$qtys = $this->input->post("qty");
 			$i = 0;
@@ -72,7 +71,7 @@ class Cart extends CI_Controller {
  
 }
 		function remove() {
- 			$this->load->library('cart');
+ 
 
 			$data = array(
                array(

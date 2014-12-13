@@ -32,7 +32,7 @@
 
 
 	  <td style="text-align:right">	  <?php echo form_input(array('name' => 'qty[]', 'value' => $items['qty'], 'maxlength' => '3', 'size' => '5')); ?>
-  x <?php echo $this->cart->format_number($items['price']); ?></td>
+  x $<?php echo $this->cart->format_number($items['price']); ?></td>
  
 	  <td style="text-align:right"><?php echo anchor('cart/remove/'.$items['rowid'], $this->lang->line('delete')); ?>   </td>
 	</tr>

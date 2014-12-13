@@ -10,7 +10,7 @@
 
 			<ul>
 				<?php foreach($payments as $payment) { ?>
-				   	        <li> <input id="payment" type="checkbox" value="<?php echo $payment->loadpage; ?>"><?php echo $payment->name; ?></li>
+				   	        <li> <input id="payment" name="payment_type" type="radio" title="<?php echo $payment->loadpage; ?>" value="<?php echo $payment->id; ?>"><?php echo $payment->name; ?></li>
 				<?php } ?>
 				</ul>
 				<div id="payment_details">

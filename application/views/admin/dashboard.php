@@ -160,7 +160,7 @@
                                             <tr>
                                                 <td><?php echo $order->order_id; ?></td>
                                                 <td><?php echo $order->date; ?></td>
-                                                <td><?php echo $order->customer_id; ?></td>
+                                                <td><?php if($order->customer_id == 0){ ?> Visitor <? } else { ?> <?php echo $order->customer_id; ?> <?php } ?></td>
                                                 <td> <?php echo $order->total; ?></td>
                                             </tr>
  <? } ?>

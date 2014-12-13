@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Account extends CI_Controller {
+class Banktransfer extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -17,24 +17,20 @@ class Account extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-
-	
-	public function login()
-	{
- 
-  		$this->lang->load('home', $this->session->userdata('lang_file'));
+	 	function __construct()
+    {
+        // Call the Model constructor
+        parent::__construct();
+		// If the session language null value 
  
 		
-		//Category...
- 		$data['cart_total'] = $this->cart->total();
+    }
+	public function index()
+	{
  
-		//Menu...
-		 $data['categories'] = $this->categories_model->get_cats();
- 		$this->load->view('login', $data);
- 
-
-
+		$this->load->view('payment/banktransfer');
 	}
+ 
 }
 
 /* End of file welcome.php */

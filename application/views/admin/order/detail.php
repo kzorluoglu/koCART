@@ -30,7 +30,7 @@ foreach($order as $order_detail) { ?>
 		 </tr>
          <tr>
 		           <td>Customer ID#</td>
-				   <td><?php echo $order_detail->customer_id; ?></td>
+				   <td><?php if($order_detail->customer_id == 0){ ?> Visitor <? } else { ?> <?php echo $result->customer_id; ?> <?php } ?></td>
 		 </tr>
          <tr>
 		           <td>Total</td>

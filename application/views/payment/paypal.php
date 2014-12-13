@@ -1,5 +1,7 @@
  
-
+<br>
+ 
+</form>
 <form action='<?php echo base_url(); ?>payment/paypal/complete' method="post">
 <input type="hidden" name="cmd" value="_cart">
 <input type="hidden" name="upload" value="1">

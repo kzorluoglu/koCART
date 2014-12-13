@@ -12,6 +12,11 @@ class Cargo_model extends CI_Model {
         $query = $this->db->query('SELECT * FROM cargo WHERE status = "1" ORDER BY id ASC');
         return $query->result();
     }
+	function cargo_detail($id){
+		$query = $this->db->query('SELECT * FROM cargo WHERE id = "'.$id.'"');
+		return $query->result();
+	
+	}
 
  
 

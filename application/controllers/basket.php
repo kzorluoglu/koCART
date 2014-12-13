@@ -21,14 +21,10 @@ class Basket extends CI_Controller {
 	
 	public function add()
 	{
-			$this->load->library('cart');
-			$this->load->model('products_model');
-			
+ 
+		
 			$product = $this->products_model->product($this->uri->segment(3));
  
-  
-
-
 			$data = array(
                'id'      => $product['0']->id,
                'qty'     => 1,

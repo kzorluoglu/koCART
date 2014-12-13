@@ -56,12 +56,15 @@ $(document).ready(function () {
    
 });	
 
-					$('#payment').click(function() {
-					  if ($(this).is(':checked')) {
-						$("#payment_details").load('../payment/'+$(this).val());
-					 
-					  }
-					});
+    $('input[type=radio][name=payment_type]').change(function() {
+ 
+		$("#payment_details").load('../payment/'+$(this).attr('title'));
+ 
+ 
+    });
+
+						
+	 
 
 
 

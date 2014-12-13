@@ -65,14 +65,14 @@ class Module extends CI_Controller {
    }
    public function delete(){
    		$this->load->model('admin/module_model');
-		$this->module_model->delete($this->uri->segment(4));
+		//$this->module_model->delete($this->uri->segment(4));
 		redirect($_SERVER['HTTP_REFERER']);
 
    }
    public function add(){
    		$this->load->model('admin/module_model');
 			 if($_POST){
-				$this->module_model->add($_POST);
+				//$this->module_model->add($_POST);
 				redirect($_SERVER['HTTP_REFERER']);
 			 }
    }

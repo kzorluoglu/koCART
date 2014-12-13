@@ -21,15 +21,9 @@ class Category extends CI_Controller {
  
 	public function seolink()
 	{
- 
-  		$this->lang->load('home', $this->session->userdata('lang_file'));
-
-		$this->load->model('categories_model');
- 		
 		
-		$this->load->model('products_model');
- 		
-		$this->load->library('cart');
+  		$this->lang->load('home', $this->session->userdata('lang_file'));
+ 
 		//Products...
 		$data['category_products'] = $this->products_model->category_products($this->uri->segment(2));
 		$data['slider_products'] = $this->products_model->slider_products();
