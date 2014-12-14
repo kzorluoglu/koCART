@@ -41,7 +41,9 @@ class Order extends CI_Controller {
 	}
 	public function cargo(){
 		 
- 
+		if($this->cart->total_items() == 0){
+			redirect('home');
+		}
 		
   		$this->lang->load('home', $this->session->userdata('lang_file')); // For Footer and Header
   		$this->lang->load('order/cargo', $this->session->userdata('lang_file')); 
@@ -94,7 +96,10 @@ class Order extends CI_Controller {
 
 	}
 	public function payment(){
- 
+	
+ 		 if($this->cart->total_items() == 0){
+			redirect('home');
+		 }
 		
   		$this->lang->load('home', $this->session->userdata('lang_file')); // For Footer and Header
   		$this->lang->load('order/cargo', $this->session->userdata('lang_file')); //For Error Mesage of Cargo Type Select
@@ -133,7 +138,10 @@ class Order extends CI_Controller {
 	
 	
 	public function complete(){
- 
+	
+ 		 if($this->cart->total_items() == 0){
+			redirect('home');
+		 }
 		
   		$this->lang->load('home', $this->session->userdata('lang_file')); // For Footer and Header
 		$this->lang->load('order/payment', $this->session->userdata('lang_file')); //For Error Mesage of Cargo Type Select
@@ -152,17 +160,10 @@ class Order extends CI_Controller {
 		///////////////////// Control Order Detail /////////////////////
 		$this->order_control();
 		///////////////////// Control Order Detail /////////////////////
-			if($this->input->get_post('cargo_type', TRUE) == "" && $this->session->userdata('cargo_type') == ""){
-					$this->session->set_flashdata('error', $this->lang->line('cargo_error')); 
-		            redirect('order/cargo');
-			}
-			if($this->input->get_post('cargo_type', TRUE) != ""){
-			$this->session->set_userdata('cargo_type', $this->input->get_post('cargo_type', TRUE));
-			}
-			
+
 			if($this->input->get_post('payment_type', TRUE) == "" && $this->session->userdata('payment_type') == ""){
 				$this->session->set_flashdata('error', $this->lang->line('payment_error')); 
-				redirect('order/payment');
+			redirect('order/payment');
 			}
 			if($this->input->get_post('payment_type', TRUE) != ""){
 				$this->session->set_userdata('payment_type', $this->input->get_post('payment_type', TRUE));
@@ -177,6 +178,9 @@ class Order extends CI_Controller {
 	
 	
 	public function confirm(){
+		if($this->cart->total_items() == 0){
+			redirect('home');
+		 }
 		
 		$this->lang->load('home', $this->session->userdata('lang_file')); // For Footer and Header
 
@@ -184,26 +188,7 @@ class Order extends CI_Controller {
  		$data['cart_total'] = $this->cart->total();
 		//Menu...
 		$data['categories'] = $this->categories_model->get_cats();
-		
-		///////////////////// Control Order Detail /////////////////////
-		$this->order_control();
-		///////////////////// Control Order Detail /////////////////////
-			if($this->input->get_post('cargo_type', TRUE) == "" && $this->session->userdata('cargo_type') == ""){
-				$this->session->set_flashdata('error', $this->lang->line('cargo_error')); 
-				redirect('order/cargo');
-			}
-			if($this->input->get_post('cargo_type', TRUE) != ""){
-			$this->session->set_userdata('cargo_type', $this->input->get_post('cargo_type', TRUE));
-			}
-			
-			if($this->input->get_post('payment_type', TRUE) == "" && $this->session->userdata('payment_type') == ""){
-				$this->session->set_flashdata('error', $this->lang->line('payment_error')); 
-				redirect('order/payment');
-			}
-			if($this->input->get_post('payment_type', TRUE) != ""){
-				$this->session->set_userdata('payment_type', $this->input->get_post('payment_type', TRUE));
-			} 
-		
+		 
  		$this->load->model('order_model');
 
 
@@ -262,9 +247,6 @@ class Order extends CI_Controller {
 	
 	
 	public function order_control(){
-		if($this->cart->total_items() == 0){
-			redirect('home');
-		}
 		if($this->session->userdata('billing_first_name') == "" && $this->session->userdata('billing_email') == ""){
 		            redirect('order/detail');
 		}

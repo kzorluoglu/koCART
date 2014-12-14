@@ -13,9 +13,7 @@
 					 </div>
 					 					<div class="row">
 							   <div class="col-sm-12">
-							   <br>
-											<img class="img-thumbnail" src="http://jolyjokerz.com/upload/files/banners/reklam.png">
-								<br><br>
+											Banner
 								</div>
 					 </div>
 			</div>

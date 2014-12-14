@@ -114,7 +114,7 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">SEO Link</label>
     <div class="col-sm-10">
-      <input name="link" type="text" value="<?php echo $link; ?>" readonly="readonly" class="form-control" id="inputSEO" >
+      <input name="link" type="text" value="<?php echo $link; ?>" class="form-control" id="inputSEO" >
     </div>
   </div>
   <div class="form-group">

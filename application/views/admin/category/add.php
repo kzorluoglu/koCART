@@ -35,7 +35,7 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Category Name</label>
     <div class="col-sm-10">
-      <input name="category_description[<?php echo $language->id; ?>][category_name]" type="text" class="form-control" id="inputNameStandart" >
+      <input name="category_description[<?php echo $language->id; ?>][category_name]" type="text" class="form-control" id="inputEmail3" >
     </div>
   </div>
  
@@ -105,18 +105,12 @@
   
   
   
-    		  <script type="text/javascript">
-				  $(function(){
- 
-							$('#inputNameStandart').friendurl({id : 'inputSEO', divider: '_', transliterate: true});
-
-					});
-		</script>	
+  
 
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">SEO Link</label>
     <div class="col-sm-10">
-      <input name="link" type="text" class="form-control"  readonly="readonly" id="inputSEO"  >
+      <input name="link" type="text" class="form-control" id="inputEmail3" >
     </div>
   </div>
   <div class="form-group">
