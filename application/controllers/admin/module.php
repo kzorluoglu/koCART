@@ -53,10 +53,14 @@ class Module extends CI_Controller {
    public function detail(){
    		$this->load->model('admin/module_model');
 			 if($_POST){
- 				$update = $this->module_model->update($_POST);
+ 				//$update = $this->module_model->update($_POST);
 				if($update){
 						redirect($_SERVER['HTTP_REFERER']);
 				}
+				else{
+										redirect($_SERVER['HTTP_REFERER']);
+}
+				
 			 }
 		$data["type"] = $this->uri->segment(4);
  		$data["products"] = $this->module_model->products($this->uri->segment(4));

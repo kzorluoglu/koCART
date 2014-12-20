@@ -33,7 +33,7 @@
 							$i = 1;
 							foreach ($slider_products AS $slider_product){ ?>
 								<div class="item <?php if($i == 1){ echo "active"; } ?>">
-                                    <img class="slide-image" src="<?php echo $slider_product->image; ?>" alt="">
+                                    <img class="slide-image" src="<?php echo $slider_product['image']; ?>" alt="">
                                 </div>
 
 	
@@ -58,14 +58,14 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="<?php echo $category_product->image; ?>" alt="">
+                            <img src="<?php echo $category_product['image']; ?>" alt="">
                             <div class="caption">
                      
-                                <h4><a href="<?php echo base_url(); ?><?php echo $category_product->url; ?>"><?php echo $category_product->name; ?></a> 
+                                <h4><a href="<?php echo base_url(); ?><?php echo $category_product['url']; ?>"><?php echo $category_product['name']; ?></a> 
                                 </h4>
-								           <h4 class="pull-right"><?php echo $category_product->price; ?> $</h4>
-                                <p><?php echo $category_product->details; ?></p>
-								<p><a href="<?php echo base_url(); ?>basket/add/<?php echo $category_product->id; ?>">Add Basket</a>
+								           <h4 class="pull-right"><?php echo $category_product['price']; ?> </h4>
+                                <p><?php echo $category_product['details']; ?></p>
+								<p><a href="<?php echo base_url(); ?>basket/add/<?php echo $category_product['id']; ?>">Add Basket</a>
                             </div>
                             <div class="ratings">
                                 <p class="pull-right">15 reviews</p>

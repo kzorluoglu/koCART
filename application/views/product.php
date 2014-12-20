@@ -27,13 +27,13 @@
 								
        
 
-                    <img class="img-responsive" src="<?php echo $products->image; ?>" alt="">
+                    <img class="img-responsive" src="<?php echo $products['image']; ?>" alt="">
                     <div class="caption-full">
-                        <h4 class="pull-right"><?php echo $products->price; ?> $ </h4>
-                        <h4><a href="<?php echo base_url(); ?>product/<?php echo $products->id; ?>"><?php echo $products->name; ?></a> 
+                        <h4 class="pull-right"><?php echo $products['price']; ?></h4>
+                        <h4><a href="<?php echo base_url(); ?>product/<?php echo $products['id']; ?>"><?php echo $products['name']; ?></a> 
                         </h4>
-						<a href="<?php echo base_url(); ?>basket/add/<?php echo $products->id; ?>">Add Basket</a>
-                        <p><?php echo $products->details; ?> </p>
+						<a href="<?php echo base_url(); ?>basket/add/<?php echo $products['id']; ?>">Add Basket</a>
+                        <p><?php echo $products['details']; ?> </p>
                     </div>
                     <div class="ratings">
                         <p class="pull-right">3 reviews</p>

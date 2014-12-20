@@ -1,5 +1,5 @@
 <?php
-
+$lang['currency'] = "Currency";
 $lang['language'] = "Language";
 $lang['best_sell'] = "The Best-Selling Products";
 $lang['add_basket'] = "Add Basket";

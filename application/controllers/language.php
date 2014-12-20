@@ -22,14 +22,13 @@ class Language extends CI_Controller {
 	public function set()
 	{
  
-	
-	
-	
-	if($this->uri->segment(3) == "tr"){
+	$id = $this->security->xss_clean($this->uri->segment(3));
+
+	if($id == "tr"){
 			$this->session->set_userdata('lang', '1');
 			$this->session->set_userdata('lang_file', 'turkish');
 	}
-	if($this->uri->segment(3) == "en"){
+	if($id == "en"){
 			$this->session->set_userdata('lang', '2');
 			$this->session->set_userdata('lang_file', 'english');
 	}

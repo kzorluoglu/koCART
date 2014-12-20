@@ -1,5 +1,5 @@
 <?php
-
+$lang['currency'] = "Para Birimi";
 $lang['language'] = "Dil";
 $lang['best_sell'] = "Cok Satan Ürünler";
 $lang['add_basket'] = "Sepete At";

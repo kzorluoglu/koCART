@@ -2,23 +2,6 @@
 
 class Cart extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
-
-	
 	public function index()
 	{
  		 if($this->cart->total_items() == 0){
@@ -28,23 +11,31 @@ class Cart extends CI_Controller {
   		$this->lang->load('home', $this->session->userdata('lang_file'));
  		$this->lang->load('cart', $this->session->userdata('lang_file'));
 
- 
-		$data['cart_total'] = $this->cart->total();
+		
+		
+		$currency_info = $this->currency_library->currency('currency');
+
+		foreach($this->cart->contents() AS $carts){
+				$cart[] = array(
+                   'rowid'  		=> $carts['rowid'],
+				   'name'			=> $carts['name'],
+				   'qty'			=> $carts['qty'],
+				   'subtotal'		=> ''.$this->cart->format_number($carts['subtotal']).' '.$currency_info[0]->symbol.'',
+				   'price'			=> ''.$this->cart->format_number($carts['price']).' '.$currency_info[0]->symbol.'',
+               );  
+			}
+		$data['cart'] = $cart;
+		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
 		//Products...
-		$data['most_sell_products'] = $this->products_model->most_sell_products();
-		$data['slider_products'] = $this->products_model->slider_products();
+ 		$data['slider_products'] = $this->products_model->slider_products();
  
 		//Menu...
 		 $data['categories'] = $this->categories_model->get_cats();
- 
-
  
 		$this->load->view('cart', $data);
 	}
 	public function update(){
 	
- 
- 			
 			$qtys = $this->input->post("qty");
 			$i = 0;
 			$total = count($this->input->post('rowid'));
@@ -66,12 +57,9 @@ class Cart extends CI_Controller {
 			}
 			
  		 }
-		
-
  
-}
+	}
 		function remove() {
- 
 
 			$data = array(
                array(
@@ -80,11 +68,6 @@ class Cart extends CI_Controller {
                     )
             );
 			$this->cart->update($data);
-		 
-		
-						redirect($_SERVER['HTTP_REFERER']);
+			redirect($_SERVER['HTTP_REFERER']);
 	}	
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

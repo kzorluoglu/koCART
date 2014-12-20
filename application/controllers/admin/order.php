@@ -53,9 +53,12 @@ class Order extends CI_Controller {
    public function detail(){
    		$this->load->model('admin/order_model');
 			 if($_POST){
-				$update = $this->order_model->update_comment($_POST);
+				//$update = $this->order_model->update_comment($_POST);
 				if($update){
 						redirect($_SERVER['HTTP_REFERER']);
+				}
+				else{
+				redirect($_SERVER['HTTP_REFERER']);
 				}
 			 }
 			 
@@ -80,8 +83,13 @@ class Order extends CI_Controller {
       		$this->load->model('admin/order_model');
 
    			 if($_POST){
-				$update = $this->order_model->productadd($_POST);
+				//$update = $this->order_model->productadd($_POST);
+				if($update){
+						redirect($_SERVER['HTTP_REFERER']);
+				}
+				else{
 				redirect($_SERVER['HTTP_REFERER']);
+				}
 			  }
    }
    

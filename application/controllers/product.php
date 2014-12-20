@@ -25,10 +25,30 @@ class Product extends CI_Controller {
 		
   		$this->lang->load('home', $this->session->userdata('lang_file'));
  
-		//Products...
-		$data['product'] = $this->products_model->product($this->uri->segment(2));
-		$data['slider_products'] = $this->products_model->slider_products();
-		
+		$currency_info = $this->currency_library->currency('currency');
+ 		//Products...
+		$id = $this->security->xss_clean($this->uri->segment(2));
+		foreach($this->products_model->product($id) AS $products){
+				$product[] = array(
+                   'id'  			=> $products->id,
+				   'name'			=> $products->name,
+				   'details'		=> $products->details,
+ 				   'product_id'		=> $products->product_id,
+				   'rank'			=> $products->rank,
+				   'category_id'	=> $products->category_id,
+				   'price'			=> ''.$this->cart->format_number($products->price * $currency_info[0]->currency).' '.$currency_info[0]->symbol.'',
+				   'stock'			=> $products->stock,
+				   'image'			=> $products->image,
+				   'url'			=> $products->url,
+				   'description_id'	=> $products->description_id,
+				   'language_id'	=> $products->language_id,
+				   'meta_tags'		=> $products->meta_tags,
+				   'meta_keys'		=> $products->meta_keys
+               );  
+			}
+		$data['product'] = $product;	
+ 
+ 		
 		//Cart...
  		$data['cart_total'] = $this->cart->total();
  

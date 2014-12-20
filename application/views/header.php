@@ -50,7 +50,18 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('currency'); ?> </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a   href="<?php echo base_url(); ?>currency/set/1">TL ₺</a> 
+                            </li>
+                            <li>
+                                <a href="<?php echo base_url(); ?>currency/set/2">Euro €</a>
+                            </li>
  
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('language'); ?> </a>
                         <ul class="dropdown-menu">

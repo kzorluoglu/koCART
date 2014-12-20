@@ -18,9 +18,9 @@ class Paypal extends CI_Controller {
 	public function complete(){
 	
 		$paypal_credentials = array(
-		   'API_username' => 'XXXXXXXXXXXXX-XXXXXX.xxx.com',
-		   'API_signature' => 'XXXXXXXXXXXXXXXXXXXXX',
-		   'API_password' => 'XXXXXXXXXXXXXX',
+		   'API_username' => 'korayzorluoglu1-facilitator_api1.hotmail.com',
+		   'API_signature' => 'AFcWxV21C7fd0v3bYYYRCpSSRl31AMo4Sr5CuFAYAsMOj.Mc4vQaYcSn',
+		   'API_password' => '1394582264',
 		   'sandbox_status' => true
 		);    
 

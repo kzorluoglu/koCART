@@ -23,8 +23,8 @@
  <td><img src="<?php echo $product->image; ?>" width="75" height="75"></td>
  <td><?php echo $product->name; ?></td>
  <td><?php echo $product->rank; ?></td>
- <td><a href="<?php echo base_url(); ?>admin/product/detail/<?php echo $product->id; ?>"><span class="glyphicon glyphicon-pencil"></span></a>
- <a href="<?php echo base_url(); ?>admin/product/delete/<?php echo $product->id; ?>"><span class="glyphicon glyphicon-remove"></span></a>
+ <td><a href="<?php echo $this->config->item('admin_url'); ?>product/detail/<?php echo $product->id; ?>"><span class="glyphicon glyphicon-pencil"></span></a>
+ <a href="<?php echo $this->config->item('admin_url'); ?>product/delete/<?php echo $product->id; ?>"><span class="glyphicon glyphicon-remove"></span></a>
  </td>
 
  </tr>

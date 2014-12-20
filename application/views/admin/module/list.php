@@ -21,7 +21,7 @@ foreach($results as $result) { ?>
 		           <td><?php echo $result->id; ?></td>
 				   <td><?php echo $result->name; ?></td>
 				   <td><?php echo $result->details; ?></td>
-				   <td><a href="<?php echo base_url(); ?>admin/module/detail/<?php echo $result->type; ?>"><span class="glyphicon glyphicon-pencil"></span></a> <span class="glyphicon glyphicon-remove"></span></td>
+				   <td><a href="<?php echo $this->config->item('admin_url'); ?>module/detail/<?php echo $result->type; ?>"><span class="glyphicon glyphicon-pencil"></span></a> <span class="glyphicon glyphicon-remove"></span></td>
 		 </tr>
 <?php } ?>
 
