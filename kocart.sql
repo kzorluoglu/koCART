@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Dec 13, 2014 at 11:20 PM
--- Server version: 5.1.73
--- PHP Version: 5.4.33
+-- Erstellungszeit: 25. Dez 2014 um 20:55
+-- Server Version: 5.1.73
+-- PHP-Version: 5.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `koray`
+-- Datenbank: `koray`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Tabellenstruktur für Tabelle `admin`
 --
 
 CREATE TABLE IF NOT EXISTS `admin` (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `admin`
+-- Daten für Tabelle `admin`
 --
 
 INSERT INTO `admin` (`id`, `email`, `password`, `name`, `note`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `admin` (`id`, `email`, `password`, `name`, `note`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cargo`
+-- Tabellenstruktur für Tabelle `cargo`
 --
 
 CREATE TABLE IF NOT EXISTS `cargo` (
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `cargo` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `cargo`
+-- Daten für Tabelle `cargo`
 --
 
 INSERT INTO `cargo` (`id`, `name`, `price`, `status`) VALUES
@@ -67,7 +67,7 @@ INSERT INTO `cargo` (`id`, `name`, `price`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Tabellenstruktur für Tabelle `category`
 --
 
 CREATE TABLE IF NOT EXISTS `category` (
@@ -76,10 +76,10 @@ CREATE TABLE IF NOT EXISTS `category` (
   `rank` int(11) NOT NULL,
   `link` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
--- Dumping data for table `category`
+-- Daten für Tabelle `category`
 --
 
 INSERT INTO `category` (`id`, `parent_id`, `rank`, `link`) VALUES
@@ -90,7 +90,7 @@ INSERT INTO `category` (`id`, `parent_id`, `rank`, `link`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_description`
+-- Tabellenstruktur für Tabelle `category_description`
 --
 
 CREATE TABLE IF NOT EXISTS `category_description` (
@@ -102,10 +102,10 @@ CREATE TABLE IF NOT EXISTS `category_description` (
   `meta_description` text NOT NULL,
   `meta_keyword` text NOT NULL,
   PRIMARY KEY (`ids`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=99 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=87 ;
 
 --
--- Dumping data for table `category_description`
+-- Daten für Tabelle `category_description`
 --
 
 INSERT INTO `category_description` (`ids`, `category_id`, `language_id`, `category_name`, `description`, `meta_description`, `meta_keyword`) VALUES
@@ -119,7 +119,7 @@ INSERT INTO `category_description` (`ids`, `category_id`, `language_id`, `catego
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_path`
+-- Tabellenstruktur für Tabelle `category_path`
 --
 
 CREATE TABLE IF NOT EXISTS `category_path` (
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `category_path` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category_path`
+-- Daten für Tabelle `category_path`
 --
 
 INSERT INTO `category_path` (`category_id`, `path_id`, `level`) VALUES
@@ -142,7 +142,31 @@ INSERT INTO `category_path` (`category_id`, `path_id`, `level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `extension`
+-- Tabellenstruktur für Tabelle `currency`
+--
+
+CREATE TABLE IF NOT EXISTS `currency` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `currency` float NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `symbol` varchar(255) NOT NULL,
+  `standart` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Daten für Tabelle `currency`
+--
+
+INSERT INTO `currency` (`id`, `name`, `currency`, `code`, `symbol`, `standart`) VALUES
+(1, 'TL', 1, 'TL', '₺', 1),
+(2, 'Euro', 0.353, 'EUR', '€', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `extension`
 --
 
 CREATE TABLE IF NOT EXISTS `extension` (
@@ -151,10 +175,10 @@ CREATE TABLE IF NOT EXISTS `extension` (
   `type` varchar(255) NOT NULL,
   `loadpage` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `extension`
+-- Daten für Tabelle `extension`
 --
 
 INSERT INTO `extension` (`id`, `name`, `type`, `loadpage`) VALUES
@@ -164,7 +188,7 @@ INSERT INTO `extension` (`id`, `name`, `type`, `loadpage`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `language`
+-- Tabellenstruktur für Tabelle `language`
 --
 
 CREATE TABLE IF NOT EXISTS `language` (
@@ -177,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `language` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `language`
+-- Daten für Tabelle `language`
 --
 
 INSERT INTO `language` (`id`, `language_name`, `flag`, `code`, `default`) VALUES
@@ -187,7 +211,7 @@ INSERT INTO `language` (`id`, `language_name`, `flag`, `code`, `default`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `modules`
+-- Tabellenstruktur für Tabelle `modules`
 --
 
 CREATE TABLE IF NOT EXISTS `modules` (
@@ -201,11 +225,11 @@ CREATE TABLE IF NOT EXISTS `modules` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data for table `modules`
+-- Daten für Tabelle `modules`
 --
 
 INSERT INTO `modules` (`id`, `name`, `details`, `type`, `product_id`, `rank`) VALUES
-(1, 'Slider', '', 'slide', 1, 3),
+(1, 'Slider', '', 'slide', 1, 1),
 (2, 'Slider', '', 'slide', 2, 2),
 (3, 'Most Sell Products', '', 'sell', 3, 2),
 (4, 'Most Sell Products', '', 'sell', 4, 1),
@@ -216,7 +240,7 @@ INSERT INTO `modules` (`id`, `name`, `details`, `type`, `product_id`, `rank`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Tabellenstruktur für Tabelle `order`
 --
 
 CREATE TABLE IF NOT EXISTS `order` (
@@ -251,20 +275,22 @@ CREATE TABLE IF NOT EXISTS `order` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`order_id`),
   UNIQUE KEY `order_id` (`order_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
--- Dumping data for table `order`
+-- Daten für Tabelle `order`
 --
 
 INSERT INTO `order` (`order_id`, `customer_id`, `billing_first_name`, `billing_email`, `billing_telephone`, `billing_address1`, `billing_address2`, `billing_city`, `billing_postcode`, `billing_country`, `billing_region`, `billing_company`, `billing_companyid`, `cargo_first_name`, `cargo_email`, `cargo_telephone`, `cargo_address1`, `cargo_address2`, `cargo_city`, `cargo_postcode`, `cargo_country`, `cargo_region`, `cargo_type`, `payment_type`, `status`, `comment`, `total`, `ip`, `date`) VALUES
-(15, 0, 'Koray', 'jolyjokerz@gmail.com', '111111111111', '1111111111111111111111', '', '111111111111111', 2147483647, '1111111111111111111', '111111', '111111111111111', '111111111111111', 'Koray', 'jolyjokerz@gmail.com', '111111111111', '1111111111111111111111', '', '111111111111111', 2147483647, '1111111111111111111', '111111', 1, 2, 1, '', '111', '78.43.43.76', '2014-12-10 19:16:32'),
-(16, 0, 'Koray', 'jolyjokerz@gmail.com', '111111111111', '1111111111111111111111', '', '111111111111111', 2147483647, '1111111111111111111', '111111', '111111111111111', '111111111111111', 'Koray', 'jolyjokerz@gmail.com', '111111111111', '1111111111111111111111', '', '111111111111111', 2147483647, '1111111111111111111', '111111', 1, 2, 1, '', '1964', '78.43.43.76', '2014-12-10 19:17:04');
+(26, 0, 'Test Customer 2', 'testcostumor@test.com', '+00902242442424', 'Örnek Mah. Örnek Sk. No:11', '', 'Bursa', 16340, 'Türkiye', '-', '', '300000000000', 'Test Customer 2', 'testcostumor@test.com', '+00902242442424', 'Örnek Mah. Örnek Sk. No:11', '', 'Bursa', 16340, 'Türkiye', '-', 1, 1, 1, '', '111', '78.43.43.76', '2014-12-14 19:54:46'),
+(27, 0, 'Test Customer', 'testcostumor@test.com', '+00902242442424', 'Örnek Mah. Örnek Sk. No:11', '', 'Bursa', 16340, 'Türkiye', '-', '', '300000000000', 'Test Customer', 'testcostumor@test.com', '+00902242442424', 'Örnek Mah. Örnek Sk. No:11', '', 'Bursa', 16340, 'Türkiye', '-', 2, 1, 1, '', '1321', '78.43.43.76', '2014-12-14 23:20:28'),
+(28, 0, 'Test Customer', 'testcostumor@test.com', '+00902242442424', 'Örnek Mah. Örnek Sk. No:11', '', 'Bursa', 16340, 'Türkiye', '-', 'aaaaaaaaaaaa', '300000000000', 'Test Customer', 'testcostumor@test.com', '+00902242442424', 'Örnek Mah. Örnek Sk. No:11', '', 'Bursa', 16340, 'Türkiye', '-', 2, 1, 1, '', '111', '78.43.43.98', '2014-12-18 23:35:02'),
+(29, 0, 'Test Customer', 'testcostumor@test.com', '+00902242442424', 'Örnek Mah. Örnek Sk. No:11', '', 'Bursa', 16340, 'Türkiye', '-', 'aaaaaaaaaaaa', '300000000000', 'Test Customer', 'testcostumor@test.com', '+00902242442424', 'Örnek Mah. Örnek Sk. No:11', '', 'Bursa', 16340, 'Türkiye', '-', 1, 1, 1, '', '3963', '78.43.43.98', '2014-12-18 23:36:10');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_detail`
+-- Tabellenstruktur für Tabelle `order_detail`
 --
 
 CREATE TABLE IF NOT EXISTS `order_detail` (
@@ -273,22 +299,23 @@ CREATE TABLE IF NOT EXISTS `order_detail` (
   `product_id` int(11) NOT NULL,
   `count` int(11) NOT NULL,
   PRIMARY KEY (`oid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
--- Dumping data for table `order_detail`
+-- Daten für Tabelle `order_detail`
 --
 
 INSERT INTO `order_detail` (`oid`, `order_id`, `product_id`, `count`) VALUES
-(5, 15, 3, 1),
-(6, 16, 4, 1),
-(7, 16, 3, 1),
-(8, 16, 6, 1);
+(17, 26, 3, 1),
+(18, 27, 4, 1),
+(19, 27, 3, 2),
+(20, 28, 3, 1),
+(21, 29, 4, 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `page`
+-- Tabellenstruktur für Tabelle `page`
 --
 
 CREATE TABLE IF NOT EXISTS `page` (
@@ -298,7 +325,7 @@ CREATE TABLE IF NOT EXISTS `page` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `page`
+-- Daten für Tabelle `page`
 --
 
 INSERT INTO `page` (`id`, `page_name`) VALUES
@@ -307,7 +334,7 @@ INSERT INTO `page` (`id`, `page_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `page_description`
+-- Tabellenstruktur für Tabelle `page_description`
 --
 
 CREATE TABLE IF NOT EXISTS `page_description` (
@@ -320,7 +347,7 @@ CREATE TABLE IF NOT EXISTS `page_description` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `page_description`
+-- Daten für Tabelle `page_description`
 --
 
 INSERT INTO `page_description` (`page_id`, `language_id`, `name`, `details`, `meta_tags`, `meta_keys`) VALUES
@@ -330,7 +357,7 @@ INSERT INTO `page_description` (`page_id`, `language_id`, `name`, `details`, `me
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Tabellenstruktur für Tabelle `product`
 --
 
 CREATE TABLE IF NOT EXISTS `product` (
@@ -342,26 +369,24 @@ CREATE TABLE IF NOT EXISTS `product` (
   `url` varchar(255) NOT NULL,
   `rank` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `product`
+-- Daten für Tabelle `product`
 --
 
 INSERT INTO `product` (`id`, `category_id`, `price`, `stock`, `image`, `url`, `rank`) VALUES
-(1, '2', 1500, 15, 'http://www.jolyjokerz.com/upload/files/images/Samsung-ATIV-Tab-Product-Image-5.jpg', 'product/1/deneme_slayt_urunu_1.html', 0),
+(1, '15', 1500, 15, 'http://www.jolyjokerz.com/upload/files/images/Samsung-ATIV-Tab-Product-Image-5.jpg', 'product/1/product/1/deneme_slayt_urunu_1.html.html', 0),
 (2, '2', 1300, 55, 'http://core0.staticworld.net/images/article/2012/12/samsung_galaxy_s_iii_1182355_g5-original-100015856-large.jpeg', 'product/2/slider-urun2.html', 2),
 (3, '3', 111, 1, 'http://venus.vestel.com.tr/images/page07/model01Detail.png', 'product/3/most-sell-product.html', 0),
 (4, '2', 1321, 22, 'http://www.digitalage.com.tr/wp-content/uploads/2014/09/Yerli-tasarım-ve-üretim-eseri-akıllı-cep-telefonu-Venus-Eylül’de-tüketiciyle-buluşuyor.jpg', 'product/4/most-sell-product2.html', 0),
-(5, '3', 123, 2, 'http://i.milliyet.com.tr/YeniAnaResim/2013/12/17/turk-mali-telefonu-onlar-yapti-3882787.Jpeg', 'product/5/most-popular-product1.html', 0),
-(6, '3', 532, 123, 'http://s1.turkcell.com.tr/SiteAssets/Cihaz/cep-telefonu/turkcell/t40/cg/3yeni/3yeni_600x450.png?v=20140505114725', 'product/6/most-popular-product2.html', 0),
-(9, '4', 111111, 111111111, '', '', 1111),
-(10, '4', 111111, 111111111, '', '', 1111);
+(5, '3', 123, 2, 'http://venus.vestel.com.tr/images/page07/model01Detail.png', 'product/5/most-popular-product1.html', 0),
+(6, '3', 532, 123, 'http://s1.turkcell.com.tr/SiteAssets/Cihaz/cep-telefonu/turkcell/t40/cg/3yeni/3yeni_600x450.png?v=20140505114725', 'product/6/most-popular-product2.html', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_description`
+-- Tabellenstruktur für Tabelle `product_description`
 --
 
 CREATE TABLE IF NOT EXISTS `product_description` (
@@ -373,10 +398,10 @@ CREATE TABLE IF NOT EXISTS `product_description` (
   `meta_tags` text NOT NULL,
   `meta_keys` text NOT NULL,
   PRIMARY KEY (`description_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=69 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=71 ;
 
 --
--- Dumping data for table `product_description`
+-- Daten für Tabelle `product_description`
 --
 
 INSERT INTO `product_description` (`description_id`, `product_id`, `language_id`, `name`, `details`, `meta_tags`, `meta_keys`) VALUES
@@ -390,8 +415,8 @@ INSERT INTO `product_description` (`description_id`, `product_id`, `language_id`
 (48, 4, 2, 'Test Most Sell Product 2', 'Test Most Sell Product 2', 'product, 4', 'product, 4'),
 (49, 6, 1, 'Populer Ürün 2', 'Popüler Ürün 2 detaylar...', 'deneme', ''),
 (50, 6, 2, 'Popular Product 2', 'Popular Product 2 details..', '', ''),
-(67, 1, 1, 'Deneme Slayt Urunu 1', 'Deneme Slayt Urunu 1', 'urun, 1,', 'urun, 1,'),
-(68, 1, 2, 'Test Slider Product 1 ', 'Test Slider Product 1 detail ist coming soon..', 'product, 1,', 'product, 1');
+(69, 1, 1, 'Deneme Slayt Urunu 1', 'Deneme Slayt Urunu 1', 'urun, 1,', 'urun, 1,'),
+(70, 1, 2, 'Test Slider Product 1 ', 'Test Slider Product 1 detail ist coming soon..', 'product, 1,', 'product, 1');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

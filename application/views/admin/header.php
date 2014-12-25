@@ -128,9 +128,18 @@
                     <li>
                         <a href="<?php echo $this->config->item('admin_url'); ?>order/lists"><i class="fa fa-fw fa-shopping-cart"></i> Orders</a>
                     </li>
+
+					<li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#settings"><i class="fa fa-fw fa-asterisk"></i> Settings<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="settings" class="collapse">
 					<li>
                         <a href="<?php echo $this->config->item('admin_url'); ?>module/lists"><i class="fa fa-fw fa-cogs"></i> Modules</a>
                     </li>
+                     <li>
+                        <a href="<?php echo $this->config->item('admin_url'); ?>currency/lists"><i class="fa fa-fw fa-try"></i>Currency</a>
+                    </li>
+                        </ul>
+                    </li> 
                 </ul>   
             </div>
           
