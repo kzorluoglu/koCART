@@ -130,14 +130,18 @@
                     </li>
 
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#settings"><i class="fa fa-fw fa-asterisk"></i> Settings<i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#settings"><i class="fa fa-fw fa-asterisk"></i>General Settings<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="settings" class="collapse">
 					<li>
-                        <a href="<?php echo $this->config->item('admin_url'); ?>module/lists"><i class="fa fa-fw fa-cogs"></i> Modules</a>
+                        <a href="<?php echo $this->config->item('admin_url'); ?>module/lists"><i class="fa fa-fw fa-asterisk"></i> Modules</a>
                     </li>
                      <li>
                         <a href="<?php echo $this->config->item('admin_url'); ?>currency/lists"><i class="fa fa-fw fa-try"></i>Currency</a>
                     </li>
+                     <li>
+                        <a href="<?php echo $this->config->item('admin_url'); ?>settings/detail"><i class="fa fa-fw fa-cogs"></i>Site Settings</a>
+                    </li>
+					
                         </ul>
                     </li> 
                 </ul>   

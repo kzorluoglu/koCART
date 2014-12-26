@@ -16,4 +16,19 @@ Homepage Template    : http://startbootstrap.com/template-overviews/shop-homepag
 Requirements
 ------------- 
     * PHP, MySQL
+	
+	
+	Roadway
+-------------
+1. Product special input( Color, Size, Options, ..)
+2. Admin Multi Language
+3. Inovice Print, Show, Send Operations
+4. Account Page(Orders, Account Detail, ..)
+
+Maybe Later (I have no experience)
+-------------------------
+4. Payment Methods.
+5. Shipping Methods.
+
+
     

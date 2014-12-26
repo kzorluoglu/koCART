@@ -12,8 +12,7 @@
   *   @license http://opensource.org/licenses/LGPL-3.0 LGPLv3
   *      @link http://kcfinder.sunhater.com
   */
- if (!isset($_SESSION['validated']))
-{
+ if (!isset($_SESSION['validated'])){
     die();
 }
 require "core/bootstrap.php";

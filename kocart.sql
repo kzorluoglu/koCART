@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Erstellungszeit: 25. Dez 2014 um 20:55
+-- Erstellungszeit: 26. Dez 2014 um 20:21
 -- Server Version: 5.1.73
 -- PHP-Version: 5.4.33
 
@@ -194,6 +194,7 @@ INSERT INTO `extension` (`id`, `name`, `type`, `loadpage`) VALUES
 CREATE TABLE IF NOT EXISTS `language` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `language_name` varchar(255) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
   `flag` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
   `default` varchar(255) NOT NULL,
@@ -204,9 +205,9 @@ CREATE TABLE IF NOT EXISTS `language` (
 -- Daten für Tabelle `language`
 --
 
-INSERT INTO `language` (`id`, `language_name`, `flag`, `code`, `default`) VALUES
-(1, 'Türkce', '', '', '1'),
-(2, 'English', '', '', '');
+INSERT INTO `language` (`id`, `language_name`, `file_name`, `flag`, `code`, `default`) VALUES
+(1, 'Türkce', 'turkish', '', '', '1'),
+(2, 'English', 'english', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -417,6 +418,35 @@ INSERT INTO `product_description` (`description_id`, `product_id`, `language_id`
 (50, 6, 2, 'Popular Product 2', 'Popular Product 2 details..', '', ''),
 (69, 1, 1, 'Deneme Slayt Urunu 1', 'Deneme Slayt Urunu 1', 'urun, 1,', 'urun, 1,'),
 (70, 1, 2, 'Test Slider Product 1 ', 'Test Slider Product 1 detail ist coming soon..', 'product, 1,', 'product, 1');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `settings`
+--
+
+CREATE TABLE IF NOT EXISTS `settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `meta_tags` text NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `owner` varchar(255) NOT NULL,
+  `address` text NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `telefon` varchar(255) NOT NULL,
+  `logo` varchar(255) NOT NULL,
+  `language` varchar(255) NOT NULL,
+  `currency` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Daten für Tabelle `settings`
+--
+
+INSERT INTO `settings` (`id`, `title`, `description`, `meta_tags`, `name`, `owner`, `address`, `email`, `telefon`, `logo`, `language`, `currency`) VALUES
+(1, 'koCART', 'koCART Open Source PHP MVC E-Commerce System', 'koCART, Open Source, PHP E-Commerce, MVC E-Commerce System', 'koCART Demo Company', 'koCART ', 'Lörrach / Germany', 'info@jolyjokerz.com', '+90224333333', 'http://www.jolyjokerz.com/upload/files/images/logo.png', '2', '1');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -4,10 +4,13 @@
 Load on Startup
 If Currency Session empty is,We are Writing standart variable
 ********************************************/
-    $this->CI =& get_instance();
-	$this->CI->load->library('session');
+    $CI =& get_instance();
+	$CI->load->database();
+	$CI->load->library('session');
+	$CI->load->model('admin/settings_model');
+ 
+	if($CI->session->userdata('currency') == ""){
 
-	if($this->CI->session->userdata('currency') == ""){
-		$this->CI->session->set_userdata('currency', '2');
+		$CI->session->set_userdata('currency', $CI->settings_model->get_default_currency_id(1)); 
  	}
 ?>
