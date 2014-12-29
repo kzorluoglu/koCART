@@ -6,8 +6,10 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
+                    <p>Copyright &copy; <?php echo $this->config->item('name'); ?></p>
+					<p><?php echo $this->config->item('address'); ?><br>
+					<?php echo $this->config->item('email'); ?> | <?php echo $this->config->item('telefon'); ?>
+                </div> 
             </div>
         </footer>
     </div>

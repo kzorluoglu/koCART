@@ -6,10 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="<?php echo $this->config->item('description'); ?>">
+    <meta name="author" content="<?php echo $this->config->item('name'); ?>">
+	<meta name="keywords" content="<?php echo $this->config->item('meta_tags'); ?>">
 
-    <title>koCART - Open Source E-Commerce </title>
+    <title><?php echo $this->config->item('title'); ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>css/bootstrap.css" rel="stylesheet">
@@ -17,8 +18,8 @@
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>css/shop-homepage.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
-<link href='<?php echo base_url(); ?>css/sm-core-css.css' rel='stylesheet' type='text/css' />
-<link href='<?php echo base_url(); ?>css/sm-blue/sm-blue.css' rel='stylesheet' type='text/css' />
+	<link href='<?php echo base_url(); ?>css/sm-core-css.css' rel='stylesheet' type='text/css' />
+	<link href='<?php echo base_url(); ?>css/sm-blue/sm-blue.css' rel='stylesheet' type='text/css' />
  
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url(); ?>">koCART</a>
+                <a class="navbar-brand" href="<?php echo base_url(); ?>"><img src="<?php echo $this->config->item('logo'); ?>" /></a>
             </div>
             
  
