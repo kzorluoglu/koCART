@@ -15,9 +15,11 @@ class Order extends CI_Controller {
   		$this->lang->load('home', $this->session->userdata('lang_file')); // For Footer and Header
    		$this->lang->load('order/detail', $this->session->userdata('lang_file')); // For Footer and Header
 
+		$currency_info = $this->currency_library->currency('currency');
+		
+		//Cart Total...
+  		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
  
-		//Cart Total Price...
- 		$data['cart_total'] = $this->cart->total();
 		//Menu...
 		$data['categories'] = $this->categories_model->get_cats();
 		
@@ -33,8 +35,10 @@ class Order extends CI_Controller {
 
 		$this->load->model('cargo_model');
  		
-		//Cart Total Price...
- 		$data['cart_total'] = $this->cart->total();
+		$currency_info = $this->currency_library->currency('currency');
+		
+		//Cart Total...
+  		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
 		//Menu...
 		$data['categories'] = $this->categories_model->get_cats();
 		// Cargo types
@@ -86,8 +90,10 @@ class Order extends CI_Controller {
 		$this->lang->load('order/payment', $this->session->userdata('lang_file')); //For Error Mesage of Cargo Type Select
 
  		
-		//Cart Total Price...
- 		$data['cart_total'] = $this->cart->total();
+		$currency_info = $this->currency_library->currency('currency');
+		
+		//Cart Total...
+  		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
 		//Menu...
 		$data['categories'] = $this->categories_model->get_cats();
 		//Payment types
@@ -127,8 +133,10 @@ class Order extends CI_Controller {
 		$this->load->model('cargo_model');
 
  		
-		//Cart Total Price...
- 		$data['cart_total'] = $this->cart->total();
+		$currency_info = $this->currency_library->currency('currency');
+		
+		//Cart Total...
+  		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
 		//Menu...
 		$data['categories'] = $this->categories_model->get_cats();
  
@@ -165,8 +173,10 @@ class Order extends CI_Controller {
 		
 		$this->lang->load('home', $this->session->userdata('lang_file')); // For Footer and Header
 
-		//Cart Total Price...
- 		$data['cart_total'] = $this->cart->total();
+		$currency_info = $this->currency_library->currency('currency');
+		
+		//Cart Total...
+  		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
 		//Menu...
 		$data['categories'] = $this->categories_model->get_cats();
 		

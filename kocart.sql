@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Erstellungszeit: 26. Dez 2014 um 20:21
+-- Erstellungszeit: 01. Jan 2015 um 23:48
 -- Server Version: 5.1.73
 -- PHP-Version: 5.4.33
 
@@ -406,18 +406,74 @@ CREATE TABLE IF NOT EXISTS `product_description` (
 --
 
 INSERT INTO `product_description` (`description_id`, `product_id`, `language_id`, `name`, `details`, `meta_tags`, `meta_keys`) VALUES
-(13, 5, 1, 'Populer Ürün 1', 'Popüler Ürün 1 detaylar...', '', ''),
+(13, 5, 1, 'Populer Ürün 1', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', '', ''),
 (14, 5, 2, 'Popular Product 1', 'Popular Product 1 details..', '', ''),
-(35, 3, 1, 'Cok Satilan Urun 1', 'Deneme Cok Satilan Urun 1', 'urun, 3,', 'urun, 3,'),
+(35, 3, 1, 'Cok Satilan Urun 1', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', 'urun, 3,', 'urun, 3,'),
 (36, 3, 2, 'Test Most Sell Product 1', 'Test Most Sell Product 1 details coming soon...', 'product, 3,', 'product, 3'),
-(45, 2, 1, 'Deneme Slayt Urunu2', 'Deneme Slayt Urunu2', 'urun, 2,', 'urun, 2,'),
+(45, 2, 1, 'Deneme Slayt Urunu2', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', 'urun, 2,', 'urun, 2,'),
 (46, 2, 2, 'Test Slider Product 2', 'Test Slider Product 2 details coming soon...', 'product, 2,', 'product, 2'),
-(47, 4, 1, 'Cok Satan Urun 2', 'Deneme Cok Satilan Urun 2', 'urun, 4,', 'urun, 4,'),
+(47, 4, 1, 'Cok Satan Urun 2', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', 'urun, 4,', 'urun, 4,'),
 (48, 4, 2, 'Test Most Sell Product 2', 'Test Most Sell Product 2', 'product, 4', 'product, 4'),
-(49, 6, 1, 'Populer Ürün 2', 'Popüler Ürün 2 detaylar...', 'deneme', ''),
+(49, 6, 1, 'Populer Ürün 2', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', 'deneme', ''),
 (50, 6, 2, 'Popular Product 2', 'Popular Product 2 details..', '', ''),
-(69, 1, 1, 'Deneme Slayt Urunu 1', 'Deneme Slayt Urunu 1', 'urun, 1,', 'urun, 1,'),
+(69, 1, 1, 'Deneme Slayt Urunu 1', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', 'urun, 1,', 'urun, 1,'),
 (70, 1, 2, 'Test Slider Product 1 ', 'Test Slider Product 1 detail ist coming soon..', 'product, 1,', 'product, 1');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `product_option`
+--
+
+CREATE TABLE IF NOT EXISTS `product_option` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `option_name` varchar(255) NOT NULL,
+  `option_type` varchar(255) NOT NULL,
+  `rank` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Daten für Tabelle `product_option`
+--
+
+INSERT INTO `product_option` (`id`, `product_id`, `language_id`, `option_name`, `option_type`, `rank`) VALUES
+(1, 4, 1, 'Selectbox Renk', 'selectbox', 1),
+(2, 4, 1, 'Checkbox Boyut', 'checkbox', 2),
+(3, 4, 2, 'Selectbox Test', 'selectbox', 1),
+(4, 4, 2, 'Checkbox Test', 'checkbox', 1),
+(5, 4, 1, 'Giris Deneme', 'input', 1),
+(6, 4, 2, 'Input Test', 'input', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `product_option_value`
+--
+
+CREATE TABLE IF NOT EXISTS `product_option_value` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_option_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `option_value` varchar(255) NOT NULL,
+  `action` varchar(255) NOT NULL,
+  `value` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Daten für Tabelle `product_option_value`
+--
+
+INSERT INTO `product_option_value` (`id`, `product_option_id`, `language_id`, `option_value`, `action`, `value`) VALUES
+(1, 1, 1, 'Deneme', '+', '100'),
+(2, 4, 2, 'Test', '+', '100'),
+(3, 2, 1, 'Checkbox deneme', '+', '20'),
+(4, 3, 2, 'Checkbox test', '+', '20'),
+(5, 5, 1, 'Herhangi bir bilgi', '', ''),
+(6, 6, 2, 'Input text', '', '');
 
 -- --------------------------------------------------------
 

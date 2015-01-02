@@ -72,9 +72,10 @@ class Category extends CI_Controller {
 			
 		$data['slider_products'] = $slider_product;
 		
-		//Category...
- 		$data['cart_total'] = $this->cart->total();
  
+		
+		//Cart Total...
+  		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.''; 
 		//Menu...
 		 $data['categories'] = $this->categories_model->get_cats();
  		$this->load->view('category', $data);

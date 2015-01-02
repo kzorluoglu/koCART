@@ -96,12 +96,10 @@ class Home extends CI_Controller {
 			}
 			
 		$data['slider_products'] = $slider_product;
+ 
+		//Cart Total...
+  		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
 		
-		//Category...
- 
- 
-		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total() * $currency_info[0]->currency).' '.$currency_info[0]->symbol.'';
-
 		 $data['categories'] = $this->categories_model->get_cats();
  		$this->load->view('home', $data);
 	}

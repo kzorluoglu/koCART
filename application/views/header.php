@@ -20,7 +20,7 @@
 	<link href="<?php echo base_url(); ?>css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
 	<link href='<?php echo base_url(); ?>css/sm-core-css.css' rel='stylesheet' type='text/css' />
 	<link href='<?php echo base_url(); ?>css/sm-blue/sm-blue.css' rel='stylesheet' type='text/css' />
- 
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -52,28 +52,28 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('currency'); ?> </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><small><?php echo $this->lang->line('currency'); ?> </small> </a> 
                         <ul class="dropdown-menu">
                             <li>
-                                <a   href="<?php echo base_url(); ?>currency/set/1">TL ₺</a> 
+                               <a   href="<?php echo base_url(); ?>currency/set/1"><small> TL ₺</small> </a> 
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>currency/set/2">Euro €</a>
+                                 <a href="<?php echo base_url(); ?>currency/set/2"><small>Euro €</small> </a>  
                             </li>
  
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('language'); ?> </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><small><?php echo $this->lang->line('language'); ?></small>  </a> 
                         <ul class="dropdown-menu">
                             <li>
-                                <a   href="<?php echo base_url(); ?>language/set/tr">Türkce</a> 
+                            <a   href="<?php echo base_url(); ?>language/set/tr"><small>Türkce</small> </a> 
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>language/set/en">English</a>
+                              <a href="<?php echo base_url(); ?>language/set/en"><small>English</small> </a>  
                             </li>
  
-                        </ul>
+                        </ul> 
                     </li>
 					<? $this->load->view('basket'); ?>
  </ul>

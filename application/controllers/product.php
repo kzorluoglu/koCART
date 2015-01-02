@@ -47,10 +47,22 @@ class Product extends CI_Controller {
                );  
 			}
 		$data['product'] = $product;	
+		
+		foreach($this->products_model->product_option($id) AS $options){
+				$option[] = array(
+                   'id'  			=> $options->id,
+				   'type'			=> $options->option_type,
+				   'values'			=> $this->products_model->product_option_values($options->id),
+				   'name'			=> $options->option_name					
+               );  
+
+			}
  
+ 
+ 		$data['option'] = $option;
  		
 		//Cart...
- 		$data['cart_total'] = $this->cart->total();
+		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
  
 		//Menu...
 		 $data['categories'] = $this->categories_model->get_cats();

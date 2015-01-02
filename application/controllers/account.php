@@ -23,10 +23,11 @@ class Account extends CI_Controller {
 	{
  
   		$this->lang->load('home', $this->session->userdata('lang_file'));
- 
+
+		$currency_info = $this->currency_library->currency('currency');
 		
-		//Category...
- 		$data['cart_total'] = $this->cart->total();
+		//Cart Total...
+  		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
  
 		//Menu...
 		 $data['categories'] = $this->categories_model->get_cats();

@@ -30,8 +30,10 @@ class Page extends CI_Controller {
 		$data['page_details'] = $this->pages_model->pages_detail($this->uri->segment(2));
 		$data['slider_products'] = $this->products_model->slider_products();
 		
-		//Category...
- 		$data['cart_total'] = $this->cart->total();
+		$currency_info = $this->currency_library->currency('currency');
+		
+		//Cart Total...
+  		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
  
 		//Menu...
 		 $data['categories'] = $this->categories_model->get_cats();
