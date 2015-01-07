@@ -76,9 +76,23 @@ function get_products(){
  
 	}
 	
-	
-	
- 
+	function get_options($id){
+				$this->db->where('product_id', $id);
+				$this->db->where('option_description.language_id', $this->session->userdata('lang'));
+				$this->db->join('option', 'option.id = product_option.option_id');
+				$this->db->join('option_description', 'option_description.option_id = product_option.option_id');
+				$query = $this->db->get("product_option");
+				return $query->result();
+	}
+
+	function get_values($option_id){
+				$this->db->where('option_id', $option_id);
+				$this->db->where('language_id', $this->session->userdata('lang'));
+				$query = $this->db->get("option_value");
+				return $query->result();
+
+
+	}
 }
 
 

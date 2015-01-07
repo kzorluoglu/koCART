@@ -57,7 +57,7 @@ class Product extends CI_Controller {
  	$this->load->model('admin/language_model');
 	
  	$data["languages"] = $this->language_model->languages();
- 	$product_infos = $this->product_model->product($this->uri->segment(4));
+		$product_infos = $this->product_model->product($this->uri->segment(4));
  
 	foreach($product_infos as $product_info){
 			$data["id"] = $product_info->id;
@@ -68,9 +68,23 @@ class Product extends CI_Controller {
 			$data["price"] = $product_info->price;
 			$data["stock"] = $product_info->stock;
 			$data["image"] = $product_info->image;
-
 			$data["product_description"] = $this->product_model->product_description($product_info->id);
-}
+		}
+			
+		foreach($this->product_model->get_options($this->uri->segment(4)) as $options){
+ 			$option[] = array(
+				'id' => $options->id,
+				'product_id' =>  $options->product_id,
+				'option_type' =>  $options->option_type,
+				'rank' =>  $options->rank,
+				'language_id' => $options->language_id,
+				'option_name' =>  $options->option_name,
+				'values' =>  $this->product_model->get_values($options->option_id)
+			);
+			}
+			$data["option"] = $option;
+ 
+ 
 			$start = 0;
 			$limit = 100000000;
  			$data["categories"] = $this->category_model->get_categories($start, $limit);
@@ -85,7 +99,7 @@ class Product extends CI_Controller {
 
 	
 	if($_POST){
-	$this->product_model->add($_POST);
+	//$this->product_model->add($_POST);
 	}
 	
 	
@@ -103,7 +117,7 @@ class Product extends CI_Controller {
 
    
    	if($_POST){
-		$this->product_model->update($this->uri->segment(4), $_POST);
+		//$this->product_model->update($this->uri->segment(4), $_POST);
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 	else{
@@ -115,7 +129,7 @@ class Product extends CI_Controller {
    public function delete(){
 	$this->load->model('admin/product_model');
  
-			$this->product_model->delete($this->uri->segment(4));
+			//$this->product_model->delete($this->uri->segment(4));
 			redirect($_SERVER['HTTP_REFERER']);
 			
 			

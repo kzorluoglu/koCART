@@ -2,7 +2,21 @@
 
 class Category extends CI_Controller {
 
-
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL
+	 * 		http://example.com/index.php/welcome
+	 *	- or -  
+	 * 		http://example.com/index.php/welcome/index
+	 *	- or -
+	 * Since this controller is set as the default controller in 
+	 * config/routes.php, it's displayed at http://example.com/
+	 *
+	 * So any other public methods not prefixed with an underscore will
+	 * map to /index.php/welcome/<method_name>
+	 * @see http://codeigniter.com/user_guide/general/urls.html
+	 */
 		function __construct()
 		{
 			parent::__construct();
@@ -65,7 +79,7 @@ class Category extends CI_Controller {
 
 	
 	if($_POST){
-	$this->category_model->add($_POST);
+	//$this->category_model->add($_POST);
 	}
 	
 	
@@ -83,7 +97,7 @@ class Category extends CI_Controller {
 
    
    	if($_POST){
-		$this->category_model->update($this->uri->segment(4), $_POST);
+		//$this->category_model->update($this->uri->segment(4), $_POST);
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 	else{
@@ -95,7 +109,7 @@ class Category extends CI_Controller {
    public function delete(){
 	$this->load->model('admin/category_model');
  
-			$this->category_model->delete($this->uri->segment(4));
+			//$this->category_model->delete($this->uri->segment(4));
 			redirect($_SERVER['HTTP_REFERER']);
 			
 			
@@ -105,3 +119,5 @@ class Category extends CI_Controller {
    
 }
 
+/* End of file welcome.php */
+/* Location: ./application/controllers/welcome.php */

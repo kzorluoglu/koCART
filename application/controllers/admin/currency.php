@@ -47,7 +47,7 @@ class Currency extends CI_Controller {
 		$this->load->model('admin/currency_model');
  	
 		if($_POST){
-			$this->currency_model->add($_POST);
+			//$this->currency_model->add($_POST);
 		}
  
 		$this->load->view('admin/currency/add');
@@ -58,7 +58,7 @@ class Currency extends CI_Controller {
 
    
 		if($_POST){
-			$this->currency_model->update($this->uri->segment(4), $_POST);
+			//$this->currency_model->update($this->uri->segment(4), $_POST);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 		else{
@@ -70,7 +70,7 @@ class Currency extends CI_Controller {
    public function delete(){
 	$this->load->model('admin/currency_model');
  
-			$this->currency_model->delete($this->uri->segment(4));
+			//$this->currency_model->delete($this->uri->segment(4));
 			redirect($_SERVER['HTTP_REFERER']);
 
    }

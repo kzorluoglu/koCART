@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Erstellungszeit: 01. Jan 2015 um 23:48
+-- Erstellungszeit: 07. Jan 2015 um 10:51
 -- Server Version: 5.1.73
 -- PHP-Version: 5.4.33
 
@@ -206,8 +206,8 @@ CREATE TABLE IF NOT EXISTS `language` (
 --
 
 INSERT INTO `language` (`id`, `language_name`, `file_name`, `flag`, `code`, `default`) VALUES
-(1, 'Türkce', 'turkish', '', '', '1'),
-(2, 'English', 'english', '', '', '');
+(1, 'Türkce', 'turkish', 'http://www.sanmak.com.tr/img/enFlagSmall.png', 'tr', '1'),
+(2, 'English', 'english', 'http://www.sanmak.com.tr/img/trFlagBig.png', 'en', '');
 
 -- --------------------------------------------------------
 
@@ -237,6 +237,80 @@ INSERT INTO `modules` (`id`, `name`, `details`, `type`, `product_id`, `rank`) VA
 (5, 'Populer Products', '', 'popular', 5, 1),
 (6, 'Populer Products', '', 'popular', 6, 2),
 (16, 'Slider', '', 'slide', 5, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `option`
+--
+
+CREATE TABLE IF NOT EXISTS `option` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `option_type` varchar(255) NOT NULL,
+  `rank` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- Daten für Tabelle `option`
+--
+
+INSERT INTO `option` (`id`, `option_type`, `rank`) VALUES
+(1, 'selectbox', 1),
+(2, 'checkbox', 2),
+(3, 'radio', 1),
+(4, 'textarea', 1),
+(5, 'date', 1),
+(6, 'file', 1),
+(7, 'input', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `option_description`
+--
+
+CREATE TABLE IF NOT EXISTS `option_description` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `option_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `option_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Daten für Tabelle `option_description`
+--
+
+INSERT INTO `option_description` (`id`, `option_id`, `language_id`, `option_name`) VALUES
+(1, 1, 1, 'Renk'),
+(2, 1, 2, 'Color');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `option_value`
+--
+
+CREATE TABLE IF NOT EXISTS `option_value` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `option_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `value_name` varchar(255) NOT NULL,
+  `action` varchar(255) NOT NULL,
+  `value` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Daten für Tabelle `option_value`
+--
+
+INSERT INTO `option_value` (`id`, `option_id`, `language_id`, `value_name`, `action`, `value`) VALUES
+(1, 1, 1, 'Kirmizi', '+', '50'),
+(2, 1, 2, 'Red', '+', '50'),
+(3, 1, 1, 'Mavi', '+', '20'),
+(4, 1, 2, 'Blue', '+', '20');
 
 -- --------------------------------------------------------
 
@@ -407,17 +481,17 @@ CREATE TABLE IF NOT EXISTS `product_description` (
 
 INSERT INTO `product_description` (`description_id`, `product_id`, `language_id`, `name`, `details`, `meta_tags`, `meta_keys`) VALUES
 (13, 5, 1, 'Populer Ürün 1', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', '', ''),
-(14, 5, 2, 'Popular Product 1', 'Popular Product 1 details..', '', ''),
+(14, 5, 2, 'Popular Product 1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '', ''),
 (35, 3, 1, 'Cok Satilan Urun 1', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', 'urun, 3,', 'urun, 3,'),
-(36, 3, 2, 'Test Most Sell Product 1', 'Test Most Sell Product 1 details coming soon...', 'product, 3,', 'product, 3'),
+(36, 3, 2, 'Test Most Sell Product 1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'product, 3,', 'product, 3'),
 (45, 2, 1, 'Deneme Slayt Urunu2', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', 'urun, 2,', 'urun, 2,'),
-(46, 2, 2, 'Test Slider Product 2', 'Test Slider Product 2 details coming soon...', 'product, 2,', 'product, 2'),
+(46, 2, 2, 'Test Slider Product 2', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'product, 2,', 'product, 2'),
 (47, 4, 1, 'Cok Satan Urun 2', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', 'urun, 4,', 'urun, 4,'),
-(48, 4, 2, 'Test Most Sell Product 2', 'Test Most Sell Product 2', 'product, 4', 'product, 4'),
+(48, 4, 2, 'Test Most Sell Product 2', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'product, 4', 'product, 4'),
 (49, 6, 1, 'Populer Ürün 2', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', 'deneme', ''),
-(50, 6, 2, 'Popular Product 2', 'Popular Product 2 details..', '', ''),
+(50, 6, 2, 'Popular Product 2', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '', ''),
 (69, 1, 1, 'Deneme Slayt Urunu 1', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', 'urun, 1,', 'urun, 1,'),
-(70, 1, 2, 'Test Slider Product 1 ', 'Test Slider Product 1 detail ist coming soon..', 'product, 1,', 'product, 1');
+(70, 1, 2, 'Test Slider Product 1 ', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'product, 1,', 'product, 1');
 
 -- --------------------------------------------------------
 
@@ -428,52 +502,17 @@ INSERT INTO `product_description` (`description_id`, `product_id`, `language_id`
 CREATE TABLE IF NOT EXISTS `product_option` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
-  `language_id` int(11) NOT NULL,
-  `option_name` varchar(255) NOT NULL,
-  `option_type` varchar(255) NOT NULL,
-  `rank` int(11) NOT NULL,
+  `option_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Daten für Tabelle `product_option`
 --
 
-INSERT INTO `product_option` (`id`, `product_id`, `language_id`, `option_name`, `option_type`, `rank`) VALUES
-(1, 4, 1, 'Selectbox Renk', 'selectbox', 1),
-(2, 4, 1, 'Checkbox Boyut', 'checkbox', 2),
-(3, 4, 2, 'Selectbox Test', 'selectbox', 1),
-(4, 4, 2, 'Checkbox Test', 'checkbox', 1),
-(5, 4, 1, 'Giris Deneme', 'input', 1),
-(6, 4, 2, 'Input Test', 'input', 1);
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `product_option_value`
---
-
-CREATE TABLE IF NOT EXISTS `product_option_value` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_option_id` int(11) NOT NULL,
-  `language_id` int(11) NOT NULL,
-  `option_value` varchar(255) NOT NULL,
-  `action` varchar(255) NOT NULL,
-  `value` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
-
---
--- Daten für Tabelle `product_option_value`
---
-
-INSERT INTO `product_option_value` (`id`, `product_option_id`, `language_id`, `option_value`, `action`, `value`) VALUES
-(1, 1, 1, 'Deneme', '+', '100'),
-(2, 4, 2, 'Test', '+', '100'),
-(3, 2, 1, 'Checkbox deneme', '+', '20'),
-(4, 3, 2, 'Checkbox test', '+', '20'),
-(5, 5, 1, 'Herhangi bir bilgi', '', ''),
-(6, 6, 2, 'Input text', '', '');
+INSERT INTO `product_option` (`id`, `product_id`, `option_id`) VALUES
+(1, 4, 1),
+(3, 4, 2);
 
 -- --------------------------------------------------------
 

@@ -61,16 +61,6 @@ class Products_model extends CI_Model {
         return $query->result();
  
     }
-	
-	function product_option($id){ 
-        $query = $this->db->query('SELECT *	FROM product_option WHERE language_id = '.$this->session->userdata('lang').' AND product_id = '.$id.'');
-        return $query->result();
-		   
-	}
-	function product_option_values($option_id){ 
-        $query = $this->db->query('SELECT * FROM product_option_value WHERE language_id = '.$this->session->userdata('lang').' AND product_option_id = '.$option_id.'');
-        return $query->result();   
-	}
-	
+ 
 	
 }
