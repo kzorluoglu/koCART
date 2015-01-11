@@ -85,8 +85,11 @@ function get_products(){
 				return $query->result();
 	}
 
-	function get_values($option_id){
+	function get_values($option_id, $product_id){
+				$this->db->select('option_value.*, product_option_value.*, product_option_value.id AS pr_value_id');
 				$this->db->where('option_id', $option_id);
+				$this->db->where('product_id', $product_id);
+				$this->db->join('product_option_value', 'product_option_value.value_id = option_value.id');
 				$this->db->where('language_id', $this->session->userdata('lang'));
 				$query = $this->db->get("option_value");
 				return $query->result();

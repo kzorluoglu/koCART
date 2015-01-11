@@ -6,7 +6,7 @@
                             Dashboard <small>// Edit Product</small>
                         </h1>
  
- <?php echo "<pre>"; print_r($option); echo "</pre>"; ?>
+ <?php //echo "<pre>"; print_r($option); echo "</pre>"; ?>
 		<form action="<?php echo $this->config->item('admin_url'); ?>product/update/<?php echo $id; ?>" method="post" accept-charset="utf-8" class="form-horizontal" role="form">				
 
 
@@ -23,8 +23,6 @@
 
 <? } ?>
 <? } ?>
-     <li role="presentation"><a href="#3" aria-controls="3" role="tab" data-toggle="tab">Options</a></li>
-
 </ul>
 
  
@@ -97,30 +95,7 @@
   
   
   </div>
-  <!-- Option Tab -->
-  <div role="tabpanel" class="tab-pane fade" id="3">
-  <br />
   
-  <?php foreach($option AS $options){ ?>
-  
-
-  <?php echo $options['option_name']; ?>
-  
-		  <?php foreach($options['values'] AS $values){ ?>
-			
-			<?php echo $values->value_name; ?>
-		  
-		  <?php } ?>
- 
-  <?php } ?>
- 
-
-										  
-										  
- 
- 
-						</div>
-						<!-- Tab panes -->
 
 	 
 
@@ -179,7 +154,7 @@
     <div class="col-sm-10">
  
  		<img src="<?php echo $image; ?>" width="250">
-
+<br><br><br>
  <script type="text/javascript">
 function openKCFinder(field) {
     window.KCFinder = {

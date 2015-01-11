@@ -79,7 +79,7 @@ class Product extends CI_Controller {
 				'rank' =>  $options->rank,
 				'language_id' => $options->language_id,
 				'option_name' =>  $options->option_name,
-				'values' =>  $this->product_model->get_values($options->option_id)
+				'values' =>  $this->product_model->get_values($options->option_id, $options->product_id) //pr_value_id is product_option_value table -> id
 			);
 			}
 			$data["option"] = $option;

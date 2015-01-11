@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Erstellungszeit: 07. Jan 2015 um 10:51
+-- Erstellungszeit: 11. Jan 2015 um 23:11
 -- Server Version: 5.1.73
 -- PHP-Version: 5.4.33
 
@@ -276,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `option_description` (
   `language_id` int(11) NOT NULL,
   `option_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Daten für Tabelle `option_description`
@@ -284,7 +284,9 @@ CREATE TABLE IF NOT EXISTS `option_description` (
 
 INSERT INTO `option_description` (`id`, `option_id`, `language_id`, `option_name`) VALUES
 (1, 1, 1, 'Renk'),
-(2, 1, 2, 'Color');
+(2, 1, 2, 'Color'),
+(3, 2, 1, 'Boyut'),
+(4, 2, 2, 'Size');
 
 -- --------------------------------------------------------
 
@@ -293,24 +295,25 @@ INSERT INTO `option_description` (`id`, `option_id`, `language_id`, `option_name
 --
 
 CREATE TABLE IF NOT EXISTS `option_value` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `option_value_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `value_name` varchar(255) NOT NULL,
-  `action` varchar(255) NOT NULL,
-  `value` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  `value_name` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `option_value`
 --
 
-INSERT INTO `option_value` (`id`, `option_id`, `language_id`, `value_name`, `action`, `value`) VALUES
-(1, 1, 1, 'Kirmizi', '+', '50'),
-(2, 1, 2, 'Red', '+', '50'),
-(3, 1, 1, 'Mavi', '+', '20'),
-(4, 1, 2, 'Blue', '+', '20');
+INSERT INTO `option_value` (`option_value_id`, `option_id`, `language_id`, `value_name`) VALUES
+(1, 1, 1, 'Kirmizi'),
+(1, 1, 2, 'Red'),
+(2, 1, 1, 'Mavi'),
+(2, 1, 2, 'Blue'),
+(3, 2, 1, 'Büyük'),
+(3, 2, 2, 'Large'),
+(4, 2, 1, 'Kücük'),
+(4, 2, 2, 'Small');
 
 -- --------------------------------------------------------
 
@@ -513,6 +516,30 @@ CREATE TABLE IF NOT EXISTS `product_option` (
 INSERT INTO `product_option` (`id`, `product_id`, `option_id`) VALUES
 (1, 4, 1),
 (3, 4, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `product_option_value`
+--
+
+CREATE TABLE IF NOT EXISTS `product_option_value` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `value_id` int(11) NOT NULL,
+  `operation` varchar(255) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+--
+-- Daten für Tabelle `product_option_value`
+--
+
+INSERT INTO `product_option_value` (`id`, `product_id`, `value_id`, `operation`, `price`) VALUES
+(9, 4, 3, '+', '100'),
+(3, 4, 1, '+', '20'),
+(4, 4, 2, '+', '10');
 
 -- --------------------------------------------------------
 
