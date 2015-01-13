@@ -18,6 +18,7 @@ class Product_option extends CI_Controller {
 	
 	public function lists(){
 		$this->load->model('admin/product_option_model');
+		$data["product_id"] = $this->uri->segment(4);
 		$data["options"] = $this->product_option_model->get_options($this->uri->segment(4));
 		$this->load->view('admin/product_option/list', $data);
    }
@@ -36,6 +37,16 @@ class Product_option extends CI_Controller {
 
    }
 
+	public function add(){
+		$this->load->model('admin/product_option_model');
+		$data["product_id"] = $this->uri->segment(4);
+		$data["options"] = $this->product_option_model->get_option_type_list();
+ 		if($_POST){
+		$this->product_option_model->add_new_option($_POST);
+		redirect($_SERVER['HTTP_REFERER']);
+		}
+		$this->load->view('admin/product_option/add', $data);
+   }
    
    public function value_update(){
  	$this->load->model('admin/product_option_model');
@@ -64,6 +75,14 @@ class Product_option extends CI_Controller {
 		redirect($_SERVER['HTTP_REFERER']);
    }
    
+ 	public function get_options(){
+		$this->load->model('admin/product_option_model');
  
+		$options_result = $this->product_option_model->get_option_result($this->input->post('option_type', TRUE));
+		foreach($options_result AS $opt_result){
+		echo '<option value="'.$opt_result->opt_value_id.'">'.$opt_result->option_name.'</option>';
+		
+		}
+   }
   
 }

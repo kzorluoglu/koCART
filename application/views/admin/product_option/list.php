@@ -5,7 +5,7 @@
                         <h1 class="page-header">
                             Dashboard <small>// Options List</small>
                         </h1>
-						 <p class="text-right"><a href="<?php echo $this->config->item('admin_url'); ?>product_option/add" class="btn btn-primary btn-lg active" role="button">Add New</a></p>
+						 <p class="text-right"><a href="<?php echo $this->config->item('admin_url'); ?>product_option/add/<?php echo $product_id; ?>" class="btn btn-primary btn-lg active" role="button">Add New</a></p>
 
   <table id="data-list" class="table table-bordered">
       <thead>

@@ -13,7 +13,7 @@
           <th>Image</th>
 		  <th>Name</th>
           <th>Rank</th>
-		  <th>Options</th>
+		  <th>General Attribute</th>
           <th>Action</th>
         </tr>
       </thead>

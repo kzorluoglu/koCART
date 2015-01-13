@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Erstellungszeit: 11. Jan 2015 um 23:11
+-- Erstellungszeit: 13. Jan 2015 um 20:23
 -- Server Version: 5.1.73
 -- PHP-Version: 5.4.33
 
@@ -507,7 +507,7 @@ CREATE TABLE IF NOT EXISTS `product_option` (
   `product_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Daten für Tabelle `product_option`
@@ -515,7 +515,11 @@ CREATE TABLE IF NOT EXISTS `product_option` (
 
 INSERT INTO `product_option` (`id`, `product_id`, `option_id`) VALUES
 (1, 4, 1),
-(3, 4, 2);
+(3, 4, 2),
+(4, 1, 2),
+(9, 2, 1),
+(10, 2, 1),
+(8, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -530,7 +534,7 @@ CREATE TABLE IF NOT EXISTS `product_option_value` (
   `operation` varchar(255) NOT NULL,
   `price` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Daten für Tabelle `product_option_value`
@@ -539,7 +543,12 @@ CREATE TABLE IF NOT EXISTS `product_option_value` (
 INSERT INTO `product_option_value` (`id`, `product_id`, `value_id`, `operation`, `price`) VALUES
 (9, 4, 3, '+', '100'),
 (3, 4, 1, '+', '20'),
-(4, 4, 2, '+', '10');
+(4, 4, 2, '+', '10'),
+(10, 4, 0, '+', ''),
+(11, 4, 0, '+', ''),
+(12, 4, 0, '+', ''),
+(13, 4, 0, '+', ''),
+(14, 4, 0, '+', '');
 
 -- --------------------------------------------------------
 

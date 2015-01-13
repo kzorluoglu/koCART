@@ -70,20 +70,6 @@ class Product extends CI_Controller {
 			$data["image"] = $product_info->image;
 			$data["product_description"] = $this->product_model->product_description($product_info->id);
 		}
-			
-		foreach($this->product_model->get_options($this->uri->segment(4)) as $options){
- 			$option[] = array(
-				'id' => $options->id,
-				'product_id' =>  $options->product_id,
-				'option_type' =>  $options->option_type,
-				'rank' =>  $options->rank,
-				'language_id' => $options->language_id,
-				'option_name' =>  $options->option_name,
-				'values' =>  $this->product_model->get_values($options->option_id, $options->product_id) //pr_value_id is product_option_value table -> id
-			);
-			}
-			$data["option"] = $option;
- 
  
 			$start = 0;
 			$limit = 100000000;
