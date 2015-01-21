@@ -42,7 +42,7 @@
 							$i = 1;
 							foreach ($slider_products AS $slider_product){ ?>
 								<div class="item <?php if($i == 1){ echo "active"; } ?>">
-                                    <img class="slide-image" src="<?php echo $slider_product['image']; ?>" alt="">
+                                    <a href="<?php echo base_url(); ?><?php echo $slider_product['url']; ?>"> <img class="slide-image" src="<?php echo $slider_product['image']; ?>" alt=""></a>
                                 </div>
 
 	

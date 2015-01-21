@@ -61,6 +61,25 @@ class Products_model extends CI_Model {
         return $query->result();
  
     }
+	     function product_options($id)
+    {			$this->db->select('product_option.*, option.*, option_description.*, option.id AS opt_id, option_description.id AS opt_id_for_value');
+ 				$this->db->where('product_id', $id);
+				$this->db->where('option_description.language_id', $this->session->userdata('lang'));
+				$this->db->join('option', 'option.id = product_option.option_id');
+				$this->db->join('option_description', 'option_description.option_id = product_option.option_id');
+				$query = $this->db->get("product_option");
+				return $query->result();
  
-	
+    }
+	     function product_options_value($option_id, $product_id)
+		 {
+ 
+   				$this->db->where('product_option_value.product_id', $product_id);
+				$this->db->join('option_value', 'option_value.option_value_id = product_option_value.value_id');
+				$this->db->where('option_value.option_id', $option_id);
+ 				$this->db->where('option_value.language_id', $this->session->userdata('lang'));
+ 				$query = $this->db->get("product_option_value");
+				return $query->result();
+ 
+    }
 }

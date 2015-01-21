@@ -5,6 +5,7 @@ class Product_option_model extends CI_Model {
   
  
 function get_options($id){
+				$this->db->select('product_option.*, option.*, option_description.*, product_option.id AS pr_opt_id');
 				$this->db->where('product_option.product_id', $id);
 				$this->db->where('option_description.language_id', $this->session->userdata('lang'));
 				$this->db->join('option', 'option.id = product_option.option_id');
@@ -39,17 +40,23 @@ function get_option_type_list(){
  
 	
  public function value_update($data){  
-				$i = 0;
-		foreach($data AS $value){
-				$this->db->query("UPDATE product_option_value SET operation = '" . $value['operation'][$i] . "', price = '" . $value['price'][$i] . "' WHERE id = '" . $value['pr_value_id'][$i]. "'");
-				$i++;
-			}
+ for ($i = 0; $i < count($data['pr_value_id']); $i++) {
+ 			$this->db->query("UPDATE product_option_value SET operation = '".$data['operation'][$i]."', price = '".$data['price'][$i]."' WHERE id = '".$data['pr_value_id'][$i]."'");
+
+
+ } 
+ 
+ 
 	}
 	
  public function delete_value($data){
 		$this->db->query("DELETE FROM product_option_value WHERE id = '" . (int)$data . "'");
  }
  
+ public function delete($data){
+		$this->db->query("DELETE FROM product_option WHERE id = '" . (int)$data . "'");
+ 
+ }
 	function get_values($option_id, $product_id){
 				$this->db->select('option_value.*, product_option_value.*, product_option_value.id AS pr_value_id');
 				$this->db->where('option_id', $option_id);
@@ -62,7 +69,7 @@ function get_option_type_list(){
 
 	}
 	
-	function get_values_list($option_id, $product_id){
+	function get_values_list($option_id){
  				$this->db->where('option_id', $option_id);
  				$this->db->where('language_id', $this->session->userdata('lang'));
 				$query = $this->db->get("option_value");

@@ -20,6 +20,7 @@ class Product_option extends CI_Controller {
 		$this->load->model('admin/product_option_model');
 		$data["product_id"] = $this->uri->segment(4);
 		$data["options"] = $this->product_option_model->get_options($this->uri->segment(4));
+		print_r($data["options"]);
 		$this->load->view('admin/product_option/list', $data);
    }
    
@@ -29,10 +30,10 @@ class Product_option extends CI_Controller {
 	
 	$data["option_id"] 	= $this->uri->segment(4);
 	$data["product_id"] = $this->uri->segment(5);
-	$data["value_list"] = $this->product_option_model->get_values_list($this->uri->segment(4), $this->uri->segment(5));
+	$data["value_list"] = $this->product_option_model->get_values_list($this->uri->segment(4));
 																// option_id			// product_id
 	$data["values"] =  $this->product_option_model->get_values($this->uri->segment(4), $this->uri->segment(5));
-   	
+ 
  	$this->load->view('admin/product_option/detail', $data);
 
    }
@@ -47,6 +48,13 @@ class Product_option extends CI_Controller {
 		}
 		$this->load->view('admin/product_option/add', $data);
    }
+  public function delete(){
+		$this->load->model('admin/product_option_model');
+
+		$this->product_option_model->delete($this->uri->segment(4));
+		redirect($_SERVER['HTTP_REFERER']);
+   }
+   
    
    public function value_update(){
  	$this->load->model('admin/product_option_model');

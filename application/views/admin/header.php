@@ -121,6 +121,9 @@
                      <li>
                         <a href="<?php echo $this->config->item('admin_url'); ?>product/lists"><i class="fa fa-fw fa-angle-double-right"></i>Products</a>
                     </li>
+                     <li>
+                        <a href="<?php echo $this->config->item('admin_url'); ?>option/lists"><i class="fa fa-fw fa-angle-double-right"></i>Option</a>
+                    </li>
                         </ul>
                     </li> 
   

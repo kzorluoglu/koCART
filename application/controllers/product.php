@@ -2,21 +2,7 @@
 
 class Product extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+ 
  
  
 	public function seolink()
@@ -26,6 +12,7 @@ class Product extends CI_Controller {
   		$this->lang->load('home', $this->session->userdata('lang_file'));
  
 		$currency_info = $this->currency_library->currency('currency');
+		$data["currency_sembol"] = $currency_info[0]->symbol; // For Right Side -> Option price 
  		//Products...
 		$id = $this->security->xss_clean($this->uri->segment(2));
 		foreach($this->products_model->product($id) AS $products){
@@ -49,6 +36,17 @@ class Product extends CI_Controller {
 		$data['product'] = $product;	
 		
  
+		foreach($this->products_model->product_options($id) AS $option){
+				$options[] = array(
+				   'id'					=> $option->id,
+ 				   'product_id'			=> $option->product_id,
+				   'option_type'		=> $option->option_type,
+ 				   'option_name'		=> $option->option_name,
+				   'values' 			=> $this->products_model->product_options_value($option->opt_id_for_value, $option->product_id)
+               );  
+			}
+		$data['options'] = $options; 
+ 
  		
 		//Cart...
 		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
@@ -59,5 +57,4 @@ class Product extends CI_Controller {
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+ 

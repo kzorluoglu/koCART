@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Erstellungszeit: 13. Jan 2015 um 20:23
+-- Erstellungszeit: 21. Jan 2015 um 23:18
 -- Server Version: 5.1.73
 -- PHP-Version: 5.4.33
 
@@ -76,16 +76,26 @@ CREATE TABLE IF NOT EXISTS `category` (
   `rank` int(11) NOT NULL,
   `link` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- Daten für Tabelle `category`
 --
 
 INSERT INTO `category` (`id`, `parent_id`, `rank`, `link`) VALUES
-(2, 0, 2, 'category/2/ikincimenu.html'),
-(3, 0, 3, 'category/3/ucuncumenu.html'),
-(15, 0, 1, 'category/15/birinci_menu.html');
+(2, 0, 2, 'category/2/desktops_all_in_ones.html'),
+(3, 0, 3, 'category/3/computer_components_parts.html'),
+(15, 0, 1, 'category/15/laptops_netbooks.html'),
+(16, 0, 4, 'category/16/category/16/tabletebook.html.html'),
+(17, 0, 6, 'category/17/category/17/drives_storage_blank_media.html.html'),
+(18, 0, 5, 'category/18/category/18/software.html.html'),
+(19, 18, 0, 'category/19/mac_os.html'),
+(20, 18, 0, 'category/20/windows.html'),
+(21, 16, 0, 'category/21/apple_tablets.html'),
+(22, 16, 0, 'category/22/android_tablets.html'),
+(23, 15, 0, 'category/23/acer_laptops.html'),
+(24, 15, 0, 'category/24/samsung_laptops.html'),
+(25, 15, 0, 'category/25/hp_laptops.html');
 
 -- --------------------------------------------------------
 
@@ -102,19 +112,39 @@ CREATE TABLE IF NOT EXISTS `category_description` (
   `meta_description` text NOT NULL,
   `meta_keyword` text NOT NULL,
   PRIMARY KEY (`ids`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=87 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=121 ;
 
 --
 -- Daten für Tabelle `category_description`
 --
 
 INSERT INTO `category_description` (`ids`, `category_id`, `language_id`, `category_name`, `description`, `meta_description`, `meta_keyword`) VALUES
-(1, 3, 1, 'Ucuncumenu', '', '', ''),
-(12, 2, 1, 'Ikincimenu', 'test', 'test', ''),
-(41, 2, 2, 'Second Menu', '', '', ''),
-(42, 3, 2, 'Third Menu', '', '', ''),
-(85, 15, 1, 'Birinci Menu', 'Birinci', 'Birinci', 'Birinci'),
-(86, 15, 2, 'First', 'First', 'First', 'First');
+(89, 15, 2, 'Laptops & Netbooks', 'Laptops & Netbooks', 'Laptops & Netbooks', 'Laptops & Netbooks'),
+(90, 15, 1, 'Dizüstü Bilgisayarlar', 'Dizüstü Bilgisayarlar', 'Dizüstü Bilgisayarlar', 'Dizüstü Bilgisayarlar'),
+(91, 2, 2, 'Desktops & All-In-Ones', 'Desktops & All-In-Ones', 'Desktops & All-In-Ones', 'Desktops & All-In-Ones'),
+(92, 2, 1, 'Masaüstü Bilgisayalar', 'Masaüstü Bilgisayalar', 'Masaüstü Bilgisayalar', 'Masaüstü Bilgisayalar'),
+(93, 3, 2, 'Computer Components & Parts', 'Computer Components & Parts', 'Computer Components & Parts', 'Computer Components & Parts'),
+(94, 3, 1, 'Bilgisayar Parcalari', 'Bilgisayar Parcalari', 'Bilgisayar Parcalari', 'Bilgisayar Parcalari'),
+(101, 19, 2, 'Mac OS', 'Mac OS', 'Mac OS', 'Mac OS'),
+(102, 19, 1, 'Mac OS', 'Mac OS', 'Mac OS', 'Mac OS'),
+(103, 20, 2, 'Windows', 'Windows', 'Windows', 'Windows'),
+(104, 20, 1, 'Windows', 'Windows', 'Windows', 'Windows'),
+(105, 21, 2, 'Apple Tablets', 'Apple Tablets', 'Apple Tablets', 'Apple Tablets'),
+(106, 21, 1, 'Apple Tabletler', 'Apple Tabletler', 'Apple Tabletler', 'Apple Tabletler'),
+(107, 22, 2, 'Android Tablets', 'Android Tablets', 'Android Tablets', 'Android Tablets'),
+(108, 22, 1, 'Android Tabletler', 'Android Tabletler', 'Android Tabletler', 'Android Tabletler'),
+(109, 23, 2, 'Acer Laptops', 'Acer Laptops', 'Acer Laptops', 'Acer Laptops'),
+(110, 23, 1, 'Acer Dizüstüler', 'Acer Dizüstüler', 'Acer Dizüstüler', 'Acer Dizüstüler'),
+(111, 24, 2, 'Samsung Laptops', 'Samsung Laptops', 'Samsung Laptops', 'Samsung Laptops'),
+(112, 24, 1, 'Samsung Dizüstüler', 'Samsung Dizüstüler', 'Samsung Dizüstüler', 'Samsung Dizüstüler'),
+(113, 25, 2, 'Hp Laptops', 'Hp Laptops', 'Hp Laptops', 'Hp Laptops'),
+(114, 25, 1, 'Hp Dizüstüler', 'Hp Dizüstüler', 'Hp Dizüstüler', 'Hp Dizüstüler'),
+(115, 16, 2, 'Tablet/eBook ', 'Tablet/eBook ', 'Tablet/eBook ', 'Tablet/eBook '),
+(116, 16, 1, 'Tablet Bilgisayar/e-Kitaplar', 'Tablet Bilgisayar/e-Kitaplar', 'Tablet Bilgisayar/e-Kitaplar', 'Tablet Bilgisayar/e-Kitaplar'),
+(117, 18, 2, 'Software', 'Software', 'Software', 'Software'),
+(118, 18, 1, 'Yazilim', 'Yazilim', 'Yazilim', 'Yazilim'),
+(119, 17, 2, 'Drives, Storage & Blank Media', 'Drives, Storage & Blank Media', 'Drives, Storage & Blank Media', 'Drives, Storage & Blank Media'),
+(120, 17, 1, 'Sürücüler, Depolama ve Boş Medya', 'Sürücüler, Depolama ve Boş Medya', 'Sürücüler, Depolama ve Boş Medya', 'Sürücüler, Depolama ve Boş Medya');
 
 -- --------------------------------------------------------
 
@@ -137,7 +167,24 @@ INSERT INTO `category_path` (`category_id`, `path_id`, `level`) VALUES
 (1, 1, 0),
 (2, 2, 0),
 (3, 3, 0),
-(15, 15, 0);
+(15, 15, 0),
+(16, 16, 0),
+(17, 17, 0),
+(18, 18, 0),
+(19, 18, 0),
+(19, 19, 1),
+(20, 18, 0),
+(20, 20, 1),
+(21, 16, 0),
+(21, 21, 1),
+(22, 16, 0),
+(22, 22, 1),
+(23, 15, 0),
+(23, 23, 1),
+(24, 15, 0),
+(24, 24, 1),
+(25, 15, 0),
+(25, 25, 1);
 
 -- --------------------------------------------------------
 
@@ -206,8 +253,8 @@ CREATE TABLE IF NOT EXISTS `language` (
 --
 
 INSERT INTO `language` (`id`, `language_name`, `file_name`, `flag`, `code`, `default`) VALUES
-(1, 'Türkce', 'turkish', 'http://www.sanmak.com.tr/img/enFlagSmall.png', 'tr', '1'),
-(2, 'English', 'english', 'http://www.sanmak.com.tr/img/trFlagBig.png', 'en', '');
+(1, 'Türkce', 'turkish', 'http://www.sanmak.com.tr/img/trFlagBig.png', 'tr', ''),
+(2, 'English', 'english', 'http://www.sanmak.com.tr/img/enFlagBig.png', 'en', '1');
 
 -- --------------------------------------------------------
 
@@ -258,11 +305,11 @@ CREATE TABLE IF NOT EXISTS `option` (
 INSERT INTO `option` (`id`, `option_type`, `rank`) VALUES
 (1, 'selectbox', 1),
 (2, 'checkbox', 2),
-(3, 'radio', 1),
-(4, 'textarea', 1),
-(5, 'date', 1),
-(6, 'file', 1),
-(7, 'input', 1);
+(3, 'radio', 3),
+(4, 'textarea', 6),
+(5, 'date', 5),
+(6, 'file', 4),
+(7, 'input', 7);
 
 -- --------------------------------------------------------
 
@@ -276,17 +323,19 @@ CREATE TABLE IF NOT EXISTS `option_description` (
   `language_id` int(11) NOT NULL,
   `option_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Daten für Tabelle `option_description`
 --
 
 INSERT INTO `option_description` (`id`, `option_id`, `language_id`, `option_name`) VALUES
-(1, 1, 1, 'Renk'),
-(2, 1, 2, 'Color'),
-(3, 2, 1, 'Boyut'),
-(4, 2, 2, 'Size');
+(18, 2, 1, 'Boyut'),
+(17, 2, 2, 'Size'),
+(13, 1, 2, 'Color'),
+(14, 1, 1, 'Renk'),
+(15, 2, 2, 'Gift'),
+(16, 2, 1, 'Hediye');
 
 -- --------------------------------------------------------
 
@@ -295,25 +344,37 @@ INSERT INTO `option_description` (`id`, `option_id`, `language_id`, `option_name
 --
 
 CREATE TABLE IF NOT EXISTS `option_value` (
+  `option_value_row_id` int(11) NOT NULL AUTO_INCREMENT,
   `option_value_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `value_name` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `value_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`option_value_row_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
 
 --
 -- Daten für Tabelle `option_value`
 --
 
-INSERT INTO `option_value` (`option_value_id`, `option_id`, `language_id`, `value_name`) VALUES
-(1, 1, 1, 'Kirmizi'),
-(1, 1, 2, 'Red'),
-(2, 1, 1, 'Mavi'),
-(2, 1, 2, 'Blue'),
-(3, 2, 1, 'Büyük'),
-(3, 2, 2, 'Large'),
-(4, 2, 1, 'Kücük'),
-(4, 2, 2, 'Small');
+INSERT INTO `option_value` (`option_value_row_id`, `option_value_id`, `option_id`, `language_id`, `value_name`) VALUES
+(28, 27, 15, 1, 'Anahtarlik'),
+(27, 27, 15, 2, 'Keychain'),
+(26, 25, 15, 1, 'Çakmak'),
+(25, 25, 15, 2, 'Lighter'),
+(24, 23, 13, 1, 'Turuncu'),
+(23, 23, 13, 2, 'Orange'),
+(22, 21, 13, 1, 'Beyaz'),
+(21, 21, 13, 2, 'Wheit'),
+(18, 17, 13, 1, 'Kirmizi'),
+(17, 17, 13, 2, 'Red'),
+(19, 19, 13, 2, 'Black'),
+(20, 19, 13, 1, 'Siyah'),
+(29, 29, 17, 2, 'Large'),
+(30, 29, 17, 1, 'Büyük'),
+(31, 31, 17, 2, 'Small'),
+(32, 31, 17, 1, 'Kücük'),
+(33, 33, 17, 2, 'Middle'),
+(34, 33, 17, 1, 'Orta');
 
 -- --------------------------------------------------------
 
@@ -384,7 +445,6 @@ CREATE TABLE IF NOT EXISTS `order_detail` (
 --
 
 INSERT INTO `order_detail` (`oid`, `order_id`, `product_id`, `count`) VALUES
-(17, 26, 3, 1),
 (18, 27, 4, 1),
 (19, 27, 3, 2),
 (20, 28, 3, 1),
@@ -454,7 +514,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 
 INSERT INTO `product` (`id`, `category_id`, `price`, `stock`, `image`, `url`, `rank`) VALUES
-(1, '15', 1500, 15, 'http://www.jolyjokerz.com/upload/files/images/Samsung-ATIV-Tab-Product-Image-5.jpg', 'product/1/product/1/deneme_slayt_urunu_1.html.html', 0),
+(1, '15', 1500, 15, 'http://www.jolyjokerz.com/upload/files/images/Samsung-ATIV-Tab-Product-Image-5.jpg', 'product/1/test_slider_product_1.html', 0),
 (2, '2', 1300, 55, 'http://core0.staticworld.net/images/article/2012/12/samsung_galaxy_s_iii_1182355_g5-original-100015856-large.jpeg', 'product/2/slider-urun2.html', 2),
 (3, '3', 111, 1, 'http://venus.vestel.com.tr/images/page07/model01Detail.png', 'product/3/most-sell-product.html', 0),
 (4, '2', 1321, 22, 'http://www.digitalage.com.tr/wp-content/uploads/2014/09/Yerli-tasarım-ve-üretim-eseri-akıllı-cep-telefonu-Venus-Eylül’de-tüketiciyle-buluşuyor.jpg', 'product/4/most-sell-product2.html', 0),
@@ -476,7 +536,7 @@ CREATE TABLE IF NOT EXISTS `product_description` (
   `meta_tags` text NOT NULL,
   `meta_keys` text NOT NULL,
   PRIMARY KEY (`description_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=71 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=73 ;
 
 --
 -- Daten für Tabelle `product_description`
@@ -493,8 +553,8 @@ INSERT INTO `product_description` (`description_id`, `product_id`, `language_id`
 (48, 4, 2, 'Test Most Sell Product 2', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'product, 4', 'product, 4'),
 (49, 6, 1, 'Populer Ürün 2', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', 'deneme', ''),
 (50, 6, 2, 'Popular Product 2', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '', ''),
-(69, 1, 1, 'Deneme Slayt Urunu 1', 'Türkçe Lorem Ipsum, tasarım yaparken "burada metin olacak" şeklinde yinelemeler yerine Türkçe''ye benzer şekilde anlamsız yazılar, lorem ipsum dolar sit amet, lorem ipsut text üretir. Böylece dikkatler tasarım üzerinde yoğunlaşmış olur, tasarım doğal görünür. ', 'urun, 1,', 'urun, 1,'),
-(70, 1, 2, 'Test Slider Product 1 ', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'product, 1,', 'product, 1');
+(71, 1, 2, 'Test Slider Product 1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'product, 1,', 'product, 1'),
+(72, 1, 1, 'Deneme Slayt Urunu 1', 'Türkçe Lorem Ipsum, tasarım yaparken ', 'urun, 1,', 'urun, 1,');
 
 -- --------------------------------------------------------
 
@@ -507,19 +567,16 @@ CREATE TABLE IF NOT EXISTS `product_option` (
   `product_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Daten für Tabelle `product_option`
 --
 
 INSERT INTO `product_option` (`id`, `product_id`, `option_id`) VALUES
-(1, 4, 1),
-(3, 4, 2),
-(4, 1, 2),
-(9, 2, 1),
-(10, 2, 1),
-(8, 2, 2);
+(18, 4, 2),
+(17, 1, 2),
+(16, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -534,21 +591,24 @@ CREATE TABLE IF NOT EXISTS `product_option_value` (
   `operation` varchar(255) NOT NULL,
   `price` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
 
 --
 -- Daten für Tabelle `product_option_value`
 --
 
 INSERT INTO `product_option_value` (`id`, `product_id`, `value_id`, `operation`, `price`) VALUES
-(9, 4, 3, '+', '100'),
-(3, 4, 1, '+', '20'),
-(4, 4, 2, '+', '10'),
-(10, 4, 0, '+', ''),
-(11, 4, 0, '+', ''),
-(12, 4, 0, '+', ''),
-(13, 4, 0, '+', ''),
-(14, 4, 0, '+', '');
+(36, 4, 29, '+', '66'),
+(35, 1, 25, '+', '22'),
+(33, 4, 23, '+', '11'),
+(34, 1, 27, '+', '11'),
+(32, 4, 19, '+', '55'),
+(31, 4, 17, '+', '44'),
+(30, 4, 21, '+', '33'),
+(40, 4, 25, '+', '1'),
+(39, 4, 27, '+', '22'),
+(38, 4, 31, '+', '11'),
+(37, 4, 33, '+', '22');
 
 -- --------------------------------------------------------
 

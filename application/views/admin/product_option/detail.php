@@ -25,10 +25,14 @@
  <tr>
  <td><?php echo $value->value_name; ?></td>
  <td>
- <input type="hidden" class="form-control" value="<?php echo $value->pr_value_id; ?>" name="values[pr_value_id][]">
- <input type="text" class="form-control" value="<?php echo $value->operation; ?>" name="values[operation][]">
+ <input type="hidden" class="form-control" value="<?php echo $value->pr_value_id; ?>" name="pr_value_id[]">
+ 		<select name="operation[]" class="form-control">
+		<option value="<?php echo $value->operation; ?>"><?php echo $value->operation; ?></option>
+		<option value="+">+</option>
+		<option value="-">-</option>
+		</select>
 </td>
-  <td><input type="text" class="form-control" value="<?php echo $value->price; ?>" name="values[price][]"></td>
+  <td><input type="text" class="form-control" value="<?php echo $value->price; ?>" name="price[]"></td>
  <td>
 	<a href="<?php echo $this->config->item('admin_url'); ?>product_option/delete_value/<?php echo $value->pr_value_id; ?>"><span class="glyphicon glyphicon-remove"></span></a>
  </td>

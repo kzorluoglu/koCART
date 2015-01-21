@@ -6,7 +6,7 @@
                             Dashboard <small>// Edit Product</small>
                         </h1>
  
- <?php //echo "<pre>"; print_r($option); echo "</pre>"; ?>
+ 
 		<form action="<?php echo $this->config->item('admin_url'); ?>product/update/<?php echo $id; ?>" method="post" accept-charset="utf-8" class="form-horizontal" role="form">				
 
 
@@ -44,7 +44,7 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Details </label>
     <div class="col-sm-10">
-      <input name="product_description[<?php echo $language->id; ?>][details]" value="<?php echo $product_description[$language->id]['details']; ?>" type="text" class="form-control" id="inputEmail3" >
+      <textarea name="product_description[<?php echo $language->id; ?>][details]" class="form-control" rows="27"><?php echo $product_description[$language->id]['details']; ?></textarea>
     </div>
   </div>
   

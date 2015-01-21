@@ -6,9 +6,11 @@ class Basket extends CI_Controller {
 	public function add()
 	{
  
+ 
 			$currency_info = $this->currency_library->currency();
  
-			$id = $this->security->xss_clean($this->uri->segment(3));
+	if($_POST){
+ 			$id = $this->security->xss_clean($this->input->post('id'));
 			$product = $this->products_model->product($id);
  
 			$data = array(
@@ -16,11 +18,14 @@ class Basket extends CI_Controller {
                'qty'     => 1,
                'price'   => $this->cart->format_number($product['0']->price * $currency_info[0]->currency),
                'name'    => $product['0']->name,
+               'options' => $id = $this->security->xss_clean($this->input->post('option_values'))
 
             );
  
 			$this->cart->insert($data);
-		    redirect($_SERVER['HTTP_REFERER']);
+			print_r($data);
+		    //redirect($_SERVER['HTTP_REFERER']);
+			}
 	}
 }
  

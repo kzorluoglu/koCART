@@ -24,7 +24,7 @@ function get_products(){
 		$this->db->query("UPDATE product SET url = '".$seourl."' WHERE id = '" . (int)$product_id . "'");
 		
 		foreach ($data['product_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $value['name'] . "', meta_tags = '" . $value['meta_tags'] . "', meta_keys = '" . $value['meta_keys'] . "', details = '" . $value['details'] . "'");
+			$this->db->query("INSERT INTO product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $value['name'] . "', meta_tags = '" . $value['meta_tags'] . "', meta_keys = '" . $value['meta_keys'] . "', details = '" . $this->db->escape_str($value['details']) . "'");
 		}
  }
  
@@ -52,7 +52,7 @@ function get_products(){
 			$product_description_data[$result->language_id] = array(
 				'name'    		=> $result->name,
 				'details'     	=> $result->details,
-				'meta_tags'	=> $result->meta_tags,
+				'meta_tags'		=> $result->meta_tags,
 				'meta_keys'		=> $result->meta_keys,
 			);
 		}
@@ -69,7 +69,7 @@ function get_products(){
 		
 		$this->db->query("DELETE FROM product_description WHERE product_id = '" . (int)$product_id . "'");
 			foreach ($data['product_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO `product_description` SET `product_id` = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', `name` = '" . $value['name'] . "', meta_tags = '" . $value['meta_tags'] . "', meta_keys = '" . $value['meta_keys'] . "', details = '" . $value['details'] . "'");
+			$this->db->query("INSERT INTO `product_description` SET `product_id` = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', `name` = '" . $value['name'] . "', meta_tags = '" . $value['meta_tags'] . "', meta_keys = '" . $value['meta_keys'] . "', details = '" . $this->db->escape_str($value['details']) . "'");
 		}
  
  

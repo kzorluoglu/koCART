@@ -9,12 +9,13 @@
  				 <?php echo $categories?> 
 					<br> 
              </div>
+              <div class="col-md-9">
+			  		<form action="<?php echo $this->config->item('base_url'); ?>basket/add" method="post" accept-charset="utf-8" class="form-horizontal" role="form">				
 
-             <div class="col-md-9">
-				                    	<?php foreach ($product AS $products){ ?>
- 
+				<?php foreach ($product AS $products){ ?>
+				<input type="hidden" name="id" value="<?php echo $products['id']; ?>" />
                 <div class="thumbnail">
-
+			
  
   
  
@@ -34,9 +35,64 @@
                         </h4>
 						  <p><?php echo $products['details']; ?> </p>
  
-						
+	<?php foreach($options AS $option){ ?>
+		
+		
+			<?php if($option["option_type"] == "selectbox"){ ?>
+				 <div class="form-group">
+					<label class="col-sm-2 col-sm-offset-7 control-label"><p align="right"><?php echo $option["option_name"]; ?></p></label>
+					<div class="col-sm-3">
+				<select name="option_values[]" class="form-control">
+				<option value=""></option>
+				<?php foreach($option["values"] AS $value){ ?>
+				<option value="<?php echo $value->id; ?>"><?php echo $value->value_name; ?>, <?php echo $value->operation; ?><?php echo $value->price; ?> <?php echo $currency_sembol; ?> </option>
+				<?php } ?>
+				</select>
+						<hr>		
+					</div>
+				  </div>
+			<?php } ?>
+			
+			<?php if($option["option_type"] == "checkbox"){ ?>
+				 <div class="form-group">
+					<label class="col-sm-2 col-sm-offset-7 control-label"><p align="right"><?php echo $option["option_name"]; ?></p></label>
+					<div class="col-sm-3">
+				<div class="checkbox">
+				<?php foreach($option["values"] AS $value){ ?>
+					<label>
+					  <input type="checkbox" name="option_values[]" value="<?php echo $value->id; ?>"> <?php echo $value->value_name; ?>, <?php echo $value->operation; ?><?php echo $value->price; ?> <?php echo $currency_sembol; ?>
+					</label>
+				<?php } ?>
+				</div>
+						<hr>		
+					</div>
+				  </div>
+			<?php } ?>
+		
+		
+			<?php if($option["option_type"] == "radio"){ ?>
+				 <div class="form-group">
+					<label class="col-sm-2 col-sm-offset-7 control-label"><p align="right"><?php echo $option["option_name"]; ?></p></label>
+					<div class="col-sm-3">
+				<div class="checkbox">
+				<?php foreach($option["values"] AS $value){ ?>
+					<label>
+					  <input type="radio" name="option_values[]" value="<?php echo $value->id; ?>"> <?php echo $value->value_name; ?>, <?php echo $value->operation; ?><?php echo $value->price; ?> <?php echo $currency_sembol; ?>
+					</label>
+				<?php } ?>
+				</div>
+						<hr>		
+					</div>
+				  </div>
+			<?php } ?>
+		
+		
+		
+		
+		
+		<?php } ?>
 						<br /><br />					
-						<center><h3><a href="<?php echo base_url(); ?>basket/add/<?php echo $products['id']; ?>"><span class="glyphicon glyphicon-shopping-cart" ></span> Add Basket</a></h3></center>
+						<center><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart" ></span> Add Basket</button></center>
                       
                     </div>
                     <div class="ratings">
