@@ -35,8 +35,8 @@ class Product extends CI_Controller {
 			}
 		$data['product'] = $product;	
 		
- 
-		foreach($this->products_model->product_options($id) AS $option){
+		if($this->products_model->product_options($id)){
+			foreach($this->products_model->product_options($id) AS $option){
 				$options[] = array(
 				   'id'					=> $option->id,
  				   'product_id'			=> $option->product_id,
@@ -45,7 +45,9 @@ class Product extends CI_Controller {
 				   'values' 			=> $this->products_model->product_options_value($option->opt_id_for_value, $option->product_id)
                );  
 			}
-		$data['options'] = $options; 
+					$data['options'] = $options; 
+		}
+
  
  		
 		//Cart...

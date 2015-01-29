@@ -82,4 +82,25 @@ class Products_model extends CI_Model {
 				return $query->result();
  
     }
+	
+	     function option_price_total($option)
+		 {
+			$query = $this->db->query("SELECT SUM(price) as total FROM product_option_value WHERE id IN (" . implode(',', array_map('intval', $option)) . ")");
+			return $query->row('total');
+ 
+    }
+	
+	     function cart_product_options($options_id)
+		 {
+		 if($options_id){
+				$this->db->join('option_value', 'option_value.option_value_id = product_option_value.value_id');
+ 				$this->db->where('option_value.language_id', $this->session->userdata('lang'));
+				$this->db->where_in('id', $options_id);
+ 				$query = $this->db->get("product_option_value");
+				return $query->result();
+			}
+ 
+ 
+    }
+	
 }

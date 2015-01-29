@@ -85,7 +85,7 @@ class Product extends CI_Controller {
 
 	
 	if($_POST){
-	//$this->product_model->add($_POST);
+	$this->product_model->add($_POST);
 	}
 	
 	
@@ -103,7 +103,7 @@ class Product extends CI_Controller {
 
    
    	if($_POST){
-		//$this->product_model->update($this->uri->segment(4), $_POST);
+		$this->product_model->update($this->uri->segment(4), $_POST);
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 	else{

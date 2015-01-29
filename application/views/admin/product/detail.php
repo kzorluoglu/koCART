@@ -44,7 +44,7 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Details </label>
     <div class="col-sm-10">
-      <textarea name="product_description[<?php echo $language->id; ?>][details]" class="form-control" rows="27"><?php echo $product_description[$language->id]['details']; ?></textarea>
+      <textarea name="product_description[<?php echo $language->id; ?>][details]" id="editor<?php echo $language->id; ?>" class="form-control" rows="27"><?php echo $product_description[$language->id]['details']; ?></textarea>
     </div>
   </div>
   
@@ -62,6 +62,12 @@
   </div>
   
   </div>
+                <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor<?php echo $language->id; ?>' );
+            </script>
+
 <? } else { ?>
   <div role="tabpanel" class="tab-pane fade" id="<?php echo $language->id; ?>">
    <br>
@@ -76,7 +82,7 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Details </label>
     <div class="col-sm-10">
-      <input name="product_description[<?php echo $language->id; ?>][details]" value="<?php echo $product_description[$language->id]['details']; ?>" type="text" class="form-control" id="inputEmail3" >
+      <textarea name="product_description[<?php echo $language->id; ?>][details]" id="editor<?php echo $language->id; ?>" class="form-control" rows="27"><?php echo $product_description[$language->id]['details']; ?></textarea>
     </div>
   </div>
   
@@ -95,7 +101,11 @@
   
   
   </div>
-  
+              <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor<?php echo $language->id; ?>' );
+            </script>
 
 	 
 
@@ -122,19 +132,12 @@
 		</select>
     </div>
   </div>	
-    <!-- Seo URL Load  js/freindurl.js -->
-  		  <script type="text/javascript">
-				  $(function(){
- 
-							$('#inputNameStandart').friendurl({id : 'inputSEO', divider: '_', transliterate: true});
-
-					});
-		</script>			 
+ 		 
   
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">SEO Link</label>
     <div class="col-sm-10">
-      <input name="url" type="text" value="<?php echo $url; ?>" readonly="readonly" class="form-control" id="inputSEO" >
+      <input name="url" type="text" value="<?php echo $url; ?>" readonly="readonly" class="form-control" >
     </div>
   </div>
   <div class="form-group">

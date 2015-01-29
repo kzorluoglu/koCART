@@ -76,7 +76,7 @@
                                 <h4><a href="<?php echo base_url(); ?><?php echo $most_sell_product['url']; ?>"><?php echo $most_sell_product['name']; ?></a> 
                                 </h4>
 								           <h4 class="pull-right"><?php echo $most_sell_product['price']; ?></h4>
-                                <p><?php echo $most_sell_product['details']; ?></p>
+ 								<p><?php echo strip_tags(substr($most_sell_product['details'], 0, 45)); ?></p>
 								<p><a href="<?php echo base_url(); ?>basket/add/<?php echo $most_sell_product['id']; ?>"><?php echo $this->lang->line('add_basket'); ?></a>
                             </div>
                             <div class="ratings">
@@ -110,7 +110,7 @@
                                 <h4><a href="<?php echo base_url(); ?><?php echo $most_popular_product['url']; ?>"><?php echo $most_popular_product['name']; ?></a> 
                                 </h4>
 								           <h4 class="pull-right"><?php echo $most_popular_product['price']; ?></h4>
-                                <p><?php echo $most_popular_product['details']; ?></p>
+ 								<p><?php echo strip_tags(substr($most_popular_product['details'], 0, 45)); ?></p>
 								<p><a href="<?php echo base_url(); ?>basket/add/<?php echo $most_popular_product['id']; ?>"><?php echo $this->lang->line('add_basket'); ?></a>
                             </div>
                             <div class="ratings">

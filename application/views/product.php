@@ -31,10 +31,10 @@
                     <img class="img-responsive" src="<?php echo $products['image']; ?>" alt="">
                     <div class="caption-full">
                         <h4 class="pull-right"><?php echo $products['price']; ?></h4>
-                        <h4><a href="<?php echo base_url(); ?>product/<?php echo $products['id']; ?>"><?php echo $products['name']; ?></a> 
-                        </h4>
+                        <h4><a href="<?php echo base_url(); ?>product/<?php echo $products['id']; ?>"><?php echo $products['name']; ?></a></h4>
 						  <p><?php echo $products['details']; ?> </p>
  
+ <?php if(@$options){ ?>
 	<?php foreach($options AS $option){ ?>
 		
 		
@@ -90,7 +90,9 @@
 		
 		
 		
-		<?php } ?>
+		<?php } // Option Foreach End ?>
+		
+				<?php } // If Option have END?>
 						<br /><br />					
 						<center><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart" ></span> Add Basket</button></center>
                       

@@ -78,6 +78,14 @@
 			</td>
 			<td>
 			<?php echo $items['name']; ?>
+			<?php if($items['options']){ ?>
+			<br>
+				<?php foreach($items['options'] AS $option){ ?>
+				
+				<b>&not;</b> <small><?php echo $option->value_name; ?> (<?php echo $option->operation; ?> <?php echo $this->cart->format_number($option->price * $currency); ?> <?php echo $symbol; ?>)</small> 
+				<?php } ?>
+			
+			<? } ?>
 		  </td>
 		  <td style="text-align:right"><?php echo $items['price']; ?></td>
 		  <td style="text-align:right"> <?php echo $items['subtotal']; ?></td>

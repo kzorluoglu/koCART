@@ -35,6 +35,11 @@
 	<!-- Freind URL Plug-in-->
  <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.friendurl.js"></script>
  
+ 	<!-- ckeditor Plug-in | Setup Script Nexte Textareas-->
+	 
+<script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
+
+ 
  <!-- Jquery UI FULL-->
   <link href="<?php echo base_url();?>jquery-ui-1.11.2.custom/jquery-ui.css" rel="stylesheet" type="text/css" />
  <script type="text/javascript" src="<?php echo base_url();?>jquery-ui-1.11.2.custom/jquery-ui.js"></script>
