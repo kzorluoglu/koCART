@@ -49,8 +49,7 @@ class Currency extends CI_Controller {
 		$this->load->model('admin/currency_model');
   
     	if($_POST){
-			$add = false;
-			//$add = $this->currency_model->add($_POST);
+			$add = $this->currency_model->add($_POST);
 			if($add){
 				$this->session->set_flashdata('action_message', 'New Currency added!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -69,8 +68,7 @@ class Currency extends CI_Controller {
 		$this->load->model('admin/currency_model');
  
     	if($_POST){
-			$update = false;
-			//$update = $this->currency_model->update($this->uri->segment(4), $_POST);
+			$update = $this->currency_model->update($this->uri->segment(4), $_POST);
 			if($update){
 				$this->session->set_flashdata('action_message', 'Currency updated!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -89,8 +87,7 @@ class Currency extends CI_Controller {
 	$this->load->model('admin/currency_model');
 	
  
-			$delete = false;
-			//$delete = $this->currency_model->delete($this->uri->segment(4));
+			$delete = $this->currency_model->delete($this->uri->segment(4));
 			if($delete){
 				$this->session->set_flashdata('action_message', 'Currency deleted!');
 				$this->session->set_flashdata('action_message_type', 'success');

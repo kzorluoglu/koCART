@@ -24,8 +24,7 @@ class Settings extends CI_Controller {
    		$this->load->model('admin/currency_model');
 
        	if($_POST){
-			$update = false;
-			//$update = $this->settings_model->update(1, $_POST);
+			$update = $this->settings_model->update(1, $_POST);
 			if($update){
 				$this->session->set_flashdata('action_message', 'Settings updated!');
 				$this->session->set_flashdata('action_message_type', 'success');

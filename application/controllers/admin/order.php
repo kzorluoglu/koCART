@@ -42,8 +42,7 @@ class Order extends CI_Controller {
    		$this->load->model('admin/order_model');
 		
 		if($_POST){
-			$update_comment = false;
-			//$update_comment = $update = $this->order_model->update_comment($_POST);
+			$update_comment = $update = $this->order_model->update_comment($_POST);
 			if($update_comment){
 				$this->session->set_flashdata('action_message', 'Order comment updated!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -75,8 +74,7 @@ class Order extends CI_Controller {
 		$this->load->model('admin/order_model');
 
        	if($_POST){
-			$add_product = false;
-			//$add_product = $this->order_model->productadd($_POST);
+			$add_product = $this->order_model->productadd($_POST);
 			if($add_product){
 				$this->session->set_flashdata('action_message', 'New product added in Order!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -93,8 +91,7 @@ class Order extends CI_Controller {
    public function product_delete(){
       		$this->load->model('admin/order_model');
 			
- 			$delete_product = false;
-			//$delete_product = $this->order_model->productdelete($this->uri->segment(4));
+			$delete_product = $this->order_model->productdelete($this->uri->segment(4));
 			if($delete_product){
 				$this->session->set_flashdata('action_message', 'Product deleted in Order!');
 				$this->session->set_flashdata('action_message_type', 'success');

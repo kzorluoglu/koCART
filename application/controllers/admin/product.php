@@ -73,8 +73,7 @@ class Product extends CI_Controller {
 
 	
        	if($_POST){
-			$add = false;
-			//$add = $this->product_model->add($_POST);
+ 			$add = $this->product_model->add($_POST);
 			if($add){
 				$this->session->set_flashdata('action_message', 'New product added!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -102,8 +101,7 @@ class Product extends CI_Controller {
    	$this->load->model('admin/product_model');
 
         	if($_POST){
-			$update = false;
-			//$update = $this->product_model->update($this->uri->segment(4), $_POST);
+ 			$update = $this->product_model->update($this->uri->segment(4), $_POST);
 			if($update){
 				$this->session->set_flashdata('action_message', 'Product updated!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -122,10 +120,7 @@ class Product extends CI_Controller {
    public function delete(){
 	$this->load->model('admin/product_model');
  
- 
- 
-			$delete = false;
-			//$delete = $this->product_model->delete($this->uri->segment(4));
+			$delete = $this->product_model->delete($this->uri->segment(4));
 			if($delete){
 				$this->session->set_flashdata('action_message', 'Product deleted!');
 				$this->session->set_flashdata('action_message_type', 'success');

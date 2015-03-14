@@ -50,8 +50,7 @@ class Option extends CI_Controller {
  		$data["options"] = $this->option_model->get_option_list();
 			
       	if($_POST){
-			$add = false;
-			//$add = $this->option_model->add_new_option($_POST);
+			$add = $this->option_model->add_new_option($_POST);
 			if($add){
 				$this->session->set_flashdata('action_message', 'New option added!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -74,8 +73,8 @@ class Option extends CI_Controller {
 		$data["option_id"] 	= $this->uri->segment(4);
 		
       	if($_POST){
-			$add_value = false;
-			//$add_value = $this->option_model->add_new_value($_POST);
+			
+			$add_value = $this->option_model->add_new_value($_POST);
 			if($add_value){
 				$this->session->set_flashdata('action_message', 'New option value added!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -94,8 +93,7 @@ class Option extends CI_Controller {
   public function delete(){
 		$this->load->model('admin/option_model');
  
-			$delete_option = false;
-			//$delete_option = $this->option_model->delete_option($this->uri->segment(4));
+			$delete_option = $this->option_model->delete_option($this->uri->segment(4));
 			if($delete_option){
 				$this->session->set_flashdata('action_message', 'Option deleted!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -112,8 +110,8 @@ class Option extends CI_Controller {
  	$this->load->model('admin/option_model');
  			
       	if($_POST){
-			$update_value = false;
-			//$update_value = $this->option_model->value_update($_POST);
+			
+			$update_value = $this->option_model->value_update($_POST);
 			if($update_value){
 				$this->session->set_flashdata('action_message', 'Option value updated!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -130,11 +128,10 @@ class Option extends CI_Controller {
  
    public function add_value(){
     	$this->load->model('admin/product_option_model');
-
  		
       	if($_POST){
-			$add_value_next = false;
-			//$add_value_next = $this->product_option_model->add_new_value($_POST);
+			
+			$add_value_next = $this->product_option_model->add_new_value($_POST);
 			if($add_value_next){
 				$this->session->set_flashdata('action_message', 'New option value added!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -152,9 +149,7 @@ class Option extends CI_Controller {
    public function delete_value(){
  	$this->load->model('admin/product_option_model');
 	
- 
-			$delete_value = false;
-			//$delete_value = $this->product_option_model->delete_value($this->uri->segment(4));
+			$delete_value = $this->product_option_model->delete_value($this->uri->segment(4));
 			if($delete_value){
 				$this->session->set_flashdata('action_message', 'Value deleted!');
 				$this->session->set_flashdata('action_message_type', 'success');
