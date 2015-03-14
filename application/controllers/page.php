@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Page extends CI_Controller {
+class Page extends KoController {
 
 	/**
 	 * Index Page for this controller.
@@ -23,8 +23,7 @@ class Page extends CI_Controller {
 	{
  
 		
-  		$this->lang->load('home', $this->session->userdata('lang_file'));
- 		$this->load->model('pages_model');
+  		$this->load->model('pages_model');
  
 		//Products...
 		$data['page_details'] = $this->pages_model->pages_detail($this->uri->segment(2));

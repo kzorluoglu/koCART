@@ -77,7 +77,11 @@
                                 </h4>
 								           <h4 class="pull-right"><?php echo $most_sell_product['price']; ?></h4>
  								<p><?php echo strip_tags(substr($most_sell_product['details'], 0, 45)); ?></p>
-								<p><a href="<?php echo base_url(); ?>basket/add/<?php echo $most_sell_product['id']; ?>"><?php echo $this->lang->line('add_basket'); ?></a>
+								<p>
+										<form action="<?php echo $this->config->item('base_url'); ?>basket/add" method="post" accept-charset="utf-8" class="form-horizontal" role="form">				
+										<input type="hidden" name="id" value="<?php echo $most_sell_product['product_id']; ?>" />
+										<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart" ></span><?php echo $this->lang->line('add_basket'); ?></button>
+								</p>
                             </div>
                             <div class="ratings">
                                 <p class="pull-right">15 <?php echo $this->lang->line('reviews'); ?></p>
@@ -111,7 +115,11 @@
                                 </h4>
 								           <h4 class="pull-right"><?php echo $most_popular_product['price']; ?></h4>
  								<p><?php echo strip_tags(substr($most_popular_product['details'], 0, 45)); ?></p>
-								<p><a href="<?php echo base_url(); ?>basket/add/<?php echo $most_popular_product['id']; ?>"><?php echo $this->lang->line('add_basket'); ?></a>
+							 	<p>
+										<form action="<?php echo $this->config->item('base_url'); ?>basket/add" method="post" accept-charset="utf-8" class="form-horizontal" role="form">				
+										<input type="hidden" name="id" value="<?php echo $most_sell_product['product_id']; ?>" />
+										<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart" ></span><?php echo $this->lang->line('add_basket'); ?></button>
+								</p>
                             </div>
                             <div class="ratings">
                                 <p class="pull-right">15 <?php echo $this->lang->line('reviews'); ?></p>

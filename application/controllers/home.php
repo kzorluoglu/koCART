@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends KoController  {
 
 	/**
 	 * Index Page for this controller.
@@ -19,16 +19,12 @@ class Home extends CI_Controller {
 	 */
 	 	function __construct()
     {
-        // Call the Model constructor
-        parent::__construct();
-		// If the session language null value 
+         parent::__construct();
 
-		
     }
 	public function index()
 	{
   
-  		$this->lang->load('home', $this->session->userdata('lang_file'));
 		
 		
 		$currency_info = $this->currency_library->currency('currency');

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Basket extends CI_Controller {
+class Basket extends KoController {
  
 	
 	public function add()
@@ -48,9 +48,8 @@ class Basket extends CI_Controller {
 				$data['options'] =  $option;
 
 			}
-			print_r($data);
-			$this->cart->insert($data);
-		    //redirect($_SERVER['HTTP_REFERER']);
+ 			$this->cart->insert($data);
+		    redirect($_SERVER['HTTP_REFERER']);
 			}
 	}
 }

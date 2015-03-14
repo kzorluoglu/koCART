@@ -53,7 +53,8 @@
                 </div>
 
                 <div class="row">
-				<h4>The Best-Selling Products</h4>
+				<h4>Category Products</h4>
+				<?php if($category_products){ ?>
                     	<?php foreach ($category_products AS $category_product){ ?>
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
@@ -81,6 +82,11 @@
                     </div>
 	<?php } ?>
  
+				<? } 		// if category_products is TRUE END
+				else{		// ELSE empty message SHOW
+				?>
+				Category is empty!
+			<?php	}?>
 
                 </div>
 

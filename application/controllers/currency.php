@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Currency extends CI_Controller {
+class Currency extends KoController {
  
 	
 	public function set()

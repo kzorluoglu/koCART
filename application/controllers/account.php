@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Account extends CI_Controller {
+class Account extends KoController {
 
 	/**
 	 * Index Page for this controller.
@@ -22,8 +22,7 @@ class Account extends CI_Controller {
 	public function login()
 	{
  
-  		$this->lang->load('home', $this->session->userdata('lang_file'));
-
+ 
 		$currency_info = $this->currency_library->currency('currency');
 		
 		//Cart Total...

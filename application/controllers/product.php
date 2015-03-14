@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Product extends CI_Controller {
+class Product extends KoController {
 
  
  
@@ -9,8 +9,7 @@ class Product extends CI_Controller {
 	{
  
 		
-  		$this->lang->load('home', $this->session->userdata('lang_file'));
- 
+  
 		$currency_info = $this->currency_library->currency('currency');
 		$data["currency_sembol"] = $currency_info[0]->symbol; // For Right Side -> Option price 
  		//Products...

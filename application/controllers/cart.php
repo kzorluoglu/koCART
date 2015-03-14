@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Cart extends CI_Controller {
+class Cart extends KoController {
 
 	public function index()
 	{
@@ -8,8 +8,7 @@ class Cart extends CI_Controller {
 			redirect('home');
 		 }
 		
-  		$this->lang->load('home', $this->session->userdata('lang_file'));
- 		$this->lang->load('cart', $this->session->userdata('lang_file'));
+  		$this->lang->load('cart', $this->session->userdata('lang_file'));
 
 		
 		

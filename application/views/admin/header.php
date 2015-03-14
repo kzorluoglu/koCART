@@ -33,11 +33,14 @@
     <script src="<?php echo base_url(); ?>js/plugins/morris/raphael.min.js"></script>
 	
 	<!-- Freind URL Plug-in-->
- <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.friendurl.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.friendurl.js"></script>
  
- 	<!-- ckeditor Plug-in | Setup Script Nexte Textareas-->
-	 
-<script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
+ 	<!-- ckeditor Plug-in | Setup Script Nexte Textareas--> 
+	<script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
+ 	
+	<!-- bootstrap-notify Plug-in | Right-Bottom Notification Message windows for Admin Panel--> 
+	<script src="<?php echo base_url(); ?>js/bootstrap-notify.js"></script>
+
 
  
  <!-- Jquery UI FULL-->
@@ -109,6 +112,23 @@
                     </ul>
                 </li>
             </ul>
+			
+			 <?php if($this->session->flashdata('action_message')){?>
+                 <!-- //Notification Message Box -->
+				 <script>
+$.notify({
+	message: '<?php echo $this->session->flashdata('action_message'); ?>'
+	
+	},{
+	// settings
+	type: '<?php echo $this->session->flashdata('action_message_type'); ?>'
+});
+		</script>
+ 	
+		<!-- // Notification Message Box -->
+
+<? } ?>
+			
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                <ul class="nav navbar-nav side-nav">

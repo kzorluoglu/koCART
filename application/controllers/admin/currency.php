@@ -6,13 +6,15 @@ class Currency extends CI_Controller {
 		{
 			parent::__construct();
 			
+			if(! $this->session->userdata('validated')){
+            redirect('admin/account/login');
+        }
+		
 		}
  
  
 	public function index(){
-		if(! $this->session->userdata('validated')){
-            redirect('admin/account/login');
-        }
+ 
 	}
 	
 	public function lists(){
@@ -45,33 +47,62 @@ class Currency extends CI_Controller {
    }
    public function Add(){
 		$this->load->model('admin/currency_model');
- 	
-		if($_POST){
-			//$this->currency_model->add($_POST);
-		}
+  
+    	if($_POST){
+			$add = false;
+			//$add = $this->currency_model->add($_POST);
+			if($add){
+				$this->session->set_flashdata('action_message', 'New Currency added!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'New Currency not added!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+	}
  
 		$this->load->view('admin/currency/add');
    }
    
    public function update(){
 		$this->load->model('admin/currency_model');
-
-   
-		if($_POST){
-			//$this->currency_model->update($this->uri->segment(4), $_POST);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
-		else{
-			redirect($_SERVER['HTTP_REFERER']);
-		}
+ 
+    	if($_POST){
+			$update = false;
+			//$update = $this->currency_model->update($this->uri->segment(4), $_POST);
+			if($update){
+				$this->session->set_flashdata('action_message', 'Currency updated!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'Currency not updated!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+	}
+ 
    
    }
    
    public function delete(){
 	$this->load->model('admin/currency_model');
+	
  
-			//$this->currency_model->delete($this->uri->segment(4));
-			redirect($_SERVER['HTTP_REFERER']);
+			$delete = false;
+			//$delete = $this->currency_model->delete($this->uri->segment(4));
+			if($delete){
+				$this->session->set_flashdata('action_message', 'Currency deleted!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'Currency not deleted!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+ 
+ 
+ 
 
    }
    

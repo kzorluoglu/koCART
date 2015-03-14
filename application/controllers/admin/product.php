@@ -2,32 +2,20 @@
 
 class Product extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+ 
 		function __construct()
 		{
 			parent::__construct();
 			
+			if(! $this->session->userdata('validated')){
+            redirect('admin/account/login');
+        }
+		
 		}
  
  
 	public function index(){
-		if(! $this->session->userdata('validated')){
-            redirect('admin/account/login');
-        }
+ 
 	}
 	
 	public function lists(){
@@ -84,9 +72,21 @@ class Product extends CI_Controller {
 	$this->load->model('admin/language_model');
 
 	
-	if($_POST){
-	$this->product_model->add($_POST);
+       	if($_POST){
+			$add = false;
+			//$add = $this->product_model->add($_POST);
+			if($add){
+				$this->session->set_flashdata('action_message', 'New product added!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'New product not added!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
 	}
+	
+ 
 	
 	
 	$data["languages"] = $this->language_model->languages();
@@ -101,29 +101,43 @@ class Product extends CI_Controller {
    public function update(){
    	$this->load->model('admin/product_model');
 
-   
-   	if($_POST){
-		$this->product_model->update($this->uri->segment(4), $_POST);
-		redirect($_SERVER['HTTP_REFERER']);
+        	if($_POST){
+			$update = false;
+			//$update = $this->product_model->update($this->uri->segment(4), $_POST);
+			if($update){
+				$this->session->set_flashdata('action_message', 'Product updated!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'Product not updated!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
 	}
-	else{
-	redirect($_SERVER['HTTP_REFERER']);
-	}
+		
+	 
    
    }
    
    public function delete(){
 	$this->load->model('admin/product_model');
  
-			//$this->product_model->delete($this->uri->segment(4));
-			redirect($_SERVER['HTTP_REFERER']);
-			
-			
-	 
+ 
+ 
+			$delete = false;
+			//$delete = $this->product_model->delete($this->uri->segment(4));
+			if($delete){
+				$this->session->set_flashdata('action_message', 'Product deleted!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'Product not deleted!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+ 
    }
    
    
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+ 

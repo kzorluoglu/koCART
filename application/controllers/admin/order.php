@@ -2,32 +2,20 @@
 
 class Order extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+ 
 		function __construct()
 		{
 			parent::__construct();
 			
+			if(! $this->session->userdata('validated')){
+            redirect('admin/account/login');
+        }
+		
 		}
  
  
 	public function index(){
-		if(! $this->session->userdata('validated')){
-            redirect('admin/account/login');
-        }
+ 
 	}
 	
 	public function lists(){
@@ -52,57 +40,75 @@ class Order extends CI_Controller {
    
    public function detail(){
    		$this->load->model('admin/order_model');
-			 if($_POST){
-				//$update = $this->order_model->update_comment($_POST);
-				if($update){
-						redirect($_SERVER['HTTP_REFERER']);
-				}
-				else{
+		
+		if($_POST){
+			$update_comment = false;
+			//$update_comment = $update = $this->order_model->update_comment($_POST);
+			if($update_comment){
+				$this->session->set_flashdata('action_message', 'Order comment updated!');
+				$this->session->set_flashdata('action_message_type', 'success');
 				redirect($_SERVER['HTTP_REFERER']);
-				}
-			 }
-			 
+			}else{
+				$this->session->set_flashdata('action_message', 'Order comment not updated!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+	}
+ 			 
  		$data["order"] = $this->order_model->detail($this->uri->segment(4));
 		$data["products"] = $this->order_model->products($this->uri->segment(4));
-		// Add Product Tab $order_id
-		$data["order_id"] = $this->uri->segment(4);
+		$data["order_id"] = $this->uri->segment(4);		// Add Product Tab $order_id
 		
    		$this->load->view('admin/order/detail', $data);
 
    }
    
-      function get_product_name(){
-   	$this->load->model('admin/module_model');	
-    if(isset($_GET['term'])){
-		$q = strtolower($_GET['term']);
-		$this->module_model->get_products($q);
-    }
-  }
+	function get_product_name(){
+		$this->load->model('admin/module_model');	
+		if(isset($_GET['term'])){
+			$q = strtolower($_GET['term']);
+			$this->module_model->get_products($q);
+		}
+	}
    
    public function product_add(){
-      		$this->load->model('admin/order_model');
+		$this->load->model('admin/order_model');
 
-   			 if($_POST){
-				//$update = $this->order_model->productadd($_POST);
-				if($update){
-						redirect($_SERVER['HTTP_REFERER']);
-				}
-				else{
+       	if($_POST){
+			$add_product = false;
+			//$add_product = $this->order_model->productadd($_POST);
+			if($add_product){
+				$this->session->set_flashdata('action_message', 'New product added in Order!');
+				$this->session->set_flashdata('action_message_type', 'success');
 				redirect($_SERVER['HTTP_REFERER']);
-				}
-			  }
+			}else{
+				$this->session->set_flashdata('action_message', 'New product not added in Order!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+	}
+  
    }
    
    public function product_delete(){
       		$this->load->model('admin/order_model');
- 
-			$update = $this->order_model->productdelete($this->uri->segment(4));
-			redirect($_SERVER['HTTP_REFERER']);
+			
+ 			$delete_product = false;
+			//$delete_product = $this->order_model->productdelete($this->uri->segment(4));
+			if($delete_product){
+				$this->session->set_flashdata('action_message', 'Product deleted in Order!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'Product not deleted in Order!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+  
  
    }
    
    
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+ 

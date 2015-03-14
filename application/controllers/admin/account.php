@@ -2,26 +2,12 @@
 
 class Account extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+ 
 		function __construct()
 		{
 			parent::__construct();
-			session_start(); // For KCFinder -> browser.php $_SESSION['validated'] creating.
-							  // account_model have $_SESSION['validated'] created.
+			session_start(); 	// For KCFinder -> browser.php $_SESSION['validated'] creating.
+								// account_model have $_SESSION['validated'] created.
 
 		}
 	
@@ -40,11 +26,10 @@ class Account extends CI_Controller {
       $result = $this->login->validate();
 
         if(!$result){
-
-           $this->load->view('admin/account/login');
+			$this->load->view('admin/account/login');
         }else{
-
-            redirect('admin/dashboard');
+			$this->session->set_flashdata('action_message', 'Hosgeldiniz, Welcome, <font size="4">أهلاً وسهلاً</font>, Bienvenida, Benvenuto,  Bienvenue ');
+			redirect('admin/dashboard');
         }
 			
 

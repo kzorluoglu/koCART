@@ -7,13 +7,15 @@ class Option extends CI_Controller {
 		{
 			parent::__construct();
 			
+			if(! $this->session->userdata('validated')){
+            redirect('admin/account/login');
+        }
+		
 		}
  
  
 	public function index(){
-		if(! $this->session->userdata('validated')){
-            redirect('admin/account/login');
-        }
+ 
 	}
 	
 	public function lists(){
@@ -22,7 +24,6 @@ class Option extends CI_Controller {
 	
 		$data["languages"] = $this->language_model->languages();
 		$data["options"] = $this->option_model->get_options();
-		print_r($this->option_model->get_options());
 		$this->load->view('admin/option/list', $data);
    }
    
@@ -47,12 +48,20 @@ class Option extends CI_Controller {
 		$data["languages"] = $this->language_model->languages();
 		$data["option_id"] 	= $this->uri->segment(4);
  		$data["options"] = $this->option_model->get_option_list();
-		
- 		if($_POST){
-		$this->option_model->add_new_option($_POST);
-		redirect('admin/option/lists');
-		}
-		
+			
+      	if($_POST){
+			$add = false;
+			//$add = $this->option_model->add_new_option($_POST);
+			if($add){
+				$this->session->set_flashdata('action_message', 'New option added!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'New option not added!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+	}
 		
 		$this->load->view('admin/option/add', $data);
    }
@@ -64,11 +73,19 @@ class Option extends CI_Controller {
 		$data["languages"] = $this->language_model->languages();
 		$data["option_id"] 	= $this->uri->segment(4);
 		
- 		if($_POST){
-		$this->option_model->add_new_value($_POST);
-		redirect($_SERVER['HTTP_REFERER']);
-		}
-		
+      	if($_POST){
+			$add_value = false;
+			//$add_value = $this->option_model->add_new_value($_POST);
+			if($add_value){
+				$this->session->set_flashdata('action_message', 'New option value added!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'New option value not added!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+	}
 		
 		$this->load->view('admin/option/add_new_value', $data);
    }
@@ -76,19 +93,37 @@ class Option extends CI_Controller {
    
   public function delete(){
 		$this->load->model('admin/option_model');
-
-		$this->option_model->delete_option($this->uri->segment(4));
-		redirect('admin/option/lists');
+ 
+			$delete_option = false;
+			//$delete_option = $this->option_model->delete_option($this->uri->segment(4));
+			if($delete_option){
+				$this->session->set_flashdata('action_message', 'Option deleted!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'Option not deleted!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
    }
    
    
    public function value_update(){
  	$this->load->model('admin/option_model');
- 
-		if($_POST){
- 			$this->option_model->value_update($_POST);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
+ 			
+      	if($_POST){
+			$update_value = false;
+			//$update_value = $this->option_model->value_update($_POST);
+			if($update_value){
+				$this->session->set_flashdata('action_message', 'Option value updated!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'Option value not updated!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+	}
    
    }
    
@@ -96,17 +131,41 @@ class Option extends CI_Controller {
    public function add_value(){
     	$this->load->model('admin/product_option_model');
 
- 		if($_POST){
-		$this->product_option_model->add_new_value($_POST);
-		redirect($_SERVER['HTTP_REFERER']);
-		}
+ 		
+      	if($_POST){
+			$add_value_next = false;
+			//$add_value_next = $this->product_option_model->add_new_value($_POST);
+			if($add_value_next){
+				$this->session->set_flashdata('action_message', 'New option value added!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'New option value not added!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+	}
+		
+ 
  		 
    }
    public function delete_value(){
  	$this->load->model('admin/product_option_model');
-
-		$this->product_option_model->delete_value($this->uri->segment(4));
-		redirect($_SERVER['HTTP_REFERER']);
+	
+ 
+			$delete_value = false;
+			//$delete_value = $this->product_option_model->delete_value($this->uri->segment(4));
+			if($delete_value){
+				$this->session->set_flashdata('action_message', 'Value deleted!');
+				$this->session->set_flashdata('action_message_type', 'success');
+				redirect($_SERVER['HTTP_REFERER']);
+			}else{
+				$this->session->set_flashdata('action_message', 'Value not deleted!. An error has occured.');
+				$this->session->set_flashdata('action_message_type', 'danger');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+	 
+ 
    }
    
  	public function get_options(){

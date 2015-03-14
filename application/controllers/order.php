@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Order extends CI_Controller {
+class Order extends KoController {
 
  
 	
@@ -12,7 +12,6 @@ class Order extends CI_Controller {
 		 }
 		
 		
-  		$this->lang->load('home', $this->session->userdata('lang_file')); // For Footer and Header
    		$this->lang->load('order/detail', $this->session->userdata('lang_file')); // For Footer and Header
 
 		$currency_info = $this->currency_library->currency('currency');
@@ -30,8 +29,7 @@ class Order extends CI_Controller {
 		 
  
 		
-  		$this->lang->load('home', $this->session->userdata('lang_file')); // For Footer and Header
-  		$this->lang->load('order/cargo', $this->session->userdata('lang_file')); 
+   		$this->lang->load('order/cargo', $this->session->userdata('lang_file')); 
 
 		$this->load->model('cargo_model');
  		
@@ -85,8 +83,7 @@ class Order extends CI_Controller {
 	public function payment(){
  
 		
-  		$this->lang->load('home', $this->session->userdata('lang_file')); // For Footer and Header
-  		$this->lang->load('order/cargo', $this->session->userdata('lang_file')); //For Error Mesage of Cargo Type Select
+   		$this->lang->load('order/cargo', $this->session->userdata('lang_file')); //For Error Mesage of Cargo Type Select
 		$this->lang->load('order/payment', $this->session->userdata('lang_file')); //For Error Mesage of Cargo Type Select
 
  		
@@ -126,8 +123,7 @@ class Order extends CI_Controller {
 	public function complete(){
  
 		
-  		$this->lang->load('home', $this->session->userdata('lang_file')); // For Footer and Header
-		$this->lang->load('order/payment', $this->session->userdata('lang_file')); //For Error Mesage of Cargo Type Select
+ 		$this->lang->load('order/payment', $this->session->userdata('lang_file')); //For Error Mesage of Cargo Type Select
 
 		
 		$this->load->model('cargo_model');
@@ -171,8 +167,7 @@ class Order extends CI_Controller {
 	
 	public function confirm(){
 		
-		$this->lang->load('home', $this->session->userdata('lang_file')); // For Footer and Header
-
+ 
 		$currency_info = $this->currency_library->currency('currency');
 		
 		//Cart Total...
