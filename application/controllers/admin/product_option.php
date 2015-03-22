@@ -45,7 +45,8 @@ class Product_option extends CI_Controller {
 		$data["options"] = $this->product_option_model->get_option_type_list();
 		
 		if($_POST){
- 			$add_new_option = $this->product_option_model->add_new_option($_POST);
+			$add_new_option = false;
+			//$add_new_option = $this->product_option_model->add_new_option($_POST);
 			if($add_new_option){
 				$this->session->set_flashdata('action_message', 'New Product Option added!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -62,7 +63,8 @@ class Product_option extends CI_Controller {
   public function delete(){
 		$this->load->model('admin/product_option_model');
  
- 			$delete = $this->product_option_model->delete($this->uri->segment(4));
+			$delete = false;
+			//$delete = $this->product_option_model->delete($this->uri->segment(4));
 			if($delete){
 				$this->session->set_flashdata('action_message', 'Product Option deleted!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -79,7 +81,8 @@ class Product_option extends CI_Controller {
  	$this->load->model('admin/product_option_model');
  
  		if($_POST){
- 			$update_value = $this->product_option_model->value_update($_POST);
+			$update_value = false;
+			//$update_value = $this->product_option_model->value_update($_POST);
 			if($update_value){
 				$this->session->set_flashdata('action_message', 'Product Option value updated!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -98,7 +101,8 @@ class Product_option extends CI_Controller {
     	$this->load->model('admin/product_option_model');
 
 		if($_POST){
- 			$add_new_value = $this->product_option_model->add_new_value($_POST);
+			$add_new_value = false;
+			//$add_new_value = $this->product_option_model->add_new_value($_POST);
 			if($add_new_value){
 				$this->session->set_flashdata('action_message', 'Product Option new value added!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -115,7 +119,8 @@ class Product_option extends CI_Controller {
    public function delete_value(){
  	$this->load->model('admin/product_option_model');
 
- 			$delete_value = $this->product_option_model->delete_value($this->uri->segment(4));
+			$delete_value = false;
+			//$delete_value = $this->product_option_model->delete_value($this->uri->segment(4));
 			if($delete_value){
 				$this->session->set_flashdata('action_message', 'Product Option value deleted!');
 				$this->session->set_flashdata('action_message_type', 'success');

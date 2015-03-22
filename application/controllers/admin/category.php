@@ -69,8 +69,8 @@ class Category extends CI_Controller {
 
 		
    	if($_POST){
-			
-			$add = $this->category_model->add($_POST);
+			$add = false;
+			//$add = $this->category_model->add($_POST);
 			if($add){
 				$this->session->set_flashdata('action_message', 'New Category added!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -98,8 +98,8 @@ class Category extends CI_Controller {
    	$this->load->model('admin/category_model');
    
    	if($_POST){
- 
-			$update = $this->category_model->update($this->uri->segment(4), $_POST);
+			$update = false;
+			//$update = $this->category_model->update($this->uri->segment(4), $_POST);
 			if($update){
 				$this->session->set_flashdata('action_message', 'Category updated!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -116,8 +116,8 @@ class Category extends CI_Controller {
 	$this->load->model('admin/category_model');
 			
 	if(intval($this->uri->segment(4)) > 0){
- 
-			$delete = $this->category_model->delete($this->uri->segment(4));
+			$delete = false;
+			//$delete = $this->category_model->delete($this->uri->segment(4));
 			if($delete){
 				$this->session->set_flashdata('action_message', 'Category deleted!');
 				$this->session->set_flashdata('action_message_type', 'success');

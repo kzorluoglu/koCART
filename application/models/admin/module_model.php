@@ -85,7 +85,12 @@ class Module_model extends CI_Model {
 	$this->db->where('type', $data['type']);
 	$query = $this->db->get('modules');
 	$ret = $query->row();
-	$this->db->query("INSERT INTO modules SET name = '" . $ret->name . "', details = '" . $ret->details . "', type = '" . $data['type'] . "', product_id = '" . $data['product_id'] . "', rank = '" . $data['rank'] . "'");
+	$main_update = $this->db->query("INSERT INTO modules SET name = '" . $ret->name . "', details = '" . $ret->details . "', type = '" . $data['type'] . "', product_id = '" . $data['product_id'] . "', rank = '" . $data['rank'] . "'");
+ 		
+	if($main_update){
+			return true;
+	}
+	
  }
  
   }

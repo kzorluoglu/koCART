@@ -13,7 +13,8 @@ class Order_model extends CI_Model {
  
     public function get_orders($limit, $start) {
         $this->db->limit($limit, $start);
-        $query = $this->db->get("order");
+		$this->db->order_by('order_id', 'DESC');
+        $query = $this->db->get('order');
  
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
@@ -25,8 +26,7 @@ class Order_model extends CI_Model {
    }
  
  
-	     function product($id)
-    {
+	 function product($id){
         $query = $this->db->query('SELECT product.*, product_description.*
 		FROM product
 		INNER JOIN product_description ON product.id=product_description.product_id 
@@ -57,12 +57,33 @@ class Order_model extends CI_Model {
 	        $query = $this->db->get("order_detail");
 			return $query->result();
 	}
+	public function product_options($options_id)
+		 {
+		 if($options_id){
+				$this->db->join('option_value', 'option_value.option_value_id = product_option_value.value_id');
+ 				$this->db->where('option_value.language_id', $this->session->userdata('lang'));
+				$this->db->where_in('id', $options_id);
+ 				$query = $this->db->get("product_option_value");
+				return $query->result();
+			}
+ 
+ 
+    }
 	public function productadd($data){
-			$this->db->query("INSERT INTO order_detail SET order_id = '" . $data['order_id'] . "', product_id = '" . $data['product_id'] . "', count = '" . $data['count'] . "'");
-
+		$main_update = $this->db->query("INSERT INTO order_detail SET order_id = '" . $data['order_id'] . "', product_id = '" . $data['product_id'] . "', count = '" . $data['count'] . "'");
+					
+		if($main_update){
+			return true;
+		}
+	
 	}
 	public function productdelete($data){
- 		$this->db->query("DELETE FROM order_detail WHERE oid = '" . (int)$data . "'");
+ 		$main_update = $this->db->query("DELETE FROM order_detail WHERE oid = '" . (int)$data . "'");
+					
+		if($main_update){
+			return true;
+		}
+	
 	}
 	
 }

@@ -135,8 +135,24 @@ class Order extends KoController {
   		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
 		//Menu...
 		$data['categories'] = $this->categories_model->get_cats();
- 
+
 	
+		foreach($this->cart->contents() AS $carts){
+				$product = $this->products_model->product($carts['id']);	
+				$cart[] = array(
+                   'rowid'  		=> $carts['rowid'],
+				   'name'			=> $carts['name'],
+				   'qty'			=> $carts['qty'],
+				   'subtotal'		=> ''.$this->cart->format_number($carts['price']).' '.$currency_info[0]->symbol.'',
+				   'price'			=> ''.$this->cart->format_number($product['0']->price * $currency_info[0]->currency).' '.$currency_info[0]->symbol.'',
+				   'options'		=> $this->products_model->cart_product_options($carts['options']),
+				   
+               );  
+			}
+ 
+ 		$data['cart'] = $cart;
+		$data['currency'] = $currency_info[0]->currency;
+		$data['symbol'] = $currency_info[0]->symbol;
 	
 		///////////////////// Control Order Detail /////////////////////
 		$this->order_control();
@@ -286,5 +302,4 @@ class Order extends KoController {
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+ 

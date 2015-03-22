@@ -31,30 +31,48 @@ function get_option_type_list(){
  
 } 
  public function add_new_option($data){
- 		$this->db->query("INSERT INTO product_option SET product_id = '" . $data['product_id'] . "',  option_id = '" . $data['option_id'] . "'");
+ 		$main_update = $this->db->query("INSERT INTO product_option SET product_id = '" . $data['product_id'] . "',  option_id = '" . $data['option_id'] . "'");
+		if($main_update){
+			return true;
+		}
+	
  }
  
  public function add_new_value($data){
- 		$this->db->query("INSERT INTO product_option_value SET product_id = '" . $data['product_id'] . "',  value_id = '" . $data['value_id'] . "', operation = '" . $data['operation'] . "', price = '" . $data['price'] . "'");
- }
+ 		$main_update = $this->db->query("INSERT INTO product_option_value SET product_id = '" . $data['product_id'] . "',  value_id = '" . $data['value_id'] . "', operation = '" . $data['operation'] . "', price = '" . $data['price'] . "'");
+		
+		if($main_update){
+			return true;
+		}
+		
+}
  
 	
  public function value_update($data){  
- for ($i = 0; $i < count($data['pr_value_id']); $i++) {
- 			$this->db->query("UPDATE product_option_value SET operation = '".$data['operation'][$i]."', price = '".$data['price'][$i]."' WHERE id = '".$data['pr_value_id'][$i]."'");
-
-
- } 
  
- 
+	 for ($i = 0; $i < count($data['pr_value_id']); $i++) {
+		$main_update = $this->db->query("UPDATE product_option_value SET operation = '".$data['operation'][$i]."', price = '".$data['price'][$i]."' WHERE id = '".$data['pr_value_id'][$i]."'");
+	 
+		if($main_update){
+			return true;
+		}
+	 } 
 	}
 	
  public function delete_value($data){
-		$this->db->query("DELETE FROM product_option_value WHERE id = '" . (int)$data . "'");
+		$main_update = $this->db->query("DELETE FROM product_option_value WHERE id = '" . (int)$data . "'");
+		
+		if($main_update){
+			return true;
+		}
  }
  
  public function delete($data){
-		$this->db->query("DELETE FROM product_option WHERE id = '" . (int)$data . "'");
+		$main_update = $this->db->query("DELETE FROM product_option WHERE id = '" . (int)$data . "'");
+		
+		if($main_update){
+			return true;
+		}
  
  }
 	function get_values($option_id, $product_id){

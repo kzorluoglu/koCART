@@ -232,12 +232,24 @@ foreach($order as $order_detail) { ?>
   <?php foreach($products as $product){ ?>
 
          <tr>
-		        <td><?php echo $product->name; ?></td>
-				<td><?php echo $product->count; ?></td>
-				<td><?php echo $product->price; ?></td>
-				<td><?php echo $product->count * $product->price; ?></td>
+		        <td><?php echo $product['name']; ?>			
+				
+				<?php if($product['options']){ ?>
+			<br>
+				<?php foreach($product['options'] AS $option){ ?>
+				
+				<b>&not;</b> <small><?php echo $option->value_name; ?> (<?php echo $option->operation; ?> <?php echo $this->cart->format_number($option->price * $currency); ?> <?php echo $symbol; ?>)</small> 
+				<?php } ?>
+			
+			<? } ?>
+			
+			
+				</td>
+				<td><?php echo $product['count']; ?></td>
+				<td><?php echo $product['price']; ?></td>
+				<td><?php echo $product['count'] * $product['price']; ?></td>
 				<td>
-				<a href="<?php echo $this->config->item('admin_url'); ?>order/product_delete/<?php echo $product->oid; ?>"><span class="glyphicon glyphicon-remove"></span></a></td>
+				<a href="<?php echo $this->config->item('admin_url'); ?>order/product_delete/<?php echo $product['oid']; ?>"><span class="glyphicon glyphicon-remove"></span></a></td>
  
 		 </tr>
 

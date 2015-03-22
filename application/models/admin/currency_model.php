@@ -12,7 +12,12 @@ public function currency_count() {
 	}
 
 	public function Add($data){
- 		$this->db->query("INSERT INTO currency SET name = '" . $data['name'] . "', currency = '" . $data['currency'] . "', code = '" . $data['code'] . "', symbol = '" . $data['symbol'] . "', standart = '" . $data['standart'] . "'");
+ 		$main_update = $this->db->query("INSERT INTO currency SET name = '" . $data['name'] . "', currency = '" . $data['currency'] . "', code = '" . $data['code'] . "', symbol = '" . $data['symbol'] . "', standart = '" . $data['standart'] . "'");
+	 		
+		if($main_update){
+			return true;
+		}
+		
 	}
   
 	public function currency_detail($id){
@@ -22,12 +27,21 @@ public function currency_count() {
 	}
 	
 	public function update($currency_id, $data){ 
-		$this->db->query("UPDATE currency SET name = '" . $data['name'] . "', currency = '" . $data['currency'] . "', code = '" . $data['code'] . "', symbol = '" . $data['symbol'] . "', standart = '" . $data['standart'] . "' WHERE id = '" . (int)$currency_id . "'");
+		$main_update = $this->db->query("UPDATE currency SET name = '" . $data['name'] . "', currency = '" . $data['currency'] . "', code = '" . $data['code'] . "', symbol = '" . $data['symbol'] . "', standart = '" . $data['standart'] . "' WHERE id = '" . (int)$currency_id . "'");
+		
+		if($main_update){
+			return true;
+		}
 	
 	}
 	
 	public function delete($data){
-		$this->db->query("DELETE FROM currency WHERE id = '" . (int)$data . "'");
+		$main_update = $this->db->query("DELETE FROM currency WHERE id = '" . (int)$data . "'");
+		
+		if($main_update){
+			return true;
+		}
+		
 	}
   
 	function get_currencys($currency_id){

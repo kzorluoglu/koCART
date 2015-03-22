@@ -41,28 +41,45 @@ function get_option_list(){
 		$last_id  = $this->db->select('option_value_row_id')->order_by('option_value_row_id','desc')->limit(1)->get('option_value')->row('option_value_row_id');
 		$last_id = $last_id + 1;
 	
-			foreach ($data['value'] as $language_id => $value) {
-			$this->db->query("INSERT INTO option_value SET option_value_id = '".(int)$last_id."', option_id = '" . (int)$value['option_id'] . "', language_id = '" . (int)$language_id . "', value_name = '" . $value['value_name'] . "'");
+		foreach ($data['value'] as $language_id => $value) {
+			$main_update = $this->db->query("INSERT INTO option_value SET option_value_id = '".(int)$last_id."', option_id = '" . (int)$value['option_id'] . "', language_id = '" . (int)$language_id . "', value_name = '" . $value['value_name'] . "'");
+		 		
+			if($main_update){
+					return true;
+			}
+	
 		}
   }
  
 	
  public function value_update($data){
    
- for ($i = 0; $i < count($data['option_value_row_id']); $i++) {
- 			$this->db->query("UPDATE option_value SET value_name = '".$data['value_name'][$i]."' WHERE option_value_row_id = '".$data['option_value_row_id'][$i]."'");
-
- 
- } 
+	for ($i = 0; $i < count($data['option_value_row_id']); $i++) {
+			$main_update = $this->db->query("UPDATE option_value SET value_name = '".$data['value_name'][$i]."' WHERE option_value_row_id = '".$data['option_value_row_id'][$i]."'");
+		 		
+			if($main_update){
+					return true;
+			}
+		
+	 } 
  }
 	
  public function delete_value($data){
-		$this->db->query("DELETE FROM product_option_value WHERE id = '" . (int)$data . "'");
+	$main_update = $this->db->query("DELETE FROM product_option_value WHERE id = '" . (int)$data . "'");
+					
+	if($main_update){
+		return true;
+	}
+		
  }
  
  public function delete_option($data){
-		$this->db->query("DELETE FROM option_description WHERE id = '" . (int)$data . "'");
- 
+	$main_update = $this->db->query("DELETE FROM option_description WHERE id = '" . (int)$data . "'");
+					
+	if($main_update){
+		return true;
+	}
+	
  }
 	function get_values($option_id, $language_id){
 				$this->db->where('option_id', $option_id);

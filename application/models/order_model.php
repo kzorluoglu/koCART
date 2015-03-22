@@ -18,6 +18,7 @@ class Order_model extends CI_Model {
 					'order_id' 		=> $order_id,
 					'product_id' 	=> $product['id'],
 					'count'			=> $product['qty'],
+					'options' 		=> implode(',', $product['options'])
 				);
 
 				$this->db->insert('order_detail', $order_product); 

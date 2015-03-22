@@ -40,9 +40,12 @@ class Order extends CI_Controller {
    
    public function detail(){
    		$this->load->model('admin/order_model');
+		$currency_info = $this->currency_library->currency('currency');
+
 		
 		if($_POST){
-			$update_comment = $update = $this->order_model->update_comment($_POST);
+			$update_comment = false;
+			//$update_comment = $update = $this->order_model->update_comment($_POST);
 			if($update_comment){
 				$this->session->set_flashdata('action_message', 'Order comment updated!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -55,8 +58,29 @@ class Order extends CI_Controller {
 	}
  			 
  		$data["order"] = $this->order_model->detail($this->uri->segment(4));
-		$data["products"] = $this->order_model->products($this->uri->segment(4));
+		
+		$order_products = $this->order_model->products($this->uri->segment(4));
+		$products = array();
+		$count = 0;
+
+			foreach($order_products as $product) {
+			 $products[$count++] = array(
+				'oid'			=> $product->oid,
+				'name' 			=> $product->name,
+				'count'			=> $product->count,
+				'price'			=> $product->price,
+				'options'		=> $this->order_model->product_options($product->options)
+			 
+			);
+			}
+
+ 
+ 		$data['products'] = $products;
+ 
+ 		
 		$data["order_id"] = $this->uri->segment(4);		// Add Product Tab $order_id
+		$data['currency'] = $currency_info[0]->currency;
+		$data['symbol'] = $currency_info[0]->symbol;
 		
    		$this->load->view('admin/order/detail', $data);
 
@@ -74,7 +98,8 @@ class Order extends CI_Controller {
 		$this->load->model('admin/order_model');
 
        	if($_POST){
-			$add_product = $this->order_model->productadd($_POST);
+			$add_product = false;
+			//$add_product = $this->order_model->productadd($_POST);
 			if($add_product){
 				$this->session->set_flashdata('action_message', 'New product added in Order!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -91,7 +116,8 @@ class Order extends CI_Controller {
    public function product_delete(){
       		$this->load->model('admin/order_model');
 			
-			$delete_product = $this->order_model->productdelete($this->uri->segment(4));
+ 			$delete_product = false;
+			//$delete_product = $this->order_model->productdelete($this->uri->segment(4));
 			if($delete_product){
 				$this->session->set_flashdata('action_message', 'Product deleted in Order!');
 				$this->session->set_flashdata('action_message_type', 'success');

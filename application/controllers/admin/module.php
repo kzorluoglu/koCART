@@ -41,8 +41,8 @@ class Module extends CI_Controller {
    		$this->load->model('admin/module_model');
 		
      	if($_POST){
-			
-			$add = $this->module_model->add($_POST);
+			$add = false;
+			//$add = $this->module_model->add($_POST);
 			if($add){
 				$this->session->set_flashdata('action_message', 'New Module added!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -61,8 +61,8 @@ class Module extends CI_Controller {
    		$this->load->model('admin/module_model');
 		
      	if($_POST){
-
-			$update = $this->module_model->update($_POST);
+			$update = false;
+			//$update = $this->module_model->update($_POST);
 			if($update){
 				$this->session->set_flashdata('action_message', 'Module updated!');
 				$this->session->set_flashdata('action_message_type', 'success');
@@ -84,7 +84,8 @@ class Module extends CI_Controller {
    public function delete(){
    		$this->load->model('admin/module_model');
  
-			$delete = $this->module_model->delete($this->uri->segment(4));
+			$delete = false;
+			//$delete = $this->module_model->delete($this->uri->segment(4));
 			if($delete){
 				$this->session->set_flashdata('action_message', 'Module deleted!');
 				$this->session->set_flashdata('action_message_type', 'success');
