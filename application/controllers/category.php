@@ -1,43 +1,21 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Category extends KoController {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
  
- 
-	public function seolink()
-	{
+	public function seolink(){
 		
-  
- 
-		
-		$currency_info = $this->currency_library->currency('currency');
- 		//Products...
-		$id = $this->security->xss_clean($this->uri->segment(2));
+			//Products...
+			$id = $this->security->xss_clean($this->uri->segment(2));
 
-		foreach($this->products_model->category_products($id) AS $category_products){
+			foreach($this->products_model->category_products($id) AS $category_products){
 				$category_product[] = array(
-                   'id'  			=> $category_products->id,
+				   'id'  			=> $category_products->id,
 				   'name'			=> $category_products->name,
 				   'details'		=> $category_products->details,
- 				   'product_id'		=> $category_products->product_id,
+				   'product_id'		=> $category_products->product_id,
 				   'rank'			=> $category_products->rank,
 				   'category_id'	=> $category_products->category_id,
-				   'price'			=> ''.$this->cart->format_number($category_products->price * $currency_info[0]->currency).' '.$currency_info[0]->symbol.'',
+				   'price'			=> ''.$this->cart->format_number($category_products->price * $this->data['currency_currency']),
 				   'stock'			=> $category_products->stock,
 				   'image'			=> $category_products->image,
 				   'url'			=> $category_products->url,
@@ -45,20 +23,21 @@ class Category extends KoController {
 				   'language_id'	=> $category_products->language_id,
 				   'meta_tags'		=> $category_products->meta_tags,
 				   'meta_keys'		=> $category_products->meta_keys
-               );  
+				   );  
 			}
-		@$data['category_products'] = $category_product;	
-		
+			
+			@$this->data['category_products'] = $category_product;	
+			
 			foreach($this->products_model->slider_products() AS $slider_products){
 				$slider_product[] = array(
-                   'id'  			=> $slider_products->id,
+				   'id'  			=> $slider_products->id,
 				   'name'			=> $slider_products->name,
 				   'details'		=> $slider_products->details,
 				   'type'			=> $slider_products->type,
 				   'product_id'		=> $slider_products->product_id,
 				   'rank'			=> $slider_products->rank,
 				   'category_id'	=> $slider_products->category_id,
-				   'price'			=> ''.$this->cart->format_number($slider_products->price * $currency_info[0]->currency).' '.$currency_info[0]->symbol.'',
+				   'price'			=> ''.$this->cart->format_number($slider_products->price * $this->data['currency_currency']),
 				   'stock'			=> $slider_products->stock,
 				   'image'			=> $slider_products->image,
 				   'url'			=> $slider_products->url,
@@ -66,20 +45,15 @@ class Category extends KoController {
 				   'language_id'	=> $slider_products->language_id,
 				   'meta_tags'		=> $slider_products->meta_tags,
 				   'meta_keys'		=> $slider_products->meta_keys
-               );  
+			   );  
 			}
+				
+			$this->data['slider_products'] = $slider_product;
 			
-		$data['slider_products'] = $slider_product;
-		
- 
-		
-		//Cart Total...
-  		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.''; 
-		//Menu...
-		 $data['categories'] = $this->categories_model->get_cats();
- 		$this->load->view('category', $data);
-	}
+			//Menu...
+			$this->data['categories'] = $this->categories_model->get_cats();
+			 
+			$this->load->view('category', $this->data);
+			
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+}

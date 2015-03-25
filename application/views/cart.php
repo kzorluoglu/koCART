@@ -82,13 +82,13 @@
 			<br>
 				<?php foreach($items['options'] AS $option){ ?>
 				
-				<b>&not;</b> <small><?php echo $option->value_name; ?> (<?php echo $option->operation; ?> <?php echo $this->cart->format_number($option->price * $currency); ?> <?php echo $symbol; ?>)</small> 
+				<b>&not;</b> <small><?php echo $option->value_name; ?> (<?php echo $option->operation; ?> <?php echo $this->cart->format_number($option->price * $currency_currency); ?> <?php echo $currency_symbol; ?>)</small> 
 				<?php } ?>
 			
 			<? } ?>
 		  </td>
-		  <td style="text-align:right"><?php echo $items['price']; ?></td>
-		  <td style="text-align:right"> <?php echo $items['subtotal']; ?></td>
+		  <td style="text-align:right"><?php echo $items['price']; ?> <?php echo $currency_symbol; ?></td>
+		  <td style="text-align:right"> <?php echo $items['subtotal']; ?> <?php echo $currency_symbol; ?></td>
 		  <td style="text-align:right"><?php echo anchor('cart/remove/'.$items['rowid'], $this->lang->line('cart_delete')); ?>   </td>
 		</tr>
 
@@ -96,8 +96,8 @@
 
 	<tr>
 	  <td colspan="2"></td>
-	  <td class="right"><strong><?php echo $this->lang->line('total'); ?></strong></td>
-	  <td class="right"><?php echo $cart_total; ?></td>
+	  <td class="right"><strong><?php echo $this->lang->line('total'); ?> <?php echo $currency_symbol; ?></strong></td>
+	  <td class="right"><?php echo $cart_total; ?> </td>
 	</tr>
 
 </table>

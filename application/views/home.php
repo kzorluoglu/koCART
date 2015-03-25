@@ -75,12 +75,13 @@
                      
                                 <h4><a href="<?php echo base_url(); ?><?php echo $most_sell_product['url']; ?>"><?php echo $most_sell_product['name']; ?></a> 
                                 </h4>
-								           <h4 class="pull-right"><?php echo $most_sell_product['price']; ?></h4>
+								           <h4 class="pull-right"><?php echo $most_sell_product['price']; ?> <?php echo $currency_symbol; ?></h4>
  								<p><?php echo strip_tags(substr($most_sell_product['details'], 0, 45)); ?></p>
 								<p>
-										<form action="<?php echo $this->config->item('base_url'); ?>basket/add" method="post" accept-charset="utf-8" class="form-horizontal" role="form">				
+									<form action="<?php echo $this->config->item('base_url'); ?>basket/add" method="post" accept-charset="utf-8" class="form-horizontal" role="form">				
 										<input type="hidden" name="id" value="<?php echo $most_sell_product['product_id']; ?>" />
 										<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart" ></span><?php echo $this->lang->line('add_basket'); ?></button>
+									</form>
 								</p>
                             </div>
                             <div class="ratings">
@@ -113,12 +114,13 @@
                      
                                 <h4><a href="<?php echo base_url(); ?><?php echo $most_popular_product['url']; ?>"><?php echo $most_popular_product['name']; ?></a> 
                                 </h4>
-								           <h4 class="pull-right"><?php echo $most_popular_product['price']; ?></h4>
+								           <h4 class="pull-right"><?php echo $most_popular_product['price']; ?> <?php echo $currency_symbol; ?></h4>
  								<p><?php echo strip_tags(substr($most_popular_product['details'], 0, 45)); ?></p>
 							 	<p>
 										<form action="<?php echo $this->config->item('base_url'); ?>basket/add" method="post" accept-charset="utf-8" class="form-horizontal" role="form">				
 										<input type="hidden" name="id" value="<?php echo $most_sell_product['product_id']; ?>" />
 										<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart" ></span><?php echo $this->lang->line('add_basket'); ?></button>
+										</form>
 								</p>
                             </div>
                             <div class="ratings">

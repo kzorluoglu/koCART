@@ -2,21 +2,7 @@
 
 class Home extends KoController  {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+ 
 	 	function __construct()
     {
          parent::__construct();
@@ -24,11 +10,7 @@ class Home extends KoController  {
     }
 	public function index()
 	{
-  
-		
-		
-		$currency_info = $this->currency_library->currency('currency');
- 		//Products...
+ 		//Most sell products array construct.
 		foreach($this->products_model->most_sell_products() AS $most_sell){
 				$most_sell_products[] = array(
                    'id'  			=> $most_sell->id,
@@ -38,7 +20,7 @@ class Home extends KoController  {
 				   'product_id'		=> $most_sell->product_id,
 				   'rank'			=> $most_sell->rank,
 				   'category_id'	=> $most_sell->category_id,
-				   'price'			=> ''.$this->cart->format_number($most_sell->price * $currency_info[0]->currency).' '.$currency_info[0]->symbol.'',
+				   'price'			=> ''.$this->cart->format_number($most_sell->price * $this->data['currency_currency']),
 				   'stock'			=> $most_sell->stock,
 				   'image'			=> $most_sell->image,
 				   'url'			=> $most_sell->url,
@@ -48,8 +30,9 @@ class Home extends KoController  {
 				   'meta_keys'		=> $most_sell->meta_keys
                );  
 			}
-		$data['most_sell_products'] = $most_sell_products;	
-
+		$this->data['most_sell_products'] = $most_sell_products;	
+		
+			//Most popular products array construct.
 			foreach($this->products_model->most_popular_products() AS $most_popular_products){
 				$most_popular[] = array(
                    'id'  			=> $most_popular_products->id,
@@ -59,7 +42,7 @@ class Home extends KoController  {
 				   'product_id'		=> $most_popular_products->product_id,
 				   'rank'			=> $most_popular_products->rank,
 				   'category_id'	=> $most_popular_products->category_id,
-				   'price'			=> ''.$this->cart->format_number($most_sell->price * $currency_info[0]->currency).' '.$currency_info[0]->symbol.'',
+				   'price'			=> ''.$this->cart->format_number($most_sell->price * $this->data['currency_currency']),
 				   'stock'			=> $most_popular_products->stock,
 				   'image'			=> $most_popular_products->image,
 				   'url'			=> $most_popular_products->url,
@@ -69,8 +52,10 @@ class Home extends KoController  {
 				   'meta_keys'		=> $most_popular_products->meta_keys
                );  
 			}
-					$data['most_popular_products'] = $most_popular;
- 
+			
+			$this->data['most_popular_products'] = $most_popular;
+  		
+			//Slider products array construct.
 			foreach($this->products_model->slider_products() AS $slider_products){
 				$slider_product[] = array(
                    'id'  			=> $slider_products->id,
@@ -80,7 +65,7 @@ class Home extends KoController  {
 				   'product_id'		=> $slider_products->product_id,
 				   'rank'			=> $slider_products->rank,
 				   'category_id'	=> $slider_products->category_id,
-				   'price'			=> ''.$this->cart->format_number($most_sell->price * $currency_info[0]->currency).' '.$currency_info[0]->symbol.'',
+				   'price'			=> ''.$this->cart->format_number($most_sell->price * $this->data['currency_currency']),
 				   'stock'			=> $slider_products->stock,
 				   'image'			=> $slider_products->image,
 				   'url'			=> $slider_products->url,
@@ -91,15 +76,12 @@ class Home extends KoController  {
                );  
 			}
 			
-		$data['slider_products'] = $slider_product;
+		$this->data['slider_products'] = $slider_product;
  
-		//Cart Total...
-  		$data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$currency_info[0]->symbol.'';
-		
-		 $data['categories'] = $this->categories_model->get_cats();
- 		$this->load->view('home', $data);
+		//Categories array
+		$this->data['categories'] = $this->categories_model->get_cats();
+ 		$this->load->view('home', $this->data);
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+ 

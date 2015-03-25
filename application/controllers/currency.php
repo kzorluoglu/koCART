@@ -2,26 +2,21 @@
 
 class Currency extends KoController {
  
+	public function set(){
 	
-	public function set()
-	{
+			$id = $this->security->xss_clean($this->uri->segment(3));
 	
-	$currency_info = $this->currency_library->currency();
-	$id = $this->security->xss_clean($this->uri->segment(3));
+			if($id == 1){
+				$this->cart->destroy();
+				$this->session->set_userdata('currency', '1');
+			}
 	
-	if($id == 1){
-		$this->cart->destroy();
-		$this->session->set_userdata('currency', '1');
+			if($id == 2){
+				$this->cart->destroy();
+				$this->session->set_userdata('currency', '2');
+			}
 
- 	}
-	
-	if($id == 2){
-		$this->cart->destroy();
-		$this->session->set_userdata('currency', '2');
-	
- 	}
-
-	redirect($_SERVER['HTTP_REFERER']);
+			redirect($_SERVER['HTTP_REFERER']);
 
 	}
 }

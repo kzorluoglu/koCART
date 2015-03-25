@@ -32,13 +32,13 @@
 			<br>
 				<?php foreach($items['options'] AS $option){ ?>
 				
-				<b>&not;</b> <small><?php echo $option->value_name; ?> (<?php echo $option->operation; ?> <?php echo $this->cart->format_number($option->price * $currency); ?> <?php echo $symbol; ?>)</small> 
+				<b>&not;</b> <small><?php echo $option->value_name; ?> (<?php echo $option->operation; ?> <?php echo $this->cart->format_number($option->price * $currency_currency); ?> <?php echo $currency_symbol; ?>)</small> 
 				<?php } ?>
 			
 			<? } ?>
 		  </td>
-		  <td style="text-align:right"><?php echo $items['price']; ?></td>
-		  <td style="text-align:right"> <?php echo $items['subtotal']; ?></td>
+		  <td style="text-align:right"><?php echo $items['price']; ?> <?php echo $currency_symbol; ?></td>
+		  <td style="text-align:right"> <?php echo $items['subtotal']; ?> <?php echo $currency_symbol; ?></td>
  		</tr>
 
 	<?php } ?>
@@ -47,7 +47,7 @@
 <tr>
   <td colspan="2"></td>
   <td class="right">Cargo : <strong><?php echo $cargo->name; ?></strong></td>
-  <td class="right">$<?php echo $this->cart->format_number($cargo->price); ?></td>
+  <td class="right">$<?php echo $this->cart->format_number($cargo->price); ?> <?php echo $currency_symbol; ?></td>
 </tr>
 
 <? } ?>
@@ -55,7 +55,7 @@
   <td colspan="2"></td>
   <td class="right"><strong>Total</strong></td>
  
-  <td class="right">$<?php echo $this->cart->format_number($this->cart->total() + $cargo->price); ?></td>
+  <td class="right">$<?php echo $this->cart->format_number($this->cart->total() + $cargo->price); ?> <?php echo $currency_symbol; ?></td>
 </tr>
 
 </table>
