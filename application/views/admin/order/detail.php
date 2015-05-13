@@ -23,20 +23,28 @@
   	  <?php
 foreach($order as $order_detail) { ?> 
 <table class="table table-striped">
-         <tr>
+        <tr>
 		           <td>Order ID#</td>
 				   <td><?php echo $order_detail->order_id; ?></td>
  
-		 </tr>
-         <tr>
+		</tr>
+        <tr>
 		           <td>Customer ID#</td>
 				   <td><?php if($order_detail->customer_id == 0){ ?> Visitor <? } else { ?> <?php echo $result->customer_id; ?> <?php } ?></td>
-		 </tr>
-         <tr>
+		</tr>
+        <tr>
 		           <td>Total</td>
-				<td><?php echo $order_detail->total; ?></td>
-		 </tr>
-			<tr>
+				<td><?php echo $this->cart->format_number(($order_detail->total + $order_detail->cargo_price) * $order_detail->currency_currency); ?> <?php echo $order_detail->currency_symbol; ?></td>
+		</tr>
+        <tr>
+		           <td>Currency ID</td>
+				<td><?php echo $order_detail->currency_symbol; ?></td>
+		</tr>
+        <tr>
+		           <td>Currency Value</td>
+				<td><?php echo $order_detail->currency_currency; ?></td>
+		</tr>
+		<tr>
 		           <td>Date</td>
 				   <td><?php echo $order_detail->date; ?></td>
 		 </tr>
@@ -103,6 +111,10 @@ foreach($order as $order_detail) { ?>
 foreach($order as $order_detail) { ?> 
 <table class="table table-striped">
          <tr>
+		           <td>Payment Type</td>
+				   <td><?php echo $order_detail->payment_name; ?></td>
+		 </tr>
+         <tr>
 		           <td>First Name</td>
 				   <td><?php echo $order_detail->billing_first_name; ?></td>
  
@@ -166,6 +178,10 @@ foreach($order as $order_detail) { ?>
 foreach($order as $order_detail) { ?> 
 <table class="table table-striped">
          <tr>
+		           <td>Cargo Name</td>
+				   <td><?php echo $order_detail->cargo_name; ?></td>
+		 </tr>
+         <tr>
 		           <td>First Name</td>
 				   <td><?php echo $order_detail->cargo_first_name; ?></td>
  
@@ -228,7 +244,7 @@ foreach($order as $order_detail) { ?>
 		  <th>Action</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody> 
   <?php foreach($products as $product){ ?>
 
          <tr>
@@ -238,7 +254,7 @@ foreach($order as $order_detail) { ?>
 			<br>
 				<?php foreach($product['options'] AS $option){ ?>
 				
-				<b>&not;</b> <small><?php echo $option->value_name; ?> (<?php echo $option->operation; ?> <?php echo $this->cart->format_number($option->price * $currency); ?> <?php echo $symbol; ?>)</small> 
+				<b>&not;</b> <small><?php echo $option->value_name; ?> (<?php echo $option->operation; ?> <?php echo $this->cart->format_number($option->price * $order_detail->currency_currency); ?> <?php echo $order_detail->currency_symbol; ?>)</small> 
 				<?php } ?>
 			
 			<? } ?>
@@ -246,15 +262,21 @@ foreach($order as $order_detail) { ?>
 			
 				</td>
 				<td><?php echo $product['count']; ?></td>
-				<td><?php echo $product['price']; ?></td>
-				<td><?php echo $product['count'] * $product['price']; ?></td>
+				<td><?php echo $this->cart->format_number($product['price'] * $order_detail->currency_currency); ?> <?php echo $order_detail->currency_symbol; ?></td>
+				<td><?php echo $this->cart->format_number(($product['count'] * $product['price']) * $order_detail->currency_currency); ?> <?php echo $order_detail->currency_symbol; ?></td>
 				<td>
 				<a href="<?php echo $this->config->item('admin_url'); ?>order/product_delete/<?php echo $product['oid']; ?>"><span class="glyphicon glyphicon-remove"></span></a></td>
  
 		 </tr>
 
   <? } ?>
-        </tbody>
+  <tr>
+  <td colspan="2"></td><td><b>Cargo Price</b></td><td><?php echo $this->cart->format_number($order_detail->cargo_price * $order_detail->currency_currency); ?> <?php echo $order_detail->currency_symbol; ?></td>
+    </tr>   
+  <tr>
+  <td colspan="2"></td><td><b>Total Price</b></td><td><?php echo $this->cart->format_number(($order_detail->total + $order_detail->cargo_price) * $order_detail->currency_currency); ?> <?php echo $order_detail->currency_symbol; ?></td>
+    </tr>   
+		</tbody>
   </table>
     		<form action="<?php echo $this->config->item('admin_url'); ?>order/product_add" method="post" accept-charset="utf-8" class="form-horizontal" role="form">				
   <div class="form-group">

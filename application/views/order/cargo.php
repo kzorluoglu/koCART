@@ -11,7 +11,7 @@
 	 <?php foreach($cargos as $cargo){ ?>
 	  <div class="checkbox">
     <label>
-      <input type="radio" name="cargo_type" value="<?php echo $cargo->id; ?>"> <?php echo $cargo->name; ?> | <?php echo $cargo->price; ?> 
+      <input type="radio" name="cargo_type" value="<?php echo $cargo->id; ?>"> <?php echo $cargo->name; ?> | <?php echo $this->cart->format_number(($cargo->price * $currency_currency)); ?> <?php echo $currency_symbol; ?> 
     </label>
   </div>
  

@@ -37,8 +37,8 @@
 			
 			<? } ?>
 		  </td>
-		  <td style="text-align:right"><?php echo $items['price']; ?> <?php echo $currency_symbol; ?></td>
-		  <td style="text-align:right"> <?php echo $items['subtotal']; ?> <?php echo $currency_symbol; ?></td>
+		  <td style="text-align:right"><?php echo $this->cart->format_number($items['price'] * $currency_currency); ?> <?php echo $currency_symbol; ?></td>
+		  <td style="text-align:right"> <?php echo $this->cart->format_number($items['subtotal'] * $currency_currency); ?> <?php echo $currency_symbol; ?></td>
  		</tr>
 
 	<?php } ?>
@@ -47,7 +47,7 @@
 <tr>
   <td colspan="2"></td>
   <td class="right">Cargo : <strong><?php echo $cargo->name; ?></strong></td>
-  <td class="right">$<?php echo $this->cart->format_number($cargo->price); ?> <?php echo $currency_symbol; ?></td>
+  <td class="right"><?php echo $this->cart->format_number($cargo->price * $currency_currency); ?> <?php echo $currency_symbol; ?></td>
 </tr>
 
 <? } ?>
@@ -55,7 +55,7 @@
   <td colspan="2"></td>
   <td class="right"><strong>Total</strong></td>
  
-  <td class="right">$<?php echo $this->cart->format_number($this->cart->total() + $cargo->price); ?> <?php echo $currency_symbol; ?></td>
+  <td class="right"><?php echo $this->cart->format_number(($this->cart->total() + $cargo->price) * $currency_currency); ?> <?php echo $currency_symbol; ?></td>
 </tr>
 
 </table>

@@ -65,11 +65,11 @@ class Order extends CI_Controller {
 
 			foreach($order_products as $product) {
 			 $products[$count++] = array(
-				'oid'			=> $product->oid,
-				'name' 			=> $product->name,
-				'count'			=> $product->count,
-				'price'			=> $product->price,
-				'options'		=> $this->order_model->product_options($product->options)
+				'oid'					=> $product->oid,
+				'name' 					=> $product->name,
+				'count'					=> $product->count,
+				'price'					=> $product->price,
+				'options'				=> $this->order_model->product_options($product->options)
 			 
 			);
 			}

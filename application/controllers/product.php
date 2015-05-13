@@ -15,7 +15,7 @@ class Product extends KoController {
 					   'product_id'		=> $products->product_id,
 					   'rank'			=> $products->rank,
 					   'category_id'	=> $products->category_id,
-					   'price'			=> ''.$this->cart->format_number($products->price * $this->data['currency_currency']),
+					   'price'			=> $products->price,
 					   'stock'			=> $products->stock,
 					   'image'			=> $products->image,
 					   'url'			=> $products->url,

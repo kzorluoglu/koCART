@@ -29,6 +29,7 @@ class Account extends CI_Controller {
 			$this->load->view('admin/account/login');
         }else{
 			$this->session->set_flashdata('action_message', 'Hosgeldiniz, Welcome, <font size="4">أهلاً وسهلاً</font>, Bienvenida, Benvenuto,  Bienvenue ');
+			$this->session->set_flashdata('action_message_type', 'success');
 			redirect('admin/dashboard');
         }
 			

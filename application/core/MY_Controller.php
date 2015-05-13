@@ -26,8 +26,8 @@ class KoController extends CI_Controller
 		* Variables: $this->cart->total(), $this->cart->total_items(), 
 		* example: $this->cart->total()
 		*/
-		$this->data['cart_total'] = ''.$this->cart->format_number($this->cart->total()).' '.$this->data['currency_symbol'].'';
-} 
+		$this->data['cart_total'] = $this->cart->format_number(($this->cart->total()) * $this->data['currency_currency']);
+}  
 
 	public function setLang(){ 
 			$this->lang->load('home', $this->session->userdata('lang_file')); 

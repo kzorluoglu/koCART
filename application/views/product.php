@@ -15,22 +15,10 @@
 				<?php foreach ($product AS $products){ ?>
 				<input type="hidden" name="id" value="<?php echo $products['id']; ?>" />
                 <div class="thumbnail">
-			
- 
-  
- 
-                         
-                     
-                                 
-                                
-								  
-                               
-								
-       
-
+		
                     <img class="img-responsive" src="<?php echo $products['image']; ?>" alt="">
                     <div class="caption-full">
-                        <h4 class="pull-right"><?php echo $products['price']; ?>  <?php echo $currency_symbol; ?> </h4>
+                        <h4 class="pull-right"><?php echo $this->cart->format_number(($products['price'] * $currency_currency)); ?> <?php echo $currency_symbol; ?></h4>
                         <h4><a href="<?php echo base_url(); ?>product/<?php echo $products['id']; ?>"><?php echo $products['name']; ?></a></h4>
 						  <p><?php echo $products['details']; ?> </p>
  
@@ -45,7 +33,7 @@
 				<select name="option_values[]" class="form-control">
 				<option value=""></option>
 				<?php foreach($option["values"] AS $value){ ?>
-				<option value="<?php echo $value->id; ?>"><?php echo $value->value_name; ?>, <?php echo $value->operation; ?><?php echo $value->price; ?> <?php echo $currency_symbol; ?> </option>
+				<option value="<?php echo $value->id; ?>"><?php echo $value->value_name; ?>, <?php echo $value->operation; ?><?php echo $this->cart->format_number(($value->price * $currency_currency)); ?> <?php echo $currency_symbol; ?></option>
 				<?php } ?>
 				</select>
 						<hr>		
@@ -60,7 +48,8 @@
 				<div class="checkbox">
 				<?php foreach($option["values"] AS $value){ ?>
 					<label>
-					  <input type="checkbox" name="option_values[]" value="<?php echo $value->id; ?>"> <?php echo $value->value_name; ?>, <?php echo $value->operation; ?><?php echo $value->price; ?> <?php echo $currency_symbol; ?>
+					  <input type="radio" name="option_values[]" value="<?php echo $value->id; ?>"> <?php echo $value->value_name; ?>,
+					  <?php echo $value->operation; ?><?php echo $this->cart->format_number(($value->price * $currency_currency)); ?> <?php echo $currency_symbol; ?>
 					</label>
 				<?php } ?>
 				</div>
@@ -77,7 +66,8 @@
 				<div class="checkbox">
 				<?php foreach($option["values"] AS $value){ ?>
 					<label>
-					  <input type="radio" name="option_values[]" value="<?php echo $value->id; ?>"> <?php echo $value->value_name; ?>, <?php echo $value->operation; ?><?php echo $value->price; ?> <?php echo $currency_symbol; ?>
+					  <input type="radio" name="option_values[]" value="<?php echo $value->id; ?>"> <?php echo $value->value_name; ?>,
+					  <?php echo $value->operation; ?><?php echo $this->cart->format_number(($value->price * $currency_currency)); ?> <?php echo $currency_symbol; ?>
 					</label>
 				<?php } ?>
 				</div>
@@ -94,7 +84,7 @@
 		
 				<?php } // If Option have END ?>
 						<br /><br />					
-						<<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart" ></span> Add Basket</button></center>
+						<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart" ></span> Add Basket</button></center>
                       
                     </div>
                     <div class="ratings">

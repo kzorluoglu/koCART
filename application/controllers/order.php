@@ -105,8 +105,8 @@ class Order extends KoController {
 					   'rowid'  		=> $carts['rowid'],
 					   'name'			=> $carts['name'],
 					   'qty'			=> $carts['qty'],
-					   'subtotal'		=> ''.$this->cart->format_number($carts['price']),
-					   'price'			=> ''.$this->cart->format_number($product['0']->price * $this->data['currency_currency']),
+					   'subtotal'		=> $carts['price'],
+					   'price'			=> $product['0']->price,
 					   'options'		=> $this->products_model->cart_product_options($carts['options']),
 					   
 				   );  
@@ -195,6 +195,8 @@ class Order extends KoController {
 			   'cargo_region' 			=> $this->session->userdata('cargo_region'),
 			   'cargo_type'				=> $this->session->userdata('cargo_type'),
 			   'payment_type'			=> $this->session->userdata('payment_type'),
+			   'currency_symbol'		=> $this->data['currency_symbol'],
+			   'currency_currency'		=> $this->data['currency_currency'],
 			   'status'					=> 1,
 			   'comment'				=> '',
 			   'total'					=> $this->cart->total(),

@@ -1,7 +1,7 @@
  
     <li class="dropdown">
         <a href="#"  data-toggle="dropdown">
-			<small> <?php echo $this->lang->line('total'); ?> : <?php echo $this->cart->total_items(); ?> | (<?php echo $cart_total; ?>)</small>
+			<small> <?php echo $this->lang->line('total'); ?> : <?php echo $this->cart->total_items(); ?> | (<?php echo $cart_total; ?> <?php echo $currency_symbol; ?>)</small>
         </a>
         <ul class="dropdown-menu">
   
@@ -18,8 +18,8 @@
 						</td>
 						<td style="text-align:right">
 							<input type="text" name="qty[]" value="<?php echo $items['qty']; ?>" maxlength="3" size="3" />
-										x 
-							<?php echo $items['price']; ?>
+										x <br />
+							<?php echo $last_price = $this->cart->format_number(($items['price'] * $currency_currency)); ?> <?php echo $currency_symbol; ?>
 						</td>
 						<td style="text-align:right">
 							<?php echo anchor('cart/remove/'.$items['rowid'], $this->lang->line('delete')); ?>

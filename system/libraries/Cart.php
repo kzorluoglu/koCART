@@ -263,48 +263,59 @@ class CI_Cart {
 	 * @return	bool
 	 */
 	function update($items = array())
-	{
-		// Was any cart data passed?
-		if ( ! is_array($items) OR count($items) == 0)
 		{
-			return FALSE;
-		}
-
-		// You can either update a single product using a one-dimensional array,
-		// or multiple products using a multi-dimensional one.  The way we
-		// determine the array type is by looking for a required array key named "id".
-		// If it's not found we assume it's a multi-dimensional array
-		$save_cart = FALSE;
-		if (isset($items['rowid']) AND isset($items['qty']))
-		{
-			if ($this->_update($items) == TRUE)
+			// Was any cart data passed?
+			if ( ! is_array($items) OR count($items) == 0)
 			{
-				$save_cart = TRUE;
+				return FALSE;
 			}
-		}
-		else
-		{
-			foreach ($items as $val)
+	 
+			// You can either update a single product using a one-dimensional array,
+			// or multiple products using a multi-dimensional one.  The way we
+			// determine the array type is by looking for a required array key named "id".
+			// If it's not found we assume it's a multi-dimensional array
+			$save_cart = FALSE;
+			if (isset($items['rowid']) AND isset($items['qty']) AND !isset($items['price']))
 			{
-				if (is_array($val) AND isset($val['rowid']) AND isset($val['qty']))
+				if ($this->_update($items) == TRUE)
 				{
-					if ($this->_update($val) == TRUE)
+					$save_cart = TRUE;
+				}
+			}
+		/************************************************
+		* code updated here, to update price
+		* But you have to pass quantity as well
+		*/
+		elseif (isset($items['rowid']) AND isset($items['qty']) AND isset($items['price']))
+			{
+				if ($this->_update($items) == TRUE)
+				{
+					$save_cart = TRUE;
+				}
+			}
+			else
+			{
+				foreach ($items as $val)
+				{
+					if (is_array($val) AND isset($val['rowid']) AND isset($val['qty']))
 					{
-						$save_cart = TRUE;
+						if ($this->_update($val) == TRUE)
+						{
+							$save_cart = TRUE;
+						}
 					}
 				}
 			}
+	 
+			// Save the cart data if the insert was successful
+			if ($save_cart == TRUE)
+			{
+				$this->_save_cart();
+				return TRUE;
+			}
+	 
+			return FALSE;
 		}
-
-		// Save the cart data if the insert was successful
-		if ($save_cart == TRUE)
-		{
-			$this->_save_cart();
-			return TRUE;
-		}
-
-		return FALSE;
-	}
 
 	// --------------------------------------------------------------------
 
@@ -339,7 +350,8 @@ class CI_Cart {
 
 		// Is the new quantity different than what is already saved in the cart?
 		// If it's the same there's nothing to do
-		if ($this->_cart_contents[$items['rowid']]['qty'] == $items['qty'])
+    // xxx|chnages made check price also
+		if (($this->_cart_contents[$items['rowid']]['qty'] == $items['qty']) AND ($this->_cart_contents[$items['rowid']]['price'] == $items['price']) )
 		{
 			return FALSE;
 		}
@@ -355,9 +367,17 @@ class CI_Cart {
 			$this->_cart_contents[$items['rowid']]['qty'] = $items['qty'];
 		}
 
+    /*********************
+    * the code update for price updatation
+    * xxx\custom added code
+    * */
+    // if the price is either float or numeric
+    if((isset($items['price']) AND is_float($items['price'])) || (isset($items['price']) AND is_numeric($items['price']))){
+      $this->_cart_contents[$items['rowid']]['price'] = $items['price'];
+    }   
+
 		return TRUE;
 	}
-
 	// --------------------------------------------------------------------
 
 	/**

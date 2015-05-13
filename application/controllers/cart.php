@@ -10,13 +10,12 @@ class Cart extends KoController {
 			$this->lang->load('cart', $this->session->userdata('lang_file'));
 			
 			foreach($this->cart->contents() AS $carts){
-			$product = $this->products_model->product($carts['id']);	
 					$cart[] = array(
 					   'rowid'  		=> $carts['rowid'],
 					   'name'			=> $carts['name'],
 					   'qty'			=> $carts['qty'],
-					   'subtotal'		=> ''.$this->cart->format_number($carts['price']),
-					   'price'			=> ''.$this->cart->format_number($product['0']->price * $this->data['currency_currency']),
+					   'subtotal'		=> $carts['subtotal'], 
+					   'price'			=> $carts['price'],
 					   'options'		=> $this->products_model->cart_product_options($carts['options']),
 					   
 				   );  

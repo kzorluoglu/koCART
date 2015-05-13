@@ -22,8 +22,7 @@ class Basket extends KoController {
 					$total_option_price = $this->products_model->option_price_total($option);
 				}
 
-				$product_price = $product['0']->price * $this->data['currency_currency'];
-				$total_price = $product_price + $total_option_price;
+				$total_price = $product['0']->price + $total_option_price;
 				$final_price = $total_price * $qty;
 				
 				$data = array(

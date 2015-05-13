@@ -35,7 +35,11 @@ class Order_model extends CI_Model {
  
     }
 	public function detail($id){
+			$this->db->select('order.*, cargo.name AS cargo_name, cargo.price AS cargo_price, extension.name AS payment_name');
 			$this->db->where('order_id', $id);
+			$this->db->where('extension.type', 'payment');
+			$this->db->join('cargo', 'cargo.id = order.cargo_type');
+			$this->db->join('extension', 'extension.id = order.payment_type');
 	        $query = $this->db->get("order");
 			return $query->result();
 	

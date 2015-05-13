@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Erstellungszeit: 22. Mrz 2015 um 23:03
+-- Erstellungszeit: 13. Mai 2015 um 14:28
 -- Server Version: 5.1.73
 -- PHP-Version: 5.4.33
 
@@ -411,6 +411,8 @@ CREATE TABLE IF NOT EXISTS `order` (
   `cargo_region` varchar(255) NOT NULL,
   `cargo_type` int(11) NOT NULL,
   `payment_type` int(11) NOT NULL,
+  `currency_symbol` varchar(255) NOT NULL,
+  `currency_currency` float NOT NULL,
   `status` int(11) NOT NULL,
   `comment` text NOT NULL,
   `total` varchar(255) NOT NULL,
@@ -418,14 +420,16 @@ CREATE TABLE IF NOT EXISTS `order` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`order_id`),
   UNIQUE KEY `order_id` (`order_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
 -- Daten für Tabelle `order`
 --
 
-INSERT INTO `order` (`order_id`, `customer_id`, `billing_first_name`, `billing_email`, `billing_telephone`, `billing_address1`, `billing_address2`, `billing_city`, `billing_postcode`, `billing_country`, `billing_region`, `billing_company`, `billing_companyid`, `cargo_first_name`, `cargo_email`, `cargo_telephone`, `cargo_address1`, `cargo_address2`, `cargo_city`, `cargo_postcode`, `cargo_country`, `cargo_region`, `cargo_type`, `payment_type`, `status`, `comment`, `total`, `ip`, `date`) VALUES
-(33, 0, 'test', 'test@test.com', 'test', 'test', '', 'test', 0, 'test', 'test', 'test', 'test', 'test', 'test@test.com', 'test', 'test', '', 'test', 0, 'test', 'test', 2, 2, 1, '', '2731', '78.43.43.36', '2015-03-19 23:42:37');
+INSERT INTO `order` (`order_id`, `customer_id`, `billing_first_name`, `billing_email`, `billing_telephone`, `billing_address1`, `billing_address2`, `billing_city`, `billing_postcode`, `billing_country`, `billing_region`, `billing_company`, `billing_companyid`, `cargo_first_name`, `cargo_email`, `cargo_telephone`, `cargo_address1`, `cargo_address2`, `cargo_city`, `cargo_postcode`, `cargo_country`, `cargo_region`, `cargo_type`, `payment_type`, `currency_symbol`, `currency_currency`, `status`, `comment`, `total`, `ip`, `date`) VALUES
+(33, 0, 'test', 'test@test.com', 'test', 'test', '', 'test', 0, 'test', 'test', 'test', 'test', 'test', 'test@test.com', 'test', 'test', '', 'test', 0, 'test', 'test', 2, 2, '0', 0, 1, '', '2731', '78.43.43.36', '2015-03-19 23:42:37'),
+(34, 0, 'jf', 'aw@mil.co', '20606500', 'jbhjggs', 'xfchgvhb', 'gcvbhv', 123434, 'ctfghv', 'dxcfgv', 'sdcfvgbhj', 'r56tg', 'jf', 'aw@mil.co', '20606500', 'jbhjggs', 'xfchgvhb', 'gcvbhv', 123434, 'ctfghv', 'dxcfgv', 2, 2, '0', 0, 1, '', '1321', '180.242.201.185', '2015-05-03 05:59:19'),
+(36, 0, 'Koray', 'korayzorluoglu1@hotmail.com', '+4917684222401', 'Eisenbahn str. 28', '', 'Steinen', 79585, 'test', 'Deutschland', '', 'Herr', 'Koray', 'korayzorluoglu1@hotmail.com', '+4917684222401', 'Eisenbahn str. 28', '', 'Steinen', 79585, 'test', 'Deutschland', 1, 2, '€', 0.353, 1, '', '1432', '78.43.43.56', '2015-05-12 22:24:59');
 
 -- --------------------------------------------------------
 
@@ -440,7 +444,7 @@ CREATE TABLE IF NOT EXISTS `order_detail` (
   `count` int(11) NOT NULL,
   `options` varchar(255) NOT NULL,
   PRIMARY KEY (`oid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
 
 --
 -- Daten für Tabelle `order_detail`
@@ -448,7 +452,10 @@ CREATE TABLE IF NOT EXISTS `order_detail` (
 
 INSERT INTO `order_detail` (`oid`, `order_id`, `product_id`, `count`, `options`) VALUES
 (25, 33, 4, 1, '36'),
-(26, 33, 4, 1, '39,40');
+(26, 33, 4, 1, '39,40'),
+(27, 34, 4, 1, ''),
+(30, 36, 4, 1, ''),
+(31, 36, 3, 1, '');
 
 -- --------------------------------------------------------
 
@@ -594,7 +601,7 @@ CREATE TABLE IF NOT EXISTS `product_option_value` (
   `operation` varchar(255) NOT NULL,
   `price` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
 
 --
 -- Daten für Tabelle `product_option_value`
@@ -608,10 +615,13 @@ INSERT INTO `product_option_value` (`id`, `product_id`, `value_id`, `operation`,
 (32, 4, 19, '+', '55'),
 (31, 4, 17, '+', '44'),
 (30, 4, 21, '+', '33'),
+(41, 1, 29, '+', '22'),
 (40, 4, 25, '+', '1'),
 (39, 4, 27, '+', '22'),
 (38, 4, 31, '+', '11'),
-(37, 4, 33, '+', '22');
+(37, 4, 33, '+', '22'),
+(42, 1, 31, '+', '11'),
+(43, 1, 33, '+', '16');
 
 -- --------------------------------------------------------
 

@@ -3,18 +3,14 @@
 class Currency extends KoController {
  
 	public function set(){
-	
+			$this->load->model('currency_model');
 			$id = $this->security->xss_clean($this->uri->segment(3));
-	
-			if($id == 1){
-				$this->cart->destroy();
-				$this->session->set_userdata('currency', '1');
-			}
-	
-			if($id == 2){
-				$this->cart->destroy();
-				$this->session->set_userdata('currency', '2');
-			}
+			
+			$is_valid = $this->currency_model->id_is_valid($id);
+			
+			if($id != "" & $is_valid == true){
+				$this->session->set_userdata('currency', $id);
+			} 
 
 			redirect($_SERVER['HTTP_REFERER']);
 
