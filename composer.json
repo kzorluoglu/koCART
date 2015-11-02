@@ -1,0 +1,13 @@
+{
+    "name": "ko/kocart",
+    "description": "Simple Shopping System",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Koray Zorluoglu",
+            "email": "korayzorluoglu1@hotmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
