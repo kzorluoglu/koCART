@@ -1,4 +1,4 @@
-  <? $this->load->view('admin/header'); ?>
+  <?php $this->load->view('admin/header'); ?>
 <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -32,7 +32,7 @@
 		 </td>
 
 		 </tr>
- <? $i++; } ?>
+ <?php $i++; } ?>
  <tr>
  <td colspan="4">
       <p align="right"><button type="submit" class="btn btn-default">Update</button></p>
@@ -58,4 +58,4 @@
 
  
 
-  <? $this->load->view('admin/footer'); ?>
+  <?php $this->load->view('admin/footer'); ?>

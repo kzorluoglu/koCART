@@ -1,4 +1,4 @@
-  <? $this->load->view('admin/header'); ?>
+  <?php $this->load->view('admin/header'); ?>
 <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -71,4 +71,4 @@
 
  
 
-  <? $this->load->view('admin/footer'); ?>
+  <?php $this->load->view('admin/footer'); ?>

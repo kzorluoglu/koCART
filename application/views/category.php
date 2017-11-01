@@ -1,4 +1,4 @@
- <? $this->load->view('header'); ?>
+ <?php $this->load->view('header'); ?>
     <!-- Page Content -->
     <div class="container">
 
@@ -82,7 +82,7 @@
                     </div>
 	<?php } ?>
  
-				<? } 		// if category_products is TRUE END
+				<?php } 		// if category_products is TRUE END
 				else{		// ELSE empty message SHOW
 				?>
 				Category is empty!
@@ -96,5 +96,5 @@
 
     </div>
     <!-- /.container -->
- <? $this->load->view('footer'); ?>
+ <?php $this->load->view('footer'); ?>
    

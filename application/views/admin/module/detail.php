@@ -1,4 +1,4 @@
-  <? $this->load->view('admin/header'); ?>
+  <?php $this->load->view('admin/header'); ?>
 <div id="page-wrapper">
  
             <div class="container-fluid">
@@ -27,7 +27,7 @@
 					<td> <a href="<?php echo base_url(); ?>admin/module/delete/<?php echo $product->mod_id; ?>"><span class="glyphicon glyphicon-remove"></span></a></td>
 		 </tr>
   </form>
-  <? } ?>
+  <?php } ?>
         </tbody>
   </table>
  		<form action="<?php echo $this->config->item('admin_url'); ?>module/add" method="post" accept-charset="utf-8" class="form-horizontal" role="form">				
@@ -77,4 +77,4 @@
 
  
 
-  <? $this->load->view('admin/footer'); ?>
+  <?php $this->load->view('admin/footer'); ?>

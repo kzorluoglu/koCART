@@ -1,4 +1,4 @@
-  <? $this->load->view('admin/header'); ?>
+  <?php $this->load->view('admin/header'); ?>
 <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -90,7 +90,7 @@ function openKCFinder(field) {
 				<option value=""></option>
  			<?php foreach($languages as $lang){ ?>
 				<option value="<?php echo $lang->id; ?>"><?php echo $lang->language_name; ?> </option>
-			<? } ?>
+			<?php } ?>
 		</select>
     </div>
   </div>	
@@ -104,7 +104,7 @@ function openKCFinder(field) {
 				<option value=""></option>
  			<?php foreach($currencys as $cur){ ?>
 				<option value="<?php echo $cur->id; ?>"><?php echo $cur->name; ?> </option>
-			<? } ?>
+			<?php } ?>
 		</select>
     </div>
   </div>
@@ -125,4 +125,4 @@ function openKCFinder(field) {
 
  
 
-  <? $this->load->view('admin/footer'); ?>
+  <?php $this->load->view('admin/footer'); ?>

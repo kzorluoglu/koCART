@@ -1,4 +1,4 @@
-  <? $this->load->view('admin/header'); ?>
+  <?php $this->load->view('admin/header'); ?>
 <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -19,7 +19,7 @@
 foreach($results as $result) { ?> 
          <tr>
 		           <td><?php echo $result->order_id; ?></td>
-				   <td><?php if($result->customer_id == 0){ ?> Visitor <? } else { ?> <?php echo $result->customer_id; ?> <?php } ?></td>
+				   <td><?php if($result->customer_id == 0){ ?> Visitor <?php } else { ?> <?php echo $result->customer_id; ?> <?php } ?></td>
 				   <td><?php echo $result->total; ?></td>
 				   <td><a href="<?php echo $this->config->item('admin_url'); ?>order/detail/<?php echo $result->order_id; ?>"><span class="glyphicon glyphicon-pencil"></span></a> <span class="glyphicon glyphicon-remove"></span></td>
 		 </tr>
@@ -38,4 +38,4 @@ foreach($results as $result) { ?>
 
  
 
-  <? $this->load->view('admin/footer'); ?>
+  <?php $this->load->view('admin/footer'); ?>

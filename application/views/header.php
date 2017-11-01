@@ -75,7 +75,7 @@
  
                         </ul> 
                     </li>
-					<? $this->load->view('basket'); ?>
+					<?php $this->load->view('basket'); ?>
  </ul>
             </div>
             <!-- /.navbar-collapse -->

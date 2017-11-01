@@ -5,7 +5,7 @@
 	 
 	<p class="bg-danger"><?php echo $this->session->flashdata('error'); ?></p>
 
-	 <? } ?>
+	 <?php } ?>
 	  <?php echo form_open('order/payment'); ?>
 
 	 <?php foreach($cargos as $cargo){ ?>
@@ -16,7 +16,7 @@
   </div>
  
 	 
-	 <? } ?>
+	 <?php } ?>
 								<p class="text-right"><button type="submit" class="btn btn-primary"><?php echo $this->lang->line('cargo_button'); ?></button></p>
 
 	 </form>

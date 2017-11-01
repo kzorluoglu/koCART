@@ -1,4 +1,4 @@
-  <? $this->load->view('admin/header'); ?>
+  <?php $this->load->view('admin/header'); ?>
 <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -32,7 +32,7 @@
  </td>
 
  </tr>
- <? } ?>
+ <?php } ?>
       </tbody>
     </table>
 <p><?php echo $links; ?></p>
@@ -44,4 +44,4 @@
 
  
 
-  <? $this->load->view('admin/footer'); ?>
+  <?php $this->load->view('admin/footer'); ?>
