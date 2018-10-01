@@ -17,8 +17,8 @@
 
 <?php foreach ($this->cart->contents() as $items): ?>
 
- <input type="hidden" name="item_name_<? echo $i; ?>" value="<?php echo $items['name']; ?>">
-<input type="hidden" name="amount_<? echo $i; ?>" value=" <?php echo $this->cart->format_number($items['subtotal']); ?> ">
+ <input type="hidden" name="item_name_<?php echo $i; ?>" value="<?php echo $items['name']; ?>">
+<input type="hidden" name="amount_<?php echo $i; ?>" value=" <?php echo $this->cart->format_number($items['subtotal']); ?> ">
  
  
 	 

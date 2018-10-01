@@ -1,4 +1,4 @@
-  <? $this->load->view('admin/header'); ?>
+  <?php $this->load->view('admin/header'); ?>
 <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -15,11 +15,11 @@
     <li role="presentation" class="active"><a href="#<?php echo $language->id; ?>" aria-controls="<?php echo $language->id; ?>" role="tab" data-toggle="tab"><?php echo $language->language_name; ?></a></li>
  
 
-<? } else { ?>
+<?php } else { ?>
     <li role="presentation"><a href="#<?php echo $language->id; ?>" aria-controls="<?php echo $language->id; ?>" role="tab" data-toggle="tab"><?php echo $language->language_name; ?></a></li>
 
-<? } ?>
-<? } ?>
+<?php } ?>
+<?php } ?>
  
 </ul>
 
@@ -60,7 +60,7 @@
   </div>
   
   </div>
-<? } else { ?>
+<?php } else { ?>
   <div role="tabpanel" class="tab-pane fade" id="<?php echo $language->id; ?>">
    <br>
   
@@ -93,8 +93,8 @@
   
   
   </div>
-<? } ?>
-<? } ?>
+<?php } ?>
+<?php } ?>
 
    </div>
   </div>
@@ -132,7 +132,7 @@
 				<option value="0">Main Category</option>
 			<?php foreach($categories as $category){ ?>
 				<option value="<?php echo $category->category_id; ?>"><?php echo $category->category_name; ?> </option>
-			<? } ?>
+			<?php } ?>
 		</select>
     </div>
   </div>
@@ -153,4 +153,4 @@
 
  
 
-  <? $this->load->view('admin/footer'); ?>
+  <?php $this->load->view('admin/footer'); ?>

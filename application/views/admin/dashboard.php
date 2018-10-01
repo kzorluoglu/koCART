@@ -1,4 +1,4 @@
-  <? $this->load->view('admin/header'); ?>
+  <?php $this->load->view('admin/header'); ?>
 <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -150,10 +150,10 @@
                                             <tr>
                                                 <td><?php echo $order->order_id; ?></td>
                                                 <td><?php echo $order->date; ?></td>
-                                                <td><?php if($order->customer_id == 0){ ?> Visitor <? } else { ?> <?php echo $order->customer_id; ?> <?php } ?></td>
+                                                <td><?php if($order->customer_id == 0){ ?> Visitor <?php } else { ?> <?php echo $order->customer_id; ?> <?php } ?></td>
                                                 <td> <?php echo $order->total; ?></td>
                                             </tr>
- <? } ?>
+ <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -174,4 +174,4 @@
 
  
 
-  <? $this->load->view('admin/footer'); ?>
+  <?php $this->load->view('admin/footer'); ?>

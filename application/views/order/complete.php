@@ -1,4 +1,4 @@
- <? $this->load->view('header'); ?>
+ <?php $this->load->view('header'); ?>
     <!-- Page Content -->
     <div class="container">
 
@@ -35,7 +35,7 @@
 				<b>&not;</b> <small><?php echo $option->value_name; ?> (<?php echo $option->operation; ?> <?php echo $this->cart->format_number($option->price * $currency_currency); ?> <?php echo $currency_symbol; ?>)</small> 
 				<?php } ?>
 			
-			<? } ?>
+			<?php } ?>
 		  </td>
 		  <td style="text-align:right"><?php echo $this->cart->format_number($items['price'] * $currency_currency); ?> <?php echo $currency_symbol; ?></td>
 		  <td style="text-align:right"> <?php echo $this->cart->format_number($items['subtotal'] * $currency_currency); ?> <?php echo $currency_symbol; ?></td>
@@ -50,7 +50,7 @@
   <td class="right"><?php echo $this->cart->format_number($cargo->price * $currency_currency); ?> <?php echo $currency_symbol; ?></td>
 </tr>
 
-<? } ?>
+<?php } ?>
 <tr>
   <td colspan="2"></td>
   <td class="right"><strong>Total</strong></td>
@@ -70,5 +70,5 @@
 
     </div>
     <!-- /.container -->
- <? $this->load->view('footer'); ?>
+ <?php $this->load->view('footer'); ?>
    

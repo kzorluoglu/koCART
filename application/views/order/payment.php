@@ -5,7 +5,7 @@
 	 
 	<p class="bg-danger"><?php echo $this->session->flashdata('error'); ?></p>
 
-	 <? } ?>
+	 <?php } ?>
 	  <?php echo form_open('order/complete'); ?>
 
 			<ul>

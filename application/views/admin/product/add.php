@@ -1,4 +1,4 @@
-  <? $this->load->view('admin/header'); ?>
+  <?php $this->load->view('admin/header'); ?>
 <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -15,11 +15,11 @@
     <li role="presentation" class="active"><a href="#<?php echo $language->id; ?>" aria-controls="<?php echo $language->id; ?>" role="tab" data-toggle="tab"><?php echo $language->language_name; ?></a></li>
  
 
-<? } else { ?>
+<?php } else { ?>
     <li role="presentation"><a href="#<?php echo $language->id; ?>" aria-controls="<?php echo $language->id; ?>" role="tab" data-toggle="tab"><?php echo $language->language_name; ?></a></li>
 
-<? } ?>
-<? } ?>
+<?php } ?>
+<?php } ?>
  
 </ul>
 
@@ -65,7 +65,7 @@
                 // instance, using default configuration.
                 CKEDITOR.replace( 'editor<?php echo $language->id; ?>' );
             </script>
-<? } else { ?>
+<?php } else { ?>
   <div role="tabpanel" class="tab-pane fade" id="<?php echo $language->id; ?>">
    <br>
   
@@ -103,8 +103,8 @@
                 // instance, using default configuration.
                 CKEDITOR.replace( 'editor<?php echo $language->id; ?>' );
             </script>
-<? } ?>
-<? } ?>
+<?php } ?>
+<?php } ?>
 
    </div>
   </div>
@@ -118,7 +118,7 @@
 		<select name="category_id" class="form-control">
  			<?php foreach($categories as $category){ ?>
 				<option value="<?php echo $category->category_id; ?>"><?php echo $category->category_name; ?> </option>
-			<? } ?>
+			<?php } ?>
 		</select>
     </div>
   </div>
@@ -198,4 +198,4 @@ function openKCFinder(field) {
 
  
 
-  <? $this->load->view('admin/footer'); ?>
+  <?php $this->load->view('admin/footer'); ?>

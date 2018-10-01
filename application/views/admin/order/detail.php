@@ -1,4 +1,4 @@
-  <? $this->load->view('admin/header'); ?>
+  <?php $this->load->view('admin/header'); ?>
 <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -30,7 +30,7 @@ foreach($order as $order_detail) { ?>
 		</tr>
         <tr>
 		           <td>Customer ID#</td>
-				   <td><?php if($order_detail->customer_id == 0){ ?> Visitor <? } else { ?> <?php echo $result->customer_id; ?> <?php } ?></td>
+				   <td><?php if($order_detail->customer_id == 0){ ?> Visitor <?php } else { ?> <?php echo $result->customer_id; ?> <?php } ?></td>
 		</tr>
         <tr>
 		           <td>Total</td>
@@ -170,7 +170,7 @@ foreach($order as $order_detail) { ?>
  
 		 </tr>
 		 </table>
-		 <? } ?>
+		 <?php } ?>
   
   </div>
   <div class="tab-pane" id="shipping">
@@ -228,7 +228,7 @@ foreach($order as $order_detail) { ?>
 		 </tr>
  
 		 </table>
-		 <? } ?>
+		 <?php } ?>
   
   
   
@@ -257,7 +257,7 @@ foreach($order as $order_detail) { ?>
 				<b>&not;</b> <small><?php echo $option->value_name; ?> (<?php echo $option->operation; ?> <?php echo $this->cart->format_number($option->price * $order_detail->currency_currency); ?> <?php echo $order_detail->currency_symbol; ?>)</small> 
 				<?php } ?>
 			
-			<? } ?>
+			<?php } ?>
 			
 			
 				</td>
@@ -269,7 +269,7 @@ foreach($order as $order_detail) { ?>
  
 		 </tr>
 
-  <? } ?>
+  <?php } ?>
   <tr>
   <td colspan="2"></td><td><b>Cargo Price</b></td><td><?php echo $this->cart->format_number($order_detail->cargo_price * $order_detail->currency_currency); ?> <?php echo $order_detail->currency_symbol; ?></td>
     </tr>   
@@ -329,4 +329,4 @@ foreach($order as $order_detail) { ?>
 <!-- AUTOCOMPLETE von jQuery UI --> 
  
 
-  <? $this->load->view('admin/footer'); ?>
+  <?php $this->load->view('admin/footer'); ?>
