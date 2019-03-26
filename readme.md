@@ -2,14 +2,14 @@ KoCART
 ============================
 Codeigniter Based Open Source E-Commerce System
 
-
 #### Installation
-1. Change Urls with your domain information.
+1. Change Urls and Encryption Key with your domain information.
 
 Config/config.php
 ```
 $config['base_url']	= 'http://yourdomain.com/';
 $config['admin_url']	= 'http://yourdomain.com/admin/';
+$config['encryption_key'] = 'KoKoKoCart!';
 ```
 2. Change database information with your  information.
 ```
@@ -19,7 +19,6 @@ $db['default']['password'] = 'password';
 $db['default']['database'] = 'database';
 $db['default']['dbdriver'] = 'mysqli';
 ```
-
 
 ##### Note
 Admin Panel  : http://www.yourdomain.com/admin/dashboard

@@ -1,16 +1,18 @@
- 
+
     <li class="dropdown">
         <a href="#"  data-toggle="dropdown">
 			<small> <?php echo $this->lang->line('total'); ?> : <?php echo $this->cart->total_items(); ?> | (<?php echo $cart_total; ?> <?php echo $currency_symbol; ?>)</small>
         </a>
         <ul class="dropdown-menu">
-  
-      
-  <?php if($this->cart->total_items() > 0){ ?>
+
+
+  <?php if ($this->cart->total_items() > 0) {
+    ?>
 				<?php echo form_open('cart/update'); ?>
 					<table class="table small">
 						<?php $i = 1; ?>
-						<?php foreach ($this->cart->contents() as $items){ ?>
+						<?php foreach ($this->cart->contents() as $items) {
+        ?>
 						<input type="hidden" name="rowid[]" value="<?php echo $items['rowid']; ?>" />
 					<tr>
 						<td>
@@ -25,10 +27,12 @@
 							<?php echo anchor('cart/remove/'.$items['rowid'], $this->lang->line('delete')); ?>
 						</td>
 					</tr>
- 
+
 						<?php $i++; ?>
-						<?php } ?>
-						<?php } ?>
+						<?php
+    } ?>
+						<?php
+} ?>
 					</table>
 					<br style="clear:both;">
 
@@ -41,4 +45,3 @@
 		</form>
         </ul>
     </li>
- 
