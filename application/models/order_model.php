@@ -1,0 +1,27 @@
+<?php
+class Order_model extends CI_Model
+{
+    public function __construct()
+    {
+        // Call the Model constructor
+        parent::__construct();
+    }
+
+    public function add($data, $products)
+    {
+        $this->db->insert('order', $data);
+        $order_id = $this->db->insert_id();
+
+        foreach ($products as $product) {
+            $order_product = array(
+                    'order_id' 		=> $order_id,
+                    'product_id' 	=> $product['id'],
+                    'count'			=> $product['qty'],
+                    'options' 		=> implode(',', $product['options'])
+                );
+
+            $this->db->insert('order_detail', $order_product);
+        }
+        return $order_id;
+    }
+}
